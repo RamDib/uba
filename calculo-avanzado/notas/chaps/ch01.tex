@@ -1,0 +1,152 @@
+\chapter{Relaciones y orden}
+
+Este capítulo realmente no es complicado. Te recomiendo pasarlo bastante rápido y cualquier cosa, si no te acordás de alguna definición, volvé a leerla en el momento que la necesites.
+
+\section{Relaciones binarias}
+
+Hacemos un breve repaso de la definición de relación y relaciones de orden ---visto en Álgebra I---.
+
+\begin{definition}
+	Definimos una \emph{relación} entre dos conjuntos $A$ y $B$ como un subconjunto $\mathcal{R} \subseteq A \times B$. Para $a \in A$ y $b \in B$ decimos que $a \mathcal{R} b$ si $(a, b) \in \mathcal{R}$.
+\end{definition}
+
+Recordemos también algunas de las propiedades que podía tener una relación.
+
+\begin{definition}
+	Sea $\mathcal{R}$ una relación en $A \times A$ (o simplemente en $A$). Entonces, decimos que $\mathcal{R}$ es:
+	\begin{itemize}
+		\item \textbf{Reflexiva} si $a \mathcal{R} a$, para todo $a \in A$.
+		\item \textbf{Simétrica} si $a \mathcal{R} b$ implica $b \mathcal{R} a$, para todo $a, b \in A$.
+		\item \textbf{Antisimétrica} si $a \mathcal{R} b$ y $b \mathcal{R} a$ implica $a = b$, para todo $a, b \in \mathcal{R}$.
+		\item \textbf{Transitiva} si $a \mathcal{R} b$ y $b \mathcal{R} c$ implica $a \mathcal{R} c$, para todo $a, b, c \in \mathcal{R}$.
+	\end{itemize}
+\end{definition}
+
+Seguramente recordarás ---de Álgebra I también--- que hay distintos tipos de relaciones. En particular, nos van a interesar las relaciones de \textit{orden}.
+
+\begin{definition}
+	Decimos que una relación en $A$ es de \emph{orden} si es reflexiva, antisimétrica y transitiva.
+\end{definition}
+
+Veamos algunos ejemplos de relaciones de orden.
+
+\begin{example}
+	\begin{enumerate}
+		\item La relación $\leq$ en $\mathbb{R}$ es de orden.
+		\item La relación $\mid$ en $\mathbb{N}$ es de orden.
+		\item Sin embargo, la relación $\mid$ en $\mathbb{Z}$ no es de orden.
+	\end{enumerate}
+\end{example}
+
+
+\section{Conjuntos ordenados}
+
+Este concepto puede parecer nuevo, pero simplemente es considerar la relación y al conjunto en el que está definida.
+
+\begin{definition}
+	Un \emph{conjunto ordenado} (o \emph{poset}) es un par $(A, \preceq)$ donde $A$ es un conjunto y $\preceq$ es una relación de orden en $A$.
+\end{definition}
+
+Además de \textit{conjunto ordenado}, también podemos decir \textit{conjunto parcialmente ordenado} (de acá viene \textit{poset}).
+
+\begin{definition}
+	Sea $(A, \preceq)$ un conjunto ordenado tal que, para cualesquiera $a, b \in A$,
+	\begin{equation*}
+		a \preceq b \quad\text{ó}\quad b \preceq a.
+	\end{equation*}
+	Entonces, decimos que $(A, \preceq)$ es un \emph{conjunto totalmente ordenado} (o una \emph{cadena}).
+\end{definition}
+
+Con $\preceq$ nos referimos a una relación de orden \textit{arbitraria} en $A$. Si en algún momento se presta a confusión en qué conjunto estamos trabajando, también podemos notarlo como $\preceq_{A}$.
+
+\begin{example}
+	\noindent
+	\begin{enumerate}
+		\item $(\mathbb{R}, \leq)$ es un conjunto totalmente ordenado.
+		\item $(\mathbb{N}, \mid)$ es un conjunto parcialmente ordenado.
+		\item $(\mathcal{P}(X), \subseteq)$ es un conjunto parcialmente ordenado.
+	\end{enumerate}
+\end{example}
+
+\section{Cotas, supremo e ínfimo}
+
+Dentro de los conjuntos ordenados, nos interesa ver cotas superiores, inferiores, supremos e ínfimos.
+
+\begin{definition}
+	Sea $(A, \preceq)$ un conjunto ordenado y sea $B \subseteq A$. Entonces, decimos que:
+	\begin{itemize}
+		\item Un elemento $s \in A$ es una \emph{cota superior} de $B$ si $b \preceq s$, para todo $b \in B$.
+		\item Un elemento $t \in A$ es una \emph{cota inferior} de $B$ si $t \preceq b$, para todo $b \in B$.
+		\item Una cota superior $s \in A$ es el \emph{supremo} de $B$ si $s \preceq s'$, para toda cota superior $s'$ de $B$.
+		\item Una cota inferior $t \in A$ es el \emph{ínfimo} de $B$ si $t' \preceq t$, para toda cota inferior $t'$ de $B$.
+	\end{itemize}
+\end{definition}
+
+A continuación demostraremos la unicidad del supremo y el ínfimo, permitiéndonos decir \textit{el} supremo y \textit{el} ínfimo.
+
+\begin{proposition}
+	Sea $(A, \preceq)$ un conjunto ordenado y sea $B \subseteq A$. Si existe un supremo (ínfimo) de $B$, entonces es único.
+\end{proposition}
+
+\begin{proof}
+	Sea $s, s' \in A$ supremos de $B$. Por definición de supremo,
+	\begin{equation*}
+		s \preceq s' \quad \text{y} \quad s' \preceq s.
+	\end{equation*}
+	Por lo tanto, $s = s'$. (El argumento es idéntico para el ínfimo.)
+\end{proof}
+
+Utilizamos la notación $\sup B$ para el supremo de $B$ e $\inf B$ para el ínfimo de $B$.
+
+\begin{remark}
+	Cuando el supremo (ínfimo) se realiza es igual al máximo (mínimo).
+\end{remark}
+
+\begin{example}
+	Consideremos los siguientes conjuntos:
+	\begin{itemize}
+		\item $\sup [0, 1] = \max [0, 1] 1$ e $\inf [0, 1] = \min [0, 1] = 0$.
+		\item $\sup (0, 1) = 1$ e $\inf (0, 1) = 0$.
+		\item $\sup\{ \frac{1}{n} \mid n \in \mathbb{N} \} = 1$ e $\inf\{ \frac{1}{n} \mid n \in \mathbb{N} \} = 0$.
+	\end{itemize}
+\end{example}
+
+\section{Funciones crecientes e isomorfismos de orden}
+
+Vamos a definir morfismos e isomorfismos de orden que más adelante los vamos a utilizar para enunciar el teorema del punto fijo.
+
+\begin{definition}
+	Sean $(A, \preceq_A)$ y $(B, \preceq_B)$ conjuntos ordenados. Decimos que una función $f : (A, \preceq_A) \to (B, \preceq_B)$ es \emph{creciente} (o un \emph{morfismo de orden}) si
+	\begin{equation*}
+		a \preceq_A b \implies f(a) \preceq_B f(b),
+	\end{equation*}
+	para todo $a, b \in A$. Asimismo, decimos que $f$ es \emph{decreciente} si
+	\begin{equation*}
+		a \preceq_A b \implies f(b) \preceq_B f(a),
+	\end{equation*}
+	para todo $a, b \in A$.
+\end{definition}
+
+Por lo general, no hace falta aclarar qué orden estamos usando; suele estar implícito.
+
+\begin{example}
+	La función identidad $\mathrm{Id} : (mathbb{N}, \mid) \to (\mathbb{N}, \leq)$ es creciente.
+\end{example}
+
+Y si la inversa es cretiente, obtenemos la siguiente definición.
+
+\begin{definition}
+	Sean $(A, \preceq_A)$ y $(B, \preceq_B)$ conjuntos ordenados. Decimos que una función $f : (A, \preceq_A) \to (B, \preceq_B)$ es un \emph{isomorfismo de orden} si es biyectiva y tanto $f$ como $f^{-1}$ son crecientes.
+\end{definition}
+
+\begin{example}
+	La biyección $f : \mathbb{N} \to 2\mathbb{N}$ tal que $f(n) = 2n$ es un isomorfismo de orden.
+\end{example}
+
+
+
+
+
+
+
+

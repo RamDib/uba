@@ -1,0 +1,125 @@
+\chapter{Continuidad}
+
+\section{Funciones Continuas}
+
+\begin{definition}
+	Sean $(X, d_X)$ e $(Y, d_Y)$ espacios métricos. Una función $f : X \to Y$ se dice \emph{continua en} $x$ si
+	\begin{center}
+		\begin{minipage}{0.9\linewidth}
+			para todo $\varepsilon > 0$, existe un $\delta > 0$ tal que $d_X (x', x) < \delta$ implica $d_Y (f(x'), f(x)) < \varepsilon$, para todo $x' \in X$.
+		\end{minipage}
+	\end{center}
+	Decimos que $f$ es \emph{continua} si es continua en todo punto de su dominio.
+\end{definition}
+
+\begin{remark}
+	O más compacto:
+	\begin{equation*}
+		\forall \varepsilon > 0, \exists \delta > 0 \mid d_X (x', x) < \delta \Rightarrow d_Y (f(x'), f(x)), \forall x' \in X.
+	\end{equation*}
+\end{remark}
+
+Es muy útil pensar la continuidad de forma intuitiva utilizando la noción de entornos. Si $f$ es continua en $x$, entonces para todo entorno $V$ de $f(x)$, $f^{-1}(V)$ es un entorno de $x$.
+
+\begin{center}
+	\input{tikz/em_cont_ent.tex}
+\end{center}
+
+Veamos equivalencias de continuidad.
+
+\begin{proposition}
+	Sea $f : X \to Y$ y sea $x \in X$. Entonces, son equivalentes:
+	\begin{enumerate}
+		\item $f$ es continua en $x$.
+		\item Si $x_n \longrightarrow x$, entonces $f(x_n) \longrightarrow f(x)$.
+		\item Si $V \subseteq Y$ es un entorno de $f(x)$, entonces $f^{-1} (V)$ es un entorno de $x$.
+	\end{enumerate}
+\end{proposition}
+
+Cuando decimos que una función $f$ es continua, nos referimos a que $f$ es continua en todo punto de su dominio.
+
+\begin{proposition}
+	Sea $f : X \to Y$. Entonces, son equivalentes:
+	\begin{enumerate}
+		\item $f$ es continua.
+		\item Si $x_n \longrightarrow x$, entonces $f(x_n) \longrightarrow f(x)$ para todo $x \in X$ y sucesión $(x_n)_{n \in \mathbb{N}}$.
+		\item $f^{-1} (A) \subseteq X$ es abierto para todo $A \subseteq Y$ abierto.
+		\item $f^{-1} (B) \subseteq X$ es cerrado para todo $B \subseteq Y$ cerrado.
+		\item $f( \overline{C} ) \subseteq \overline{f(C)}$ para todo $B \subseteq X$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\color{red} COMPLETAR
+\end{proof}
+
+\begin{proposition}
+	La composición de funciones continuas es continua.
+\end{proposition}
+
+\section{Continuidad Uniforme}
+
+\begin{definition}
+	Decimos que $f : X \to Y$ es \emph{uniformemente continua} si
+	\begin{equation*}
+		\begin{split}
+			\forall \varepsilon > 0, \exists \delta > 0 \text{ tal que } & d_X(x,x') < \delta \\ &\Rightarrow d_Y(f(x), f(x')) < \varepsilon, \forall x, x' \in X.
+		\end{split}
+	\end{equation*}
+\end{definition}
+
+\begin{remark}
+	Las funciones uniformemente continuas mandan sucesiones de Cauchy a sucesiones de Cauchy.
+\end{remark}
+
+\begin{proposition}
+	Sean $f, g : X \to Y$ continuas tales que $f |_A = g|_A$ con $A \subseteq X$ denso. Entonces, $g = g'$ en $X$.
+\end{proposition}
+
+\begin{proof}
+	Sea $\Phi (x) = d(f(x), g(x))$. Por composición de funciones continuas, $\Phi$ es continua. Como $A \subseteq \Phi^{-1}(0)$ y $\left\{ 0 \right\}$ es cerrado, entonces $d(f(x), g(x)) = 0$ para todo $x \in \overline{D}$. Es decir, $f(x) = g(x)$ para todo $x \in X$.
+\end{proof}
+
+
+\section{Homeomorfismos}
+
+Los homeomorfismo de cierta forma ``preservan'' la topología de un espacio.
+
+\begin{definition}
+	Decimos que $f : X \to Y$ es un \emph{homeomorfismo} si
+	\begin{itemize}
+		\item $f$ es continua.
+		\item $f$ es biyectiva.
+		\item $f^{-1}$ es continua.
+	\end{itemize}
+	Si existe un homeomorfismo de $X$ a $Y$, entonces decimos que son espacios \emph{homeomorfos}.
+\end{definition}
+
+También, definimos otros términos.
+
+\begin{definition}
+	Decimos que $f : X \to Y$ es
+	\begin{itemize}
+		\item \emph{abierta} si $f(A) \subseteq Y$ es abierto para todo $A \subseteq X$ abierto.
+		\item \emph{cerrada} si $f(B) \subseteq Y$ es cerrado para todo $B \subseteq X$ cerrado.
+	\end{itemize}
+\end{definition}
+
+\begin{remark}
+	Son equivalentes
+	\begin{itemize}
+		\item homeomorfismo.
+		\item continua y abierta.
+		\item continua y cerrada.
+	\end{itemize}
+\end{remark}
+
+\begin{example}
+	Los espacios $\mathbb{R}$ y $(0, 1)$ son homeomorfos con la métrica usual.
+\end{example}
+
+En general, la idea de los homeomorfismos es que, de cierta forma, nos dicen que dos espacios métricos tienen las mismas propiedades. Por lo tanto, las propiedades \textit{topológicas} se mantienen con homeomorfismos. Es decir, los conceptos de abiertos, cerrados, puntos de acumulación, densos, continuidad sólo dependen de los abiertos y no la distancia del espacio métrico. (Esto lo habíamos visto antes y es la topología.)
+
+
+
+

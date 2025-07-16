@@ -1,0 +1,88 @@
+\chapter{Compacidad}
+
+\section{Definición y equivalencias}
+
+\begin{definition}
+	Sea $X$ un espacio métrico. Decimos que $X$ es \emph{compacto} si todo cubrimiento abierto admite un subcubrimiento finito.
+\end{definition}
+
+De cierta forma, los espacios métricos compactos son análogos a los conjuntos finitos. Es decir, muchas de las propiedades de los conjuntos finitos ---tomar mínimo, por ejemplo--- valen también para los compactos.
+
+\begin{definition}
+	Decimos que $X$ es \emph{totalmente acotado} si para todo $\varepsilon > 0$, existe un cubrimiento finito con bolas de radio menor o igual a $\varepsilon$.
+\end{definition}
+
+\begin{remark}
+	Notar la sutileza de la definición. Si bien ser totalmente acotado implica ser acotado, la vuelta no es verdad.
+\end{remark}
+
+Damos equivalencias de compacidad.
+\begin{theorem}
+	Sea $X$ un espacio métrico. Son equivalentes:
+	\begin{enumerate}
+		\item $X$ es compacto.
+		\item Toda sucesión de $X$ admite una subsucesión convergente.
+		\item $X$ es totalmente acotado y completo.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	(1 $\Rightarrow$ 2) Sea $X$ compacto. Supongamos que existe una sucesión $(x_n)_{n \in \mathbb{N}}$ que no tiene ninguna subsucesión convergente. Por lo tanto, no tiene ningún punto de acumulación. Entonces, para cada $x \in X$, existe un $\varepsilon_x > 0$ tal que $B(x, \varepsilon_x)$ contiene únicamente finitos términos de $(x_n)_{n \in \mathbb{N}}$. Con esto, armamos el cubrimiento abierto $\mathcal{U} = \left\{ B(x, \varepsilon_x) \right\}_{x \in X}$. Por compacidad, existe un subcubrimiento finito. Esto es absurdo, ya que necesariamente una de las bolas tiene infinitos términos de la sucesión, pero como sabemos las bolas tienen finitos terminos de la sucesión.
+
+	(2 $\Rightarrow$ 3) Sea $X$ tal que toda sucesión admite una subsucesión convergente. Para ver la completitud, basta con tomar una sucesión de Cauchy y tomar una subsucesión convergente.
+	Veamos la total acotación. Supongamos que $X$ no es totalmente acotado. Entonces, existe $\varepsilon_0 > 0$ tal que no hay un cubrimiento por finitas bolas de radio $\varepsilon$. Construimos una sucesión que no admite una subsucesión convergente. Sea $x_1 \in X$. Sea $x_2 \in X \setminus B(x_1, \varepsilon_0)$. Seguimos inductivamente y obtenemos que $x_n \in X \setminus \left( \bigcup_{i < n} B(x_i, \varepsilon_0)\right)$. Nuestra sucesión cumple que para $i \neq j$, $d(x_i, x_j) \geq \varepsilon_0$. Por hipótesis, $(x_n)_{n \in \mathbb{N}}$ tiene una subsucesión convergente $(x_{n_k})_{k \in \mathbb{N}}$. Sin embargo, $(x_{n_k})$ no es de Cauchy ya que $d(x_{n_{i}}, x_{n_j}) \geq \varepsilon_0$, por ende no es convergente.
+
+	(3 $\Rightarrow$ 1) Sea $X$ totalmente acotado y completo. Sea $\mathcal{U} = \left\{ U_i \right\}_{i \in I}$ un cubrimiento abierto de $X$ tal que no admite un subcubrimiento finito.
+
+	Consideramos al cubrimiento finito por bolas abiertas $\left\{ B(x_n, 1) \right\}_{1 \leq n \leq N}$. Por lo menos una de estas bolas no puede ser cubierta por ningún subcubrimiento finito de $\mathcal{U}$. Llamemos a esta bola $B_1 = B(x_1, 1)$.
+
+	Podemos cubrir a $B_1$ con finitas bolas de radio $\frac{1}{2}$ tales que sus centros distan como mucho a $1 + \frac{1}{2}$ de $x_1$. Por el mismo argumento de antes, una de estas bolas no puede ser cubierta por ningún subcubrimiento finito de $\mathcal{U}$. Llamemos a esta bola $B_2 = B(x_2, \frac{1}{2})$.
+
+	Repetimos el mismo proceso de $B_1$ con $B_2$ y conseguimos la bola $B_3 = B(x_3, \frac{1}{2^2})$. Procediendo inductivamente, obtenemos la sucesión $(B_n)_{n \in \mathbb{N}}$ tal que $d(x_{n-1}, x_{n}) \leq \frac{1}{2^{n-1}} + \frac{1}{2^n}$ para todo $n \in \mathbb{N}$.
+
+	\begin{center}
+		\input{tikz/em_dem_comp.tex}
+	\end{center}
+
+	Consideramos la sucesión de centros $(x_n)_{n \in \mathbb{N}}$. Sean $m, n, N \in \mathbb{N}$ tales que $N \leq m \leq n$. Entonces,
+	\begin{equation*}
+		d(x_m, x_n) \leq d(x_m, x_{m+1}) + d(x_{m+1}, x_{m+2}) + \dots + d(x_{n-1}, x_n) \leq \frac{1}{2^{N-2}}.
+	\end{equation*}
+	Por lo tanto, $(x_n)$ es de Cauchy y como $X$ es completo, tiene límite $x$.
+
+	Sea $U_i$ tal que $x \in U_i$. Dado que $U_i$ es abierto, existe un $r > 0$ tal que $B(x, r) \subseteq U_i$. Por lo tanto, existe un $N \in \mathbb{N}$ tal que $B_{N} \subseteq B(x, r) \subseteq U_i$, lo cual es absurdo por construcción de $(B_n)$.
+\end{proof}
+
+\section{Propiedades de compactos}
+
+Veamos algunas propiedades de los compactos.
+
+\begin{proposition}
+	Sea $X$ compacto e $Y$ un espacio métrico y sea $f : X \to Y$ continua. Entonces, $f(X)$ es compacto.
+\end{proposition}
+
+\begin{proof}
+	Sea $\left\{ V_i \right\}_{i \in I}$ un cubrimiento abierto de $f(X)$. Consideramos el cubrimiento $\left\{ f^{-1}(V_i) \right\}_{i \in I}$. Dado que $X$ es compacto, consideramos un subconjunto finito $J \subseteq I $ tal que forma un subcubrimiento finito. Ahora consideramos $\left\{ V_j \right\}_{j \in J}$ y vemos que es un cubrimiento de $f(X)$. Sea $y \in f(X)$, entonces existe un $x \in X$ tal que $f(x) = y$. Sabemos que $x \in f^{-1}(V_j)$ para algún $j \in J$. Por lo tanto, $y \in V_j$.
+\end{proof}
+
+\begin{proposition}
+	Sea $X$ compacto e $Y$ un espacio métrico y sea $f : X \to Y$ continua. Entonces, $f$ es uniformemente continua.
+\end{proposition}
+
+\begin{proof}
+	Supongamos que $f$ no es uniformemente continua. Es decir
+	\begin{equation*}
+		\exists \varepsilon > 0 \mid \forall \delta > 0, \exists x, y \mid d(x, y) < \delta \text{ pero } d(f(x), f(y)) \geq \varepsilon.
+	\end{equation*}
+	Tomamos sucesiones $(x_n)_{n \in \mathbb{N}}$ e $(y_n)\mathbb{n \in \mathbb{N}}$ tales que existe $\varepsilon > 0$ tal que
+	\begin{equation*}
+		d(x_n, y_n) \to 0 \text{ pero } d(f(x_n), f(y_n)) \geq \varepsilon.
+	\end{equation*}
+
+	Por compacidad de $X$, puedo tomar dos subsucesiones convergentes de $(x_n)_{n \in \mathbb{N}}$ e $(y_n)\mathbb{n \in \mathbb{N}}$ que tienden a $x_0$ e $y_0$, respectivamente. Entonces, $d(x_0, y_0) = \lim_{k \to \infty} d(x_{n_k}, y_{n_k}) = 0$, entonces $x_0 = y_0$. Sin embargo, esto implica que $d(f(x_0), f(y_0)) = 0$, lo cual es absurdo ya que $d(f(x_{n_k}), f(y_{n_k})) \to d(f(x_0), f(y_0))$ pero $d(f(x_{n_k}), f(y_{n_k})) \geq \varepsilon$.
+\end{proof}
+
+\begin{center}
+	\color{red} TEOREMA DE DINI
+\end{center}
+

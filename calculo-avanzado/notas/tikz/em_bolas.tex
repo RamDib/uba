@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+	% Dibujar la bola abierta
+	\draw[accentcolor, thick, dashed] (0,0) circle (1.5cm);
+	\fill[accentcolor!10, opacity=0.7] (0,0) circle (1.5cm);
+	\node at (0,0) [fill=black, circle, inner sep=1.5pt, label=below:$x$] {};
+	\draw[] (0,0) -- node[above, black] {$r$} (1.5,0);
+	\node[above, accentcolor] at (0, 1.8) {Bola Abierta $B(x, r)$};
+
+	% Dibujar la bola cerrada
+	\begin{scope}[xshift=4cm]
+		\draw[accentcolor, thick] (0,0) circle (1.5cm);
+		\fill[accentcolor!10, opacity=0.7] (0,0) circle (1.5cm);
+		\node at (0,0) [fill=black, circle, inner sep=1.5pt, label=below:$x$] {};
+		\draw (0,0) -- node[above, black] {$r$} (1.5,0); % Línea continua para radio
+		\node[above, accentcolor] at (0, 1.8) {Bola Cerrada $\overline{B}(x, r)$};
+	\end{scope}
+\end{tikzpicture}

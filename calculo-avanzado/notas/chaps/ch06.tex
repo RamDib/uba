@@ -1,0 +1,185 @@
+\chapter{Separabilidad}
+
+Previo a definir un espacio métrico separable, veamos qué es la topología de un espacio.
+
+\section{Topología del espacio}
+
+\begin{definition}
+	Sea $(X, d)$ un espacio métrico. La \emph{topología} de $X$ es la familia de subconjuntos abiertos de $X$. Una \emph{base} de la topología de $X$ es una familia de abiertos $\mathcal{B}$ tal que
+	\begin{center}
+		\begin{minipage}{0.9\linewidth}
+			todo abierto $A \subseteq X$ se puede expresar como $A = \bigcup_{i \in I} B_i$ con $B_i \in \mathcal{B}$.
+		\end{minipage}
+	\end{center}
+\end{definition}
+\begin{remark}
+	La condición de una base puede ser reemplazada por:
+	\begin{center}
+		\begin{minipage}{0.9\linewidth}
+			Para todo $A \subseteq X$ abierto se cumple que para todo $a \in A$, existe $B \in \mathcal{B}$ tal que $a \in B \subseteq A$.
+		\end{minipage}
+	\end{center}
+\end{remark}
+
+\begin{example}
+	Algunas bases son:
+	\begin{enumerate}
+		\item La base $\{ B(x, r) \mid x \in X \text{ y } r > 0 \}$.
+		\item La familia de abiertos es una base.
+		\item La base $\{ B(x, \frac{1}{n}) \mid x \in X \text{ y } n \in \mathbb{N} \}$.
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+	Deicmos que dos espacios métricos tienen \emph{topologías equivalentes} si inducen los mismos abiertos.
+\end{definition}
+
+\begin{example}
+	En $\mathbb{R}^n$, las métricas $\lVert \cdot \rVert_p$ donde $p \in (0, + \infty]$ inducen la misma topología.
+\end{example}
+
+Recordemos la definición de subespacio métrico: subconjunto del espacio con la métrica restringida.
+
+\begin{remark}
+	Definimos la bola en $Y \subseteq X$ como
+	$$
+		B_Y (y, r) = \{ x \in Y \mid d(x, y) < r\}.
+	$$
+\end{remark}
+
+\begin{proposition}
+	Sea $(X, d)$ un espacio métrico e $Y \subseteq X$. Entonces, un subconjunto $A \subseteq Y$ es abierto en $Y$ si y sólo si existe un subconjunto abierto $B \subseteq X$ tal que $A = B \cap Y$.
+\end{proposition}
+
+\begin{proof}
+	($\Rightarrow$) Sea $A \subseteq Y$ un subconjunto abierto. Entonces, $A$ es unión de bolas abiertas
+	$$
+		A = \bigcup_{i \in I} B_Y (y_i, r_i).
+	$$
+	Definimos al conjunto
+	$$
+		B = \bigcup_{i \in I} B (y_i, r_i).
+	$$
+	Dado que $B$ es unión de abiertos,  también es abierto. Consideramos
+	$$
+		B \cap Y = \bigcup_{i \in I} B_Y (y_i, r_i) = A.
+	$$
+
+	($\Leftarrow$) Sea $A \subseteq Y$ y $B \subseteq X$ un subconjunto abierto que cumplen que $A = B \cap Y$. Como $B$ es abierto, se puede expresar como la unión de bolas abiertas
+	$$
+		B = \bigcup_{i \in I} B(x_i, r_i).
+	$$
+	Por lo tanto,
+	$$
+		A = B \cap Y = \bigcup_{i \in I} B_Y (x_i, r_i).
+	$$
+	Y como $A$ es unión de bolas abiertas, $A$ es abierto.
+\end{proof}
+
+\begin{remark}
+	La proposición análoga para cerrados también es válida.
+\end{remark}
+
+\section{Espacios separables}
+
+\begin{definition}
+	Un espacio métrico $(X, d)$ es \emph{separable} si existe un subconjunto denso $D \subseteq X$ tal que $\left| D \right| \leq \aleph_0$.
+\end{definition}
+
+\begin{example}
+	Algunos espacios separables son:
+	\begin{enumerate}
+		\item $X$ contable es separable con $D = X$.
+		\item $(\mathbb{R}, |\cdot|)$ es separable con $D = \mathbb{Q}$.
+		\item $(\mathbb{R} - \mathbb{Q}, |\cdot|)$ es separable con $D = \mathbb{Q} + \sqrt{2}$.
+		\item $(\ell^{p} (\mathbb{R}), \lVert \cdot \rVert)$ es separable para $p < + \infty$.
+		\item $C([a, b], \mathbb{R})$ es separable con $D = \mathbb{Q}[x]$.
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+	\begin{itemize}
+		\item Decimos que una familia $\{ A_i \}_{i \in I}$ es un \emph{cubrimiento} de $X$ si $X \subseteq \bigcup_{i \in I} A_i$.
+		\item Si además $B_i$ es abierto para todo $i \in I$, decimos que $\{ B_i \}_{i \in I}$ es un \emph{cubrimiento abierto} de $X$.
+		\item La familia $\{ A_j \}_{j \in J}$ es un \emph{subcubrimiento} de $\{ A_i \}_{i \in I}$ si es un cubrimiento y $J \subseteq I$.
+	\end{itemize}
+\end{definition}
+
+A continuación enunciamos y demostramos el Teorema de Lindelöf.
+
+\begin{theorem}
+	Sea $(X, d)$ un espacio métrico. Entonces, son equivalentes:
+	\begin{enumerate}
+		\item $X$ es separable.
+		\item Existe una base contable de $X$.
+		\item Todo cubrimiento abierto de $X$ admite un subcubrimiento contable.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\framebox{1. $\Rightarrow$ 2.} Sea $(X, d)$ un espacio métrico separable. Entonces, existe un subconjunto denso $D \subseteq X$ contable. Veamos que
+	$$
+		\mathcal{B} = \left\{ B\left(x, \frac{1}{n}\right) \right\}_{x \in D, n \in \mathbb{N}}
+	$$
+	es una base contable. Dado que $D \times \mathbb{N}$ es contable, $\mathcal{B}$ es contable, basta con ver que para todo $A \subseteq X$ abierto se cumple que para todo $a \in A$, existe $B \in \mathcal{B}$ tal que $a \in B \subseteq A$.
+
+	Sea $A \subseteq X$ un subconjunto abierto y sea $a \in A$. Por definición de abierto, existe una bola $B(a, r)$ con $r > 0$ tal que $B(a, r) \subseteq A$. Queremos encontrar $x \in D$ y $r' > 0$ tales que $a \in B(x, r') \subseteq B(a, r)$. Elegimos $r' = \frac{1}{n}$ tal que $\frac{1}{n} < \frac{r}{2}$. Consideramos ahora la bola $B(a, \frac{1}{n})$. Dado que $D$ es denso, existe $x \in D$ tal que $x \in B(a, \frac{1}{n})$.
+
+	Veamos que $a \in B(x, \frac{1}{n}) \subseteq B(a, r)$. Sea $x' \in B(x, \frac{1}{n})$. Entonces,
+	$$
+		d(x', a) \leq d(x', x) + d(x, a) < \frac{2}{n} < r.
+	$$
+	\begin{center}
+		\input{tikz/em_teo_sep.tex}
+	\end{center}
+
+	\framebox{2. $\Rightarrow$ 3.} Sea $\mathcal{B} = \{ B_n \}_{n \in N}$ una base contable de $X$ y sea $\mathcal{U} = \{ U_i \}_{i \in I}$ un cubrimiento abierto. Definimos la función
+	\begin{align*}
+		\Phi: N & \to I                                         \\
+		n       & \mapsto i \text{ tal que } B_n \subseteq U_i.
+	\end{align*}
+	Y consideramos $J = \operatorname{Im} \Phi$. Seguro que $J$ es contable ya que $\Phi$ es sobreyectiva hacia $J$. Entonces, basta con ver que el subconjunto $\mathcal{U}' = \{ U_j \}_{j \in J}$ cubre a $X$.
+
+	Sea $x \in X$. Como $\mathcal{B}$ es una base, existe algún $n \in N$ tal que $x \in B_n$. Consideramos $j \in J$ tal que $B_n \subseteq U_j$, entonces $x \in U_j$. Por lo tanto, para todo $x \in X$, existe un $j \in J$ tal que $x \in U_j$. Por lo tanto, $\mathcal{U}'$ cubre a $X$.
+
+	\framebox{3. $\Rightarrow$ 1.} Sea $\mathcal{U}_n = \{ B(x, \frac{1}{n}) \mid x \in X\}$. Como $\mathcal{U}_n$ es un cubrimiento abierto, existe un subcubrimiento contable
+	$$
+		\mathcal{U}'_n = \{ B\left(x, \frac{1}{n}\right) \mid x \in D_n \subseteq X\}.
+	$$
+	Dado que $\mathcal{U}'_n$ es contable, $D_n$ tiene que serlo también. Sea $D = \bigcup_{n \in \mathbb{N}} D_n$. Veamos que $D$ es denso en $X$.
+
+	Sea $x \in X$ y $r > 0$. Queremos ver que $B(x, r) \cap D \neq \emptyset$. Por Arquimedianidad, existe $N \in \mathbb{N}$ tal que $\frac{1}{N} < r$. Dado que $U'_N$ es un cubrimiento, existe $a \in D_N$ tal que $x \in B(a, \frac{1}{N})$. Entonces, $d(x, a) < \frac{1}{N} < r$. Entonces, $B(x, r) \cap D \neq \emptyset$.
+\end{proof}
+
+\begin{corollary}
+	Sea $(X, d)$ un espacio métrico separable y sea $Y \subseteq X$ un subespacio. Entonces, $Y$ es separable.
+\end{corollary}
+
+\begin{proof}
+	Por el Teorema anterior, $(X, d)$ es separable si y sólo si existe una base contable de $X$. Basta con ver que $Y$ tiene una base contable. Consideramos $\mathcal{B}|_Y = \{ B_n \cap Y\}_{n \in \mathbb{N}}$. Esto claramente es una base contable de $Y$.
+\end{proof}
+
+\begin{proposition}
+	Un espacio métrico $(X, d)$ es separable si y sólo si toda familia de disjuntos abiertos de $X$ es contable.
+\end{proposition}
+
+\begin{proof}
+	($\Rightarrow$) Sea $(X, d)$ un espacio métrico separable. Sea $\mathcal{U} = \{ U_i \}_{i \in I}$ una familia de disjuntos abiertos de $X$. Por el Teorema anterior, existe una base contable $\mathcal{B}$. Definimos la función
+	\begin{align*}
+		\varphi: I & \to  N                                         \\
+		i          & \mapsto n \text{ tal que } B_n \subseteq U_i .
+	\end{align*}
+	La función está bien definida ya que, dado que $\mathcal{B}$ es una base, todo elemento de $\mathcal{U}$ se puede expresar como unión de elementos de $\mathcal{B}$ (para la elección podemos simplemente tomar el mínimo de los $n$). Veamos que $\varphi$ es inyectiva. Sean $i, j \in I$ tales que $\varphi(i) = \varphi(j) = n$. Entonces, $B_n \subseteq U_i \cap  U_j$, lo cual es absurdo. Por lo tanto, $\varphi$ es inyectiva.
+
+	Como $\left| N \right| \leq \aleph_0$ y $\left| I \right| \leq \left| N \right| $, obtenemos que $\left| I \right| \leq \aleph_0$, es decir, $I$ es contable.
+
+	($\Leftarrow$) Sea $\mathcal{F}_n$ una familia disjunta de bolas abiertas de radio $\frac{1}{n}$ maximal. Es decir, toda bola de radio $\frac{1}{n}$ insterseca con algún elemento de $\mathcal{F}_n$. Por hipótesis, $\mathcal{F}_n$ es contable. Definimos $D_n$ como el conjunto de centros de las bolas de $\mathcal{F}_n$.
+
+	Sea $D = \bigcup_{n \in \mathbb{N}} D_n$. Veamos que $D$ es denso en $X$. Sea $x \in X$, $r > 0$. Basta con ver que $B(x, r) \cap D \neq \emptyset$. Sea $n \in \mathbb{N}$ tal que $\frac{1}{n} < \frac{r}{2}$.
+
+	Supongamos que $B(x, r) \cap D = \emptyset$. Entonces, $B(x, r) \cap D_n = \emptyset$. Notemos que dos bolas cualesquiera se intersecan si y sólo si la distancia entre sus centros es menor a la suma de sus radios.
+
+	Teniendo esto en cuenta, consideremos la bola $B(x, \frac{1}{n})$. Dado que $(x, r) \cap D_n = \emptyset$, seguro que $d(x, a) > r$. Pero como $r > \frac{2}{n}$, entonces $d(x, a) > \frac{1}{n} + \frac{1}{n}$. Por lo que $B(x, \frac{1}{n})$ no interseca con ningún elemento de $\mathcal{F}_n$. Esto es absurdo; por lo tanto, $B(x, r) \cap D \neq \emptyset$. Entonces, $D$ es denso en $X$.
+\end{proof}
+
+

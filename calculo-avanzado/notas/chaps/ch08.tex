@@ -1,0 +1,246 @@
+\chapter{Completitud}
+
+\section{Espacios métricos completos}
+
+\begin{definition}
+	Un espacio métrico $(X, d)$ se dice \emph{completo} si toda ucesión de Cauchy tiene límite en $X$.
+\end{definition}
+
+\begin{example}
+	Sea $(X, \delta)$ un espacio métrico con la métrica discreta. Entonces, $(X, \delta)$ es completo.
+\end{example}
+
+\begin{proof}[Solución]
+	Toda sucesión de Cauchy en $(X, \delta)$ es eventualmente constante. Por lo tanto, converge a un elemento de $X$.
+\end{proof}
+
+\begin{proposition}
+	Sea $(X, d)$ un espacio métrico completo y sea $A \subseteq X$ cerrado. Entonces, $A$ es completo.
+\end{proposition}
+
+\begin{proof}
+	Sea $(a_n)_{n \in \mathbb{N}}$ una sucesión de Cauchy. Entonces, existe un $x \in X$ tal que $a_n \longrightarrow x$. Como $A$ es cerrado, tenemos que $x \in A$. Por lo tanto, $A$ es completo.
+\end{proof}
+
+\begin{theorem}
+	Sea $(X, d)$ un espacio métrico completo. Entonces, son equivalentes:
+	\begin{enumerate}
+		\item $X$ es completo.
+		\item Toda familia $(C_n)_{n \in \mathbb{N}}$ de intervalos cerrados encajados tal que su diámetro tiende a $0$ tiene intersección no vacía. En particular, $\bigcap_{n \in \mathbb{N}} C_n = \left\{ x \right\}$, $x \in X$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\framebox{1. $\Rightarrow$ 2.} Sea $X$ completo y sea $(C_n)_{n \in \mathbb{N}}$ una familia de cerrados encajados con diámetro tendiendo a $0$. Tomamos una sucesión $(x_n)_{n \in \mathbb{N}}$ tal que $x_n \in C_n$. Veamos que es de Cauchy. Sean $n, m \in \mathbb{N}$. Entonces,
+	\begin{equation*}
+		d(x_n, x_m) \leq \diam C_n \longrightarrow 0.
+	\end{equation*}
+	Por lo tanto, como es de Cauchy en un completo, existe el límite de $x_n$, llamémoslo $x_0$.
+
+	Como los intervalos son encajados, $(x_n)_{n \geq N}$ está en $C_N$, y como $C_N$ es cerrado, $x_0 \in C_N$, para todo $N \in \mathbb{N}$. O sea, $x \in \bigcap_{n \in \mathbb{N}} C_n$.
+
+	\framebox{1. $\Rightarrow$ 2.} Supongamos 2. y sea $(x_n)_{n \in \mathbb{N}}$ una sucesión de Cauchy. Tomamos $C_m = \overline{\left\{ x_n \right\}}_{n \geq m}$. Todo $C_n$ es no vacío ya que $x_n \in C_n$ y claramente el diámetro tiende a $0$. Por lo tanto, existe $x \in \overline{\left\{ x_n \right\}}_{n \geq m}$. Como $d(x, x_n) \leq \diam C_n \longrightarrow 0$, $x_n \longrightarrow x$.
+\end{proof}
+
+\section{Completitud de espacios de funciones}
+
+Algo que nos va a servir más adelante es probar la completitud del espacio de funciones acotadas.
+
+\begin{theorem}
+	Sea $X$ un conjunto no vacío e $(Y, d)$ un espacio métrico completo. Sea $B(X, Y) = \left\{ f : X \to Y \mid \diam \operatorname{Im} f < \infty \right\}$ junto con $d_{\infty} (f, g) = \sup_{x \in X} d(f(x), g(x))$. Entonces, $(B(X, Y), d_{\infty})$ es completo.
+\end{theorem}
+
+\begin{proof}
+	Sea $(f_n)_{n \in \mathbb{N}}$. Sea $x \in X$ y consideramos la sucesión $(f_n (x))_{n \in \mathbb{N}}$ en $Y$.
+
+	Veamos que $(f_n (x))_{n \in \mathbb{N}}$ es de Cauchy. Sean $m, n \in \mathbb{N}$. Como
+	\begin{equation*}
+		d(f_m (x), f_n (x)) \leq d_{\infty} (f_m, f_n) \longrightarrow 0,
+	\end{equation*}
+	ya que $d_{\infty} (f_m, f_n)$ es de Cauchy, $(f_n (x))_{n \in \mathbb{N}}$ es de Cauchy. Además, dado que $Y$ es completo, existe el límite de $(f_n(x))_{n \in \mathbb{N}}$. Por lo tanto, definimos $f(x) = \lim_{n \to \infty} f_n (x)$.
+
+	Ya tenemos el candidato de límite, nos falta ver que $d_{\infty}(f, f_n) \longrightarrow 0$ y $f \in B(X, Y)$.
+
+	Como $(f_n)_{n \in \mathbb{N}}$ es de Cauchy en $B(X, Y)$, entonces para todo $\varepsilon > 0$, existe $N \in \mathbb{N}$ tal que $d_{\infty} (f_m, f_n) \leq \varepsilon$ para todo $m, n \geq \mathbb{N}$. Tomamos límite en $m$ y obtenemos que
+	\begin{equation*}
+		d_{\infty} (f, f_n) \leq \varepsilon, \text{ para todo } n \geq N.
+	\end{equation*}
+	Por lo tanto, $f_n \longrightarrow f$.
+
+	Veamos que $f$ es acotada. Sean $x, x' \in X$. Entonces,
+	\begin{align*}
+		d(f(x), f(x')) & \leq d(f(x), f_n (x)) + d(f_n (x), f_m (x')) + d(f_m(x'), f(x')) \\
+		               & \leq \varepsilon + \varepsilon + \varepsilon.
+	\end{align*}
+	Por lo tanto, $f$ es acotada.
+\end{proof}
+
+\section{Teorema del punto fijo de Banach}
+
+Primero una definición.
+
+\begin{definition}
+	Sea $X$ e $Y$ un espacios métricos. Sea $f : X \to Y$. Decimos que $f$ es una \emph{contracción} si existe $\lambda \in (0, 1)$ tal que
+	\begin{equation*}
+		d_Y(f(x), f(x')) \leq \lambda d_X(x, y), \text{ para todo }x, x' \in X.
+	\end{equation*}
+\end{definition}
+
+\begin{remark}
+	Esto es equivalente a pedir que $f$ sea Lipschitz con constante menor que $1$.
+\end{remark}
+
+\begin{theorem}[Teorema del Punto Fijo de Banach]
+	Sea $(X,d)$ un espacio métrico completo y sea $f:X \to X$ una contracción. Entonces, existe un único punto $x_0 \in X$ tal que $f(x_0) = x_0$.
+\end{theorem}
+
+\begin{proof}
+	Sea $x \in X$. Consideremos la sucesión $(f^n(x))_{n \in \mathbb{N}}$, definida como $f^1(x)=f(x)$, $f^2(x)=f(f(x))$, y así sucesivamente.
+	Demostremos que $(f^n(x))_{n \in \mathbb{N}}$ es una sucesión de Cauchy.
+
+	Sean $n, m \in \mathbb{N}$ con $n \ge m$. Por la desigualdad triangular, tenemos que
+	\begin{align*}
+		d(f^n(x), f^m(x)) & \le d(f^n(x), f^{n+1}(x)) + \dots + d(f^{m-1}(x), f^m(x)).
+	\end{align*}
+	Dado que $f$ es una contracción con constante $\lambda \in (0,1)$, se tiene
+	$$
+		d(f^k(x), f^{k+1}(x)) = d(f(f^{k-1}(x)), f(f^k(x))) \le \lambda d(f^{k-1}(x), f^k(x)).
+	$$
+	Aplicando esta propiedad repetidamente, obtenemos $d(f^k(x), f^{k+1}(x)) \le \lambda^k d(x, f(x))$.
+	Sustituyendo esto en la desigualdad anterior:
+	\begin{align*}
+		d(f^n(x), f^m(x)) & \le \lambda^n d(x, f(x)) + \lambda^{n+1} d(x, f(x)) + \dots + \lambda^{m-1} d(x, f(x)) \\
+		                  & = d(x, f(x)) (\lambda^n + \lambda^{n+1} + \dots + \lambda^{m-1})                       \\
+		                  & = d(x, f(x)) \lambda^n (1 + \lambda + \lambda^2 + \dots + \lambda^{m-n-1})             \\
+		                  & \le d(x, f(x)) \lambda^n \sum_{k=0}^{\infty} \lambda^k                                 \\
+		                  & = \frac{\lambda^n d(x,f(x))}{1-\lambda}.
+	\end{align*}
+	Dado que $\lambda \in (0,1)$, cuando $n \to \infty$, $\lambda^n \to 0$. Por lo tanto, $\lim_{n \to \infty} d(f^n(x), f^m(x)) = 0$. Esto demuestra que $(f^n(x))_{n \in \mathbb{N}}$ es una sucesión de Cauchy.
+
+	Como $(X,d)$ es un espacio métrico completo, toda sucesión de Cauchy converge en $X$. Así, existe un $x_0 \in X$ tal que $\lim_{n \to \infty} f^n(x) = x_0$.
+	Dado que $f$ es una contracción, es continua. Por la continuidad de $f$, tenemos:
+	$$f(x_0) = f\left(\lim_{n \to \infty} f^n(x)\right) = \lim_{n \to \infty} f(f^n(x)) = \lim_{n \to \infty} f^{n+1}(x) = x_0.$$
+	Por lo tanto, $x_0$ es un punto fijo de $f$.
+
+	Ahora, demostremos que este punto fijo es único.
+	Supongamos que existen dos puntos fijos, $x_0$ y $x_0'$, tales que $f(x_0) = x_0$ y $f(x_0') = x_0'$.
+	Como $f$ es una contracción, sabemos que:
+	$$d(x_0, x_0') = d(f(x_0), f(x_0')) \le \lambda d(x_0, x_0').$$
+	Reorganizando la desigualdad, obtenemos $d(x_0, x_0') (1 - \lambda) \le 0$.
+	Dado que $\lambda \in (0,1)$, tenemos $1 - \lambda > 0$. Para que la desigualdad se cumpla, debe ser $d(x_0, x_0') = 0$.
+	Por la definición de métrica, $d(x_0, x_0') = 0$ implica que $x_0 = x_0'$. Esto prueba la unicidad del punto fijo.
+\end{proof}
+
+
+\section{Espacios topológicamente completos}
+
+Muchos de los resultados que vimos valen para no sólo los espacios métricos completos, sino también para los espacios métricos \textit{topológicamente completos}.
+
+\begin{definition}
+	Decimos que un espacio métrico es \emph{topológicamente completo} si tiene un homeomorfismo con un espacio completo.
+\end{definition}
+
+Las propiedades topológicas son invariantes por homeomorfismos. Por ejemplo:
+\begin{itemize}
+	\item Separabilidad.
+	\item Cerrados y clausura.
+	\item Abiertos e interior.
+	\item Densidad.
+	\item Convergencia.
+\end{itemize}
+
+\begin{example}
+	El intervalo abierto $(0, 1)$ es topológicamente completo ya que la función $f : \mathbb{R} \to (0, 1)$ dada por $t \mapsto \frac{1}{1 + e^t}$ es un homeomorfismo.
+\end{example}
+
+Más en general, tenemos la siguiente proposición.
+
+\begin{proposition}
+	Sea $X$ un espacio métrico completo. Sea $U \subseteq X$ abierto. Entonces, $U$ es topológicamente completo.
+\end{proposition}
+
+\begin{proof}
+	Si $U = X$ tomamos la identidad y ya estamos.
+
+	Sea $U \subsetneq X$. Definimos $\varphi : U \to \mathbb{R}$ dada por $x \mapsto d(x, X \setminus U)$. Por ser distancia, es continua. Consideramos
+	\begin{equation*}
+		\operatorname{Graf}\left(\frac{1}{\varphi}\right) = \left\{ (x, \frac{1}{\varphi (x)}) \mid x \in U \right\} \subseteq X \times \mathbb{R}.
+	\end{equation*}
+	Como $\operatorname{Graf}(\frac{1}{\varphi})$ es un cerrado dentro de un completo, es completo.
+
+	No es difícil probar que $\varphi$ es un homeomorfismo.\end{proof}
+
+
+\section{Teorema de Baire}
+
+Definimos previamente algunos conceptos.
+
+\begin{definition}
+	Sea $X$ un espacio métrico. Decimos que $A$ es \emph{abierto denso} si es abierto y denso (wow).
+\end{definition}
+
+\begin{lemma}
+	Sean $U, V \subseteq X$ abiertos densos. Entonces, $U \cap V$ es abierto denso.
+\end{lemma}
+
+\begin{proof}
+	Que $U \cap V$ es abierto es inmediato. Sea $W \subseteq X$ un abierto arbitrario. Entonces,
+	\begin{equation*}
+		W \cap (U \cap V) = (W \cap U) \cap V.
+	\end{equation*}
+	Como $W \cap U$ es un abierto no vacío y $V$ es denso, necesariamente $W \cap (U \cap V)$ es denso. Por lo tanto, es abierto denso.
+\end{proof}
+
+\begin{proposition}
+	Sea $X$ un espacio métrico topológicamente completo no vacío. Entonces, la intersección numerable de abiertos densos es no vacía.
+\end{proposition}
+
+\begin{proof}
+	Sea $\left\{ V_n \right\}_{n \in \mathbb{N}}$ una familia de abiertos densos de $X$. Existe una bola cerrada $\overline{B}_1 \subseteq V_1$ de diámetro menor que $1$. Entonces, $V_2 \cap \overline{B}_1$ es abierto denso en $\overline{B}_1$. Ahora, construimos una bola cerrada $\overline{B}_2 \subseteq V_2 \cap B_1$ de diámetro menor que $\frac{1}{n}$. Y así sucesivamente, nos queda una sucesión de bolas cerradas $\overline{B}_1, \overline{B}_2, \ldots$ tales que
+	\begin{equation*}
+		\overline{B}_1 \supseteq \overline{B}_2 \supseteq \dots \text{ y } \overline{B}_n \subseteq V_n \cap \overline{B}_{n-1}, \forall n \in \mathbb{N}.
+	\end{equation*}
+	Como el diámetro de las bolas cerradas tiende a cero, tiene un punto de intersección, ya que $X$ es topolígicamente completo. Por ende, $\bigcap_{n \in \mathbb{N}} V_n$ es no vacío.
+\end{proof}
+
+\begin{theorem}
+	Sea $X$ un espacio métrico topológicamente completo no vacío. La intersección numerable de abiertos densos es denso.
+\end{theorem}
+
+\begin{proof}
+	Sea $\left\{ V_n \right\}_{n \in \mathbb{N}}$ una familia de abiertos densos de $X$. Sea $U \subseteq X$ un abierto no vacío arbitrario. Como $U$ es topológicamente completo y $V_n \cap U \subseteq U$ es abierto denso de $U$ por la proposición anterior,
+	\begin{equation*}
+		\bigcap_{n \in \mathbb{N}} (V_n \cap U) \neq \varnothing \implies \left( \bigcap_{n \in \mathbb{N}} V_n  \right) \cap U \neq \varnothing.
+	\end{equation*}
+	Entonces, $\bigcap_{n \in \mathbb{N}} V_n$ es denso.
+\end{proof}
+
+Podemos ver otra formulación del toerema de Baire y definimos los conjuntos nunca densos.
+
+\begin{definition}
+	Sea $X$ un espacio métrico. Decimos que $A \subseteq X$ es \emph{nunca denso} si $(\overline{A})^{\circ} = \varnothing$.
+\end{definition}
+
+\begin{remark}
+	El complemento de un nunca denso es abierto denso.
+\end{remark}
+
+\begin{theorem}
+	Sea $X$ un espacio métrico topológicamente completo no vacío. La unión numerable de nunca densos tiene interior vacío.
+\end{theorem}
+
+\begin{proof}
+	Esto es una reformulación de Baire.
+\end{proof}
+
+Otra formulación posible es.
+
+\begin{theorem}
+	Si la unión numerable de cerrados tiene interior no vacío, entonces por lo menos un cerrado tiene interior no vacío.
+\end{theorem}
+
+\begin{proof}
+	Esto es el contrarrecíproco de la formulación anterior.
+\end{proof}
+
+

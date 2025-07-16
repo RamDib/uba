@@ -1,0 +1,309 @@
+\chapter{Espacios de funciones}
+
+En este capítulo, cuando hablamos de funciones nos referimos únicamente a funciones acotadas. Recordemos cómo se definía este espacio métrico.
+
+\begin{definition}
+	Sea $Y$ un conjunto y $(Z, d^Z)$ un espacio métrico. Definimos el espacio de funciones de $Y$ a $Z$ acotadas como
+	\begin{equation*}
+		B(Y, Z) = \left\{ f : Y \to Z \mid f \text{ es acotada} \right\}.
+	\end{equation*}
+\end{definition}
+
+De ahora en adelante, consideramos al espacio de funciones $(B(Y, Z), d_{\infty})$.
+
+\section{Función evaluación y Ley Exponencial}
+
+\begin{definition}
+	Sea $X = B(Y, Z)$. Definimos las funciones
+	\begin{enumerate}
+		\item La evaluación: $\ev : X \times Y \to Z$ tal que $\ev(f, y) = f(y)$.
+		\item La evaluación en un punto $y$: $\ev_y : X \to Z$ tal que $\ev_y(f) = f(y)$.
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	La función $\ev_y$ es continua.
+\end{remark}
+
+Ahora sea $Y$ también un espacio métrico. Entonces, podemos considerar alguna de las métricas
+\begin{equation*}
+	d_{X \times Y} ((f, y), (f', y')) =
+	\begin{cases}
+		d_X (f, f') + d_Y (y, y'), \text{ o,}
+		\max \left\{d_X (f, f'), d_Y (y, y')  \right\}.
+	\end{cases}
+\end{equation*}
+Cualquiera de estas dos verifica que una sucesión es convergente en $X \times Y$ si y sólo si es convergente coordenada a coordenada en $X$ e $Y$, respectivamente.
+
+\begin{proposition}
+	Sea $X$ el espacio de funciones de $Y$ a $Z$ continuas y acotadas. Entonces, $\ev : X \times Y \to Z$ es continua.
+\end{proposition}
+
+\begin{proof}
+	Veamos la continuidad mediante sucesiones. Sea $(f_n, y_n)_{n \in \mathbb{N}}$ una sucesión convergente en $X \times Y$. Recordemos que $(f_n, y_n)_{n \in \mathbb{N}}$ converge si y sólo si $(f_n)_{n \in \mathbb{N}}$ e $(y_n)_{n \in \mathbb{N}}$ convergen. Sean respectivamente $f$ e $y$ los límites.
+
+	Veamos que $\ev(f_n, y_n) \longrightarrow \ev(f, y)$. Calculamos
+	\begin{align*}
+		d_Z(f_n(y_n), f(y)) & \leq d_Z(f_n(y_n), f(y_n)) + d_Z(f(y_n), f(y))            \\
+		                    & \leq \sup_{t \in Y} d_Z(f_n(t), f(t)) + d_Z(f(y_n), f(y)) \\
+		                    & = d_X(f_n, f) + d_Z(f(y_n), f(y))
+	\end{align*}
+
+	Dado que $f_n \to f$ en $X$, el primer término $d_X(f_n, f) \longrightarrow 0$, y como $f$ es continua e $y_n \longrightarrow y$, $d_Z(f(y_n), f(y)) \longrightarrow 0$.
+\end{proof}
+
+Veamos la ley exponencial.
+
+\begin{proposition}
+	Sean $X$ e $Y$ espacios métricos y sea $K$ compacto. Entonces, existe una biyección natural entre $C(X \times K, Y)$ y $C(X, C(K, Y))$. En particular es
+	\begin{align*}
+		f : X \times K \to Y   & \mapsto \tilde{f} : X \to C(K, Y) \\
+		\text{tal que }f(x, k) & = \tilde{f}(x)(k).
+	\end{align*}
+\end{proposition}
+
+\begin{proof}
+	\color{red} COMPLETAR
+\end{proof}
+
+\section{Equicontinuidad}
+
+\begin{definition}
+	Sean $X$ e $Y$ espacios métricos y sea $\mathcal{F} \subseteq C(X, Y)$ una familia de funciones continuas de $X$ a $Y$. Decimos que $\mathcal{F}$ es \emph{equicontinua} en $x_0 \in X$ si
+	\begin{center}
+		\begin{minipage}{0.9\linewidth}
+			para todo $\varepsilon > 0$, existe $\delta > 0$ tal que $f(B_X(x_0, \varepsilon)) \subseteq B_Y(f(x_0, \varepsilon))$, para todo $f \in \mathcal{F}$.
+		\end{minipage}
+	\end{center}
+	Si $\mathcal{F}$ es equicontinua en todo $X$, decimos que $\mathcal{F}$ es \emph{equicontinua}.
+\end{definition}
+
+\begin{remark}
+	Como con la continuidad usual, podemos usar la distancia en vez de bolas.
+\end{remark}
+
+\begin{definition}
+	Sean $X$ e $Y$ espacios métricos y sea $\mathcal{F} \subseteq C(X, Y)$. Decimos que $\mathcal{F}$ es \emph{uniformemente equicontinua} si
+	\begin{center}
+		\begin{minipage}{0.9\linewidth}
+			para todo $\varepsilon > 0$, existe $\delta > 0$ tal que $d_X(x, x') < \delta$ implica $d_Y(f(x), f(x')) < \varepsilon$ para todo $x, x' \in X$ y $f \in \mathcal{F}$.
+		\end{minipage}
+	\end{center}
+\end{definition}
+
+\begin{remark}
+	Si para todo $f \in \mathcal{F}$, $f$ es Lipschitz con la misma constante, entonces $\mathcal{F}$ es equicontinua.
+\end{remark}
+
+\begin{proposition}
+	Sea $\left\{ f_n \right\}_{n \in \mathbb{N}}$ equicontinua que converge puntualmente a $f : X \to Y$. Entonces, $\overline{\left\{ f_n \right\}}_{n \in \mathbb{N}}$ es equicontinua.
+\end{proposition}
+
+\begin{proof}
+	Sean $x_0 \in X$ y $\varepsilon > 0$. Por equicontinuidad de $\overline{\left\{ f_n \right\}}_{n \in \mathbb{N}}$, existe $\delta > 0$ tal que
+	\begin{equation*}
+		d(x_0, x) < \delta \implies d(f_n(x_0), f_n(x)) < \varepsilon, \quad \text{para todo }n \in \mathbb{N}.
+	\end{equation*}
+	Tomamos límite en $n \to \infty$,
+	\begin{equation*}
+		d(f(x_0), f(x)) \leq \varepsilon.
+	\end{equation*}
+	Por lo tanto, $\overline{\left\{ f_n \right\}}_{n \in \mathbb{N}}$ es equicontinua.
+\end{proof}
+
+\begin{remark}
+	La familia $\mathcal{F}$ es equicontinua en $x_0$ si y sólo si
+	\begin{equation*}
+		\sup_{f \in \mathcal{F}} d(f(x), f(x_0)) \xrightarrow{x \to x_0} 0.
+	\end{equation*}
+\end{remark}
+
+\begin{lemma}
+	Sea $X$ un espacio métrico e $Y$ un espacio métrico completo y sea $A \subseteq X$ denso. Sea $\left\{ f_n \right\}_{n \in \mathbb{N}} \subseteq C(X, Y)$ equicontinua. Si $(f_n)_{n \in \mathbb{N}}$ converge puntualmente en $A$, entonces converge puntualmente en $X$.
+\end{lemma}
+
+\begin{proof}
+	Sea $x \in X$. Veamos que $(f_n(x))_{n \in \mathbb{N}}$ es de Cauchy. Calculamos
+	\begin{equation*}
+		d(f_n(x), f_m(x)) \leq d(f_n(x), f_n(a)) + d(f_n(a), f_m(a)) + d(f_m(a), f_m(x)).
+	\end{equation*}
+	Por equicontinuidad de $(f_n(x))_{n \in \mathbb{N}}$, existe $\delta$ tal que
+	\begin{equation*}
+		d(x, a) < \delta \implies d(f_n(x), f_n(a)), d(f_m(a), f_m(x)) < \frac{\varepsilon}{3}.
+	\end{equation*}
+	También, como $(f_n(a))_{n \in \mathbb{N}}$ es de Cauchy, existe $N \in \mathbb{N}$ tal que
+	\begin{equation*}
+		d(f_n(a), f_m(a)) < \frac{\varepsilon}{3}, \quad \forall m, n \geq N.
+	\end{equation*}
+	Entonces,
+	\begin{equation*}
+		d(f_n(x), f_m(x)) \leq \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3},
+	\end{equation*}
+	probando que existe el límite puntual.
+\end{proof}
+
+\begin{lemma}
+	Sea $K$ compacto e $Y$ un espacio métrico y sea $\left\{ f_n \right\}_{n \in \mathbb{N}}$ equicontinua. Si $\left( f_n \right)_{n \in \mathbb{N}}$ converge puntualmente, entonces converge uniformemente.
+\end{lemma}
+
+\begin{proof}
+	Supongamos que $f$ no converge uniformemente. Entonces, existe $\varepsilon > 0$ y $\left\{ f_{n_k} \right\}_{k \in \mathbb{N}}$ y $(x_k)_{k \in \mathbb{N}}$ tal que
+	\begin{equation*}
+		d(f_{n_k}(x_k), f(x_k)) \geq \varepsilon.
+	\end{equation*}
+	Tomando una subsucesión convergente, podemos suponer que $(x_k)_{k \in \mathbb{N}}$ converge. Entonces,
+	\begin{align*}
+		\varepsilon \leq d(f_{n_k}(x_k), f_{n_k}(x_0)) + d(f_{n_k}(x_0), f(x_0)) + d(f(x_0), f(x_k)).
+	\end{align*}
+	Y siguiendo pasos similares a la demostración anterior, llegamos a un absurdo.
+\end{proof}
+
+Un resultado no tan sorprendente.
+
+\begin{proposition}
+	Sea $K$ compacto e $Y$ un espacio métrico y sea $\mathcal{F} \subseteq C(K, Y)$ equicontinua. Entonces, $\mathcal{F}$ es uniformemente equicontinua.
+\end{proposition}
+
+\begin{proof}
+	Sea $\varepsilon > 0$. Como $\mathcal{F}$ es equicontinua, para cada $x \in K$, existe $\delta_x > 0$ tal que
+	\begin{equation*}
+		d_K(x, x') < \delta_x \implies d_Y(f(x), f(x')) < \varepsilon, \quad \forall x' \in K, f \in \mathcal{F}.
+	\end{equation*}
+	Dado que $K$ es compacto y $\{B(x, \delta_x)\}_{x \in K}$ forma un cubrimiento abierto, tomamos un subcubrimiento finito $\{B(x_n, \delta_{x_n})\}_{1 \leq n \leq N}$ y consideramos $\delta = \min_{1 \leq n \leq N} \delta_{x_n}$. Entonces, para todo $x \in K$,
+	\begin{equation*}
+		d_K(x, x') < \delta_x \implies d_Y(f(x), f(x')) < \varepsilon, \quad \forall x' \in K, f \in \mathcal{F}.
+	\end{equation*}
+	Por lo tanto, $\mathcal{F}$ es uniformemente continua.
+\end{proof}
+
+\begin{definition}
+	Sea $\mathcal{F}$ una familia de funciones de $X$ a $Y$. Decimos que $F$ es \emph{equiacotada} si
+	\begin{center}
+		para todo $x \in X$, $\mathcal{F}(x) = \left\{ f(x) \mid f \in \mathcal{F} \right\}$ es totalmente acotado.
+	\end{center}
+	Además, decimos que $\mathcal{F}$ es \emph{totalmente equiacotada} si $\mathcal{F}(X) = \left\{ f(x) \mid x \in X, f \in \mathcal{F} \right\}$ es totalmente acotado.
+\end{definition}
+
+\begin{remark}
+	Un espacio es totalmente acotado si y sólo si su clausura es compacta.
+\end{remark}
+
+Ahora vemos el teorema de Arzela--Ascoli.
+
+\begin{theorem}
+	Sea $K$ compacto e $Y$ completo. Sea $\mathcal{F} \subseteq C(K, Y)$. Son equivalentes:
+	\begin{enumerate}
+		\item $\mathcal{F}$ es equicontinua y equiacotada.
+		\item $\mathcal{F}$ es totalmente acotado.
+		\item $\mathcal{F}$ es uniformemente equicontinua y uniformemente equiacotado.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	(1 $\Rightarrow$ 2) Sea $\mathcal{F}$ equicontinua y equiacotada. Basta con ver que $\overline{\mathcal{F}}$ es compacto.
+
+	Sea $(f_n)_{n \in \mathbb{K}}$ una sucesión en $\mathcal{F}$. Como $K$ es compacto, en particular, es separable. Por lo tanto, consideramos $A \subseteq K$ denso numerable. Queremos ver que existe una subsucesión $(f_{n_k})_{k \in \mathbb{N}}$ tal que converge puntualmente en $A$. Tomamos las sucesiones $(f_n(a_i))_{n \in \mathbb{N}}$ con $i \in \mathbb{N}$ fijo. Dado que $\mathcal{F}$ es equiacotada, $\left\{ f_n(a_i) \right\}_{n \in \mathbb{N}}$ es totalmente acotado y entonces $\overline{\left\{ f_n(a_i) \right\}}_{n \in \mathbb{N}}$ es compacto. Por lo tanto, podemos tomar un subconjunto $\mathcal{M} \subseteq \mathbb{N}$ tal que $(f_m(a_i))_{m \in \mathcal{M}}$ converge para todo $i \in \mathbb{N}$. Entonces, la subsucesión $(f_m)_{m \in \mathcal{M}}$ converge puntualmente en $A$.
+
+	Dado que $(f_m)_{m \in \mathcal{M}}$ converge puntualmente en $A$ denso, entonces converge uniformemente.
+
+	(2 $\Rightarrow$ 3) Sea $\mathcal{F}$ totalmente acotado. Entonces, $\overline{\mathcal{F}}$ es compacto. Por lo tanto, consideramos
+	\begin{equation*}
+		\mathcal{F}(K) = \ev (K \times \mathcal{F}) \subseteq \ev (K \times \overline{\mathcal{F}}).
+	\end{equation*}
+	Dado que $\ev$ es continua y $K \times \overline{\mathcal{F}}$ es compacto, $\mathcal{F}$ es totalmente acotado.
+
+	Por la ley exponencial,
+	\begin{equation*}
+		C(K \times \overline{\mathcal{F}}, Y) \cong C(K, C(\overline{\mathcal{F}}, Y)).
+	\end{equation*}
+	Como $\ev : K \to C(\overline{F}, Y)$ es continua sobre un compacto, entonces es uniformemente continua. Por lo tanto, $\mathcal{F}$ es uniformemente equicontinua.
+
+	(3 $\Rightarrow$ 1) Inmediato.
+\end{proof}
+
+\section{Sucesiones y series de funciones}
+
+Recordemos las definiciones de convergencia puntual y uniforme.
+
+\begin{definition}
+	Sea $(f_n)_{n \in \mathbb{R}}$ una sucesión de funciones de $\mathbb{R}$ en $\mathbb{R}$ y $f : \mathbb{R} \to \mathbb{R}$. Decimos que converge \emph{puntualmente} a $f$ si para todo $x \in \mathbb{R}$ y $\varepsilon > 0$, existe $N \in \mathbb{N}$ tal que
+	\begin{equation*}
+		\left\lvert f(x) - f_n(x) \right\rvert < \varepsilon, \quad \text{para todo }n \geq N.
+	\end{equation*}
+\end{definition}
+
+Y convergencia uniforme.
+
+\begin{definition}
+	Sea $(f_n)_{n \in \mathbb{R}}$ una sucesión de funciones de $\mathbb{R}$ en $\mathbb{R}$ y $f : \mathbb{R} \to \mathbb{R}$. Decimos que converge \emph{puntualmente} a $f$ si para todo $\varepsilon > 0$, existe $N \in \mathbb{N}$ tal que
+	\begin{equation*}
+		\left\lvert f(x) - f_n(x) \right\rvert < \varepsilon, \quad \text{para todo }n \geq N, x \in \mathbb{R}.
+	\end{equation*}
+\end{definition}
+
+\begin{remark}
+	La convergencia uniforme implica la convergencia puntual.
+\end{remark}
+
+Veamos algunas propiedades útiles.
+
+\begin{proposition}
+	Sea $(f_n)_{n \in \mathbb{N}}$ una sucesión de funciones reales.
+	\begin{enumerate}
+		\item \textbf{Continuidad del Límite Uniforme:} Si $(f_n)_{n \in \mathbb{N}}$ es una sucesión de funciones continuas definida en un conjunto $E$ y $(f_n)_{n \in \mathbb{N}}$ converge uniformemente a $f$ en $E$, entonces la función límite $f$ es continua en $E$.
+		\item \textbf{Intercambio de Derivación y Límite:} Sea $(f_n)_{n \in \mathbb{N}}$ una sucesión de funciones diferenciables en un intervalo $[a,b]$. Si la sucesión de las derivadas $(f_n')_{n \in \mathbb{N}}$ converge uniformemente a una función $g$ en $[a,b]$ y existe un punto $x_0 \in [a,b]$ tal que la sucesión numérica $(f_n(x_0))_{n \in \mathbb{N}}$ converge (puntualmente), entonces la sucesión $(f_n)_{n \in \mathbb{N}}$ converge uniformemente a una función $f$ en $[a,b]$, $f$ es diferenciable en $[a,b]$, y su derivada es $f'(x) = g(x)$. Es decir, se puede intercambiar el límite con la derivación:
+		      $$\left( \lim_{n \to \infty} f_n(x) \right)' = \lim_{n \to \infty} f_n'(x)$$
+		\item \textbf{Intercambio de Integración y Límite:} Si $(f_n)_{n \in \mathbb{N}}$ es una sucesión de funciones integrables en un intervalo $[a,b]$ y $(f_n)_{n \in \mathbb{N}}$ converge uniformemente a $f$ en $[a,b]$, entonces la función límite $f$ es integrable en $[a,b]$ y se puede intercambiar el límite con la integración:
+		      $$\lim_{n \to \infty} \int_a^b f_n(x) \, dx = \int_a^b \lim_{n \to \infty} f_n(x) \, dx = \int_a^b f(x) \, dx$$
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	No lo demuestro.
+\end{proof}
+
+\section{Series de funciones}
+
+\begin{definition}
+	Sea $(f_n)_{n \in \mathbb{N}}$ una sucesión de funciones. Entonces, la serie $\sum_{n = 1}^{\infty} f_n(x)$ converge \emph{puntualmente} si la sucesión $(S_{N}(x))_{N \in \mathbb{N}}$ lo hace. Análogo para convergencia uniforme. Y converge absolutamente si la serie de $(\left\lvert f_n \right\rvert)_{n \in \mathbb{N}})$ lo hace.
+\end{definition}
+
+\begin{proposition}
+	Sea $(f_n)_{n \in \mathbb{N}}$ una sucesión de funciones continuas tal que $\sum f_n(x)$ converge uniformemente. Entonces, $\sum f_n(x)$ es continua.
+\end{proposition}
+
+\begin{proof}
+	Como $f_n$ es continua para todo $n \in \mathbb{N}$, entonces $S_n$ también lo es ya que es suma de continuas.
+\end{proof}
+
+Veamos criterios de convergencia puntual.
+
+\begin{proposition}
+	Sea $(f_n)_{n \in \mathbb{N}}$ una sucesión de funciones continuas. Consideramos $a_n = f_n(x)$.
+	\begin{enumerate}
+		\item \textbf{Criterios de D'Alembert y de la raíz:} \\Sea $L = \lim_{n \to \infty} \left\lvert \frac{a_{n+1}}{a_n} \right\rvert$ o $L = \limsup \sqrt[n]{\left\lvert a_n \right\rvert}$.
+		      \begin{itemize}
+			      \item Si $L < 1$, entonces la serie converge absolutamente.
+			      \item Si $L > 1$, entonces la serie diverge.
+			      \item Si $L = 1$, no sabemos nada.
+		      \end{itemize}
+
+		\item \textbf{Criterio de Liebniz:} Si $\lim_{n \to \infty} a_n = 0$ y es monotónica decreciente, entonces la serie alternada converge.
+	\end{enumerate}
+\end{proposition}
+
+
+Y uno para la convergencia uniforme.
+
+\begin{proposition}
+	Sea $(f_n)_{n \in \mathbb{N}}$ una sucesión de funciones tal que existe $(M_n)_{n \in \mathbb{N}}$ una sucesión de reales tales que $\sum M_n$ converge y, para todo $x$, $\left\lvert f_n(x) \right\rvert \leq M_n$. Entonces, $\sum f_n$ converge uniformemente.
+\end{proposition}
+
+Por último, para series de potencias.
+
+\begin{proposition}
+	Sea $\sum a_n x^n$ una serie de potencias. Entonces, el radio de convergencia $R = \frac{1}{\limsup \sqrt[n]{\left\lvert a_n \right\rvert}}$. Es decir, en el intervalo $[-R, R]$, la serie converge uniformemente.
+\end{proposition}
+
+
+

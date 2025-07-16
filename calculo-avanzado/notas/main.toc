@@ -1,0 +1,56 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {part}{I\hspace {1em}Teoría de conjuntos}{1}{part.1}%
+\contentsline {chapter}{\numberline {1}Relaciones y orden}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Relaciones binarias}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Conjuntos ordenados}{3}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Cotas, supremo e ínfimo}{3}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Funciones crecientes e isomorfismos de orden}{4}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Reticulados}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Definición y ejemplos}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Reticulados completos}{6}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Teorema del Punto Fijo}{6}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Cardinalidad}{7}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Conjuntos finitos y numerables}{7}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Coordinabilidad}{8}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Conjuntos no numerables}{9}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Cardinales y Axioma de Elección}{10}{section.3.4}%
+\contentsline {part}{II\hspace {1em}Espacios métricos y topología}{15}{part.2}%
+\contentsline {chapter}{\numberline {4}Nociones básicas}{16}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Definición y ejemplos}{16}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Bolas, abiertos y cerrados}{17}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Densos}{20}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Distancia a conjuntos}{21}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Sucesiones y convergencia}{22}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Convergencia de sucesiones}{22}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Sucesiones de Cauchy}{23}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Relación entre sucesiones y clausura}{23}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Separabilidad}{25}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Topología del espacio}{25}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Espacios separables}{26}{section.6.2}%
+\contentsline {chapter}{\numberline {7}Continuidad}{29}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Funciones Continuas}{29}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Continuidad Uniforme}{30}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Homeomorfismos}{30}{section.7.3}%
+\contentsline {chapter}{\numberline {8}Completitud}{32}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Espacios métricos completos}{32}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Completitud de espacios de funciones}{33}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Teorema del punto fijo de Banach}{33}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Espacios topológicamente completos}{34}{section.8.4}%
+\contentsline {section}{\numberline {8.5}Teorema de Baire}{35}{section.8.5}%
+\contentsline {chapter}{\numberline {9}Compacidad}{37}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Definición y equivalencias}{37}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Propiedades de compactos}{38}{section.9.2}%
+\contentsline {chapter}{\numberline {10}Conexión}{40}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Conjuntos conexos}{40}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Propiedades de conexos}{41}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Componentes conexas}{43}{section.10.3}%
+\contentsline {part}{III\hspace {1em}Espacios normados}{45}{part.3}%
+\contentsline {chapter}{\numberline {11}Espacios de funciones}{46}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Función evaluación y Ley Exponencial}{46}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Equicontinuidad}{47}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Sucesiones y series de funciones}{49}{section.11.3}%
+\contentsline {section}{\numberline {11.4}Series de funciones}{50}{section.11.4}%
+\contentsline {chapter}{\numberline {12}Espacios normados}{52}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Definición y ejemplos}{52}{section.12.1}%
+\contentsline {section}{\numberline {12.2}Funciones lineales}{53}{section.12.2}%
+\contentsline {section}{\numberline {12.3}Extensión de funcionales}{55}{section.12.3}%

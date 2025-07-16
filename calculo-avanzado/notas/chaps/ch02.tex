@@ -1,0 +1,97 @@
+\chapter{Reticulados}
+
+Otro capítulo corto. Lo único que vamos a ver es reticulados y el teorema del punto fijo.
+
+\section{Definición y ejemplos}
+
+\begin{definition}
+	Decimos que un conjunto ordenado $(\mathcal{O}, \preceq)$ es un \emph{reticulado} si para todo $a, b \in \mathcal{O}$ existen el supremo y el ínfimo de $\{ a, b \}$.
+\end{definition}
+
+\begin{example}
+	El conjunto ordenado $(\mathcal{P}(X), \subseteq)$ es un reticulado.
+\end{example}
+
+\begin{proof}[Solución]
+	Sean $A, B \subseteq X$. Veamos que
+	\begin{equation*}
+		\sup \{ A, B \} = A \cup B \quad \text{e} \quad \inf \{ A, B \} = A \cap B,
+	\end{equation*}
+	así probando que existe el supremo y el ínfimo y entonces $(\mathcal{P}(X), \subseteq)$ es un reticulado.
+
+	Claramente, $A \cup B$ es una cota superior de $\{ A, B \}$, ya que $A, B \subseteq A \cup B$ por definición. Sea $S \subseteq X$ una cota superior de $\{ A, B \}$. Entonces, por definición de cota superior,
+	\begin{equation*}
+		A, B \subseteq S.
+	\end{equation*}
+	Entonces, $A \cup B \subseteq S$. Lo cual demuestra que $\sup \{ A, B \} = A \cup B$.
+
+	La demostración para el ínfimo es análoga.
+\end{proof}
+
+\begin{remark}
+	Este mismo argumento lo podemos extender a
+	\begin{equation*}
+		\sup \{ A_i \}_{i \in I} = \bigcup_{i \in I} A_i \quad \text{e} \quad \inf \{ A_i \}_{i \in I} = \bigcap_{i \in I} A_i.
+	\end{equation*}
+\end{remark}
+
+\begin{example}
+	El conjunto ordenado $(\mathbb{N},\mid)$ es un reticulado. En particular,
+	\begin{equation*}
+		\sup \{ a, b \} = \mathrm{mcd}\{ a, b \} \quad \text{e} \quad \inf \{ a, b \} = \mathrm{gcd}\{ a, b \}.
+	\end{equation*}
+\end{example}
+
+\section{Reticulados completos}
+
+\begin{definition}
+	Sea $(\mathcal{O}, \preceq)$ un reticulado. Decimos que es \emph{completo} si para todo subconjunto de $\mathcal{O}$ tiene supremo e ínfimo.
+\end{definition}
+
+\begin{example}
+	El conjunto ordenado $(\mathcal{P}(X), \preceq)$ es un reticulado completo.
+\end{example}
+
+\begin{proof}[Solución]
+	Utilizando la observación previa, ya probamos que todo subconjunto de $\mathcal{P}(X)$ tiene supremo e ínfimo.
+\end{proof}
+
+\begin{proposition}
+	Sea $(\mathcal{O}, \preceq)$ un reticulado. Entonces, las siguientes propiedades son verdaderas:
+	\begin{enumerate}
+		\item \textbf{Idempotencia:} $a \vee a = a$ y $a \wedge a = a$.
+		\item \textbf{Conmutatividad:} $a \vee b = b \vee a$ y $a \wedge b = b \wedge a$.
+		\item \textbf{Asociatividad:} $(a \vee b) \vee c = a \vee (b \vee c)$ y $(a \wedge b) \wedge c = a \wedge (b \wedge c)$.
+		\item \textbf{Absorción:} $a \vee (a \wedge b) = a$ y $a \wedge (a \vee b) = a$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	La demostración no es particularmente complicada, sólo molesta.
+\end{proof}
+
+\section{Teorema del Punto Fijo}
+
+Finalmente, enunciamos y probamos el teorema del punto fijo.
+
+\begin{theorem}
+	Sea $(\mathcal{O}, \preceq)$ un reticulado \textit{completo} y sea $f: \mathcal{O} \to  \mathcal{O}$ \textit{creciente}. Entonces, existe $x \in \mathcal{O}$ tal que $f(x)= x$.
+\end{theorem}
+
+\begin{proof}
+	Sea $A = \{ x \in \mathcal{O} \mid x \preceq f(x) \}$. Como $\mathcal{O}$ es un reticulado completo, considero $s = \sup A$. Recordemos que, para todo $a \in A$, $a \preceq s$. Y como $f$ es creciente, para todo $a \in A$,
+	$$
+		f(a) \preceq f(s).
+	$$
+	Por definición de $A$, $a \preceq f(a)$ y a su vez $f(a) \preceq f(s)$, entonces, para todo $a \in A$,
+	$$
+		a \preceq f(s).
+	$$
+	O sea, $f(s)$ es cota superior de $A$. Por definición del supremo, $s \preceq f(s)$ y entonces $s \in A$. A la desigualdad $s \preceq f(s)$ le aplicamos $f$ y obtenemos
+	$$
+		f(s) \preceq f(f(s)).
+	$$
+	Por lo tanto, $f(s) \in A$; entonces tenemos $f(s) \preceq s$ y $s \preceq f(s)$, lo cual implica que $f(s) = s$.
+\end{proof}
+
+

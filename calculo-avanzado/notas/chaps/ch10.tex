@@ -1,0 +1,201 @@
+\chapter{Conexión}
+
+\section{Conjuntos conexos}
+
+Los espacios \textit{conexos} vendrían a ser espacios que están ``conectados'' ---valga la redundancia---. En particular, se nos va a hacer más fácil definir la no-conexión.
+
+\begin{definition}
+	Sea $(X, d)$ un espacio métrico. Decimos que $X$ \textbf{no} es \emph{conexo} si se cumple alguna de las siguientes:
+	\begin{enumerate}
+		\item Existe $B \subseteq X$ abierto y cerrado tal que $B \neq X$.
+		\item Existen $U, V \subseteq X$ abiertos disjuntos no vacíos tales que $U \cup V = X$.
+		\item Existen $A, B \subseteq X$ cerrados disjuntos no vacíos tales que $A \cup B = X$.
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	Las condiciones 1., 2. y 3. son equivalentes.
+\end{remark}
+
+\begin{proof}
+	Sea $(X, d)$ un espacio métrico.
+
+	(1 $\Rightarrow$ 2) Supongamos que existe $B \subseteq X$ abierto y cerrado no vacío tal que $B \neq X$. Consideramos $B \cup (X \setminus B) = X$ y basta con ver que ambos subconjuntos son abiertos, disjuntos y no vacíos. Por hipótesis, $B$ es abierto; como también es cerrado, entonces $X \setminus B$ es abierto. Como $B$ es un subconjunto propio de $X$, entonces su complemento es no vacío.
+
+	(2 $\Rightarrow$ 3) Supongamos que existen $U, V \subseteq X$ abiertos disjuntos no vacíos tales que $U \cup V = X$. Consideramos $A = X \setminus U$ y $B = X \setminus V$. Ambos son cerrados al ser complementos de abiertos. Dado que $U \cup V = X$, obtenemos que $A \cap B = \varnothing$, por ende son disjuntos. Veamos que su unión es $X$. Sea $x \in X$. Entonces, o bien $x \in U$ o $x \in V$. Si $x \in U$, entonces $x \not \in V$, por lo tanto $x \in X \setminus V = B$. Análogamente, Si $x \in V$, entonces $x \not \in U$, por lo tanto $x \in X \setminus U = A$. Lo cual nos dice que $X = A \cup B$.
+
+	(3 $\Rightarrow$ 1) Supongamos que existen $A, B \subseteq X$ cerrados disjuntos no vacíos tales que $A \cup B = X$. Como $A \cup B = X$, obetnemos que $B = X \setminus A$. Dado que $A$ y $B$ son disjuntos no vacíos, $B \neq X$. También, $B$ es cerrado y, como es el complemento de un cerrado, $B$ es abierto.
+\end{proof}
+
+Ahora sí definimos conexión.
+
+\begin{definition}
+	Sea $(X, d)$ un espacio métrico. Decimos que $X$ es \emph{conexo} si no se cumple ninguna de las propiedades anteriores.
+\end{definition}
+
+Algunos ejemplos.
+
+\begin{example}
+	\begin{enumerate}
+		\item Los intervalos de $\mathbb{R}$ son conexos.
+		\item Las bolas en $\mathbb{R}^n$ son conexas.
+		\item El espacio con un elemento es conexo.
+	\end{enumerate}
+\end{example}
+
+\section{Propiedades de conexos}
+
+Vamos a caracterizar los conexos de $\mathbb{R}$, pero antes veamos un lema que nos va a ayudar.
+
+\begin{lemma}
+	Un subconjunto $X \subseteq \mathbb{R}$ es un intervalo si y sólo si, para todo $a, b \in X$ tales que $a \leq b$, se cumple que $[a, b] \subseteq X$.
+\end{lemma}
+
+\begin{proof}
+	($\Rightarrow$) Sea $X \subseteq \mathbb{R}$ un intervalo con bordes en $x, y \in \mathbb{R}$ tal que $x \leq y$. Sean $a, b \in X$ tales que $a \leq b$. Sea $c \in [a, b]$. Como $x < a \leq c \leq b < y$, entonces $c \in X$. (La demostración es casi idéntica si el intervalo $X$ es abierto, semiabierto o cerrado.)
+
+	($\Leftarrow$) Sea $X \subseteq \mathbb{R}$ tal que para todo $a, b \in X$ tales que $a \leq b$ se cumple que $[a, b] \subseteq X$. Consideramos $[\inf X, \sup X] \subseteq \mathbb{R}$. Todo $x \in X$ pertenece al intervalo. Sea $x \in [\inf X, \sup X]$. Entonces, si $x \not \in X$, como existen $a, b \in X$ tales que $a \leq x \leq b$, llegamos a un absurdo. (Lo mismo, la demostración es casi idéntica, pero técnicamente hay que separar por casos.)
+\end{proof}
+
+Veamos cómo son los conexos de $\mathbb{R}$.
+
+\begin{theorem}
+	Sea $X \subseteq \mathbb{R}$. Entonces, $X$ es conexo si y sólo si $X$ es un intervalo.
+\end{theorem}
+
+\begin{proof}
+	($\Rightarrow$) Probamos por contrarrecíproco. Supongamos que $X$ no es un intervalo. Entonces, existen un $a, b \in X$ y $r \not \in X$ tales que $a < r < b$. Por lo tanto, $((\infty, r) \cap X) \cup ((r, \infty \cap X)) = X$, entonces $X$ no es conexo.
+	($\Leftarrow$) Sea $X$ no conexo. Sean $A, B \subseteq X$ abiertos disjuntos no vacíos tales que $A \cup B = X$. Consideramos $a \in A$ y $b \in B$. Definimos $c = \sup \left\{ x \in [a, b] \cap A \right\}$. O bien $c \in A$ o $c \in B$. Si $c \in A$, entonces como $A$ es abierto, $c$ no es una cota superior. Si $c \in B$, entonces como $B$ es abierto, existe una cota superior menor que $c$.
+\end{proof}
+
+Las funciones continuas, al igual que con los compactos, manda conexos a conexos.
+
+\begin{theorem}
+	Sea $X$ un espacio métrico conexo e $Y$ un espacio métrico. Sea $f : X \to Y$ continua. Entonces, $f(X)$ es conexo.
+\end{theorem}
+
+\begin{proof}
+	Supongamos que $f(X)$ no es conexo. Entonces, existen $A, B \subseteq Y$ abiertos disjuntos no vacíos tales que $f(X) = A \cup B$. Tomando preimagen, $X = f^{-1}(A) \cup f^{-1}(B)$, donde $f^{-1}(A)$ y $f^{-1}(B)$ son abiertos disjuntos no vacíos. Esto implica que $X$ no es conexo, lo cual es absurdo.
+\end{proof}
+
+Este teorema nos proporciona una nueva manera de demostrar que un espacio es conexo: probamos que es imagen de un conexo por una función continua.
+
+La proposición de a continuación nos va a ser más útil adelante.
+
+\begin{proposition}
+	Sea $Y$ un espacio métrico. Sea $X \subseteq Y$ un subespacio métrico tal que existen $A, B \subseteq X$ abiertos disjuntos no vacíos tales que $A \cup B = X$. Entonces, existen $V_{A}, V_B \subseteq Y$ abiertos disjuntos no vacíos tales que $A = V_A \cap X$ y $B = V_B \cap X$.
+\end{proposition}
+
+\begin{proof}
+	\color{red} COMPLETAR
+\end{proof}
+
+Ahora vamos a ver otra forma de demostrar que un espacio métrico es conexo.
+
+\begin{proposition}
+	Sea $X$ un espacio métrico. Entonces, $X$ es conexo si y sólo si toda función $g : X \to \left\{ 0, 1 \right\}$ continua es constante.
+\end{proposition}
+
+\begin{proof}
+	($\Rightarrow$) Sea $X$ conexo y sea $g : X \to \left\{ 0, 1 \right\}$ continua. Consideramos a las preimágenes $f^{-1}(0)$ y $f^{-1}(1)$. Sabemos que $f^{-1}(0)$ y $f^{-1}(1)$ son disjuntas. Por continuidad de $f$, también son cerradas. Por último, $f^{-1}(0) \cup f^{-1}(1) = X$. Entonces, para que $X$ sea conexo, necesariamente alguna de las preimágenes es vacío.
+
+	($\Leftarrow$) Supongamos que toda función $g : X \to \left\{ 0, 1 \right\}$ continua es constante. Supongamos que $X$ no es conexo, entonces existe una separación con $U, V \subseteq X$ cerrados disjuntos no vacíos tales que $U \cup V = X$. Definimos $f : X \to \left\{ 0, 1 \right\}$ tal que $f(U) = \left\{ 0 \right\}$ y $f(V) = \left\{ 1 \right\}$. Esto es absurdo.
+\end{proof}
+
+El siguiente teorema nos da una condición para que la unión de conexos sea conexa. Pensemos por qué no vale en general que la unión de conexos sea conexa. La idea es que la unión de dos conexos que no se ``tocan'' no es conexa.
+
+\begin{center}
+	\input{tikz/conexion_tocan.tex}
+\end{center}
+
+\begin{theorem}
+	Sea $X$ un espacio métrico. Sea $\left\{ A_i \right\}_I$ una familia de subconjuntos conexos de $X$. Si existe $x \in X$ tal que, para todo $i \in I$, $x \in A_i$, entonces $\bigcup_{i \in I} A_i$ es conexo.
+\end{theorem}
+
+\begin{proof}
+	Sea $g : \bigcup_{i \in I} A_j \to \left\{ 0, 1 \right\}$ una función continua arbitraria. Sea $x \in X$ tal que, para todo $i \in I$, $x \in A_i$. Entonces, consideramos $f(x)$. Si consideramos $f|_{A_i}$, entonces como es una función continua de un conexo a $\left\{ 0, 1 \right\}$, es constante. O sea, para todo $i \in I$, $f|_{A_i} = f(x)$. Entonces, $f$ es constante.
+\end{proof}
+
+\begin{remark}
+	No hace falta que todos los conjuntos compartan un punto, con que para todo $\alpha, \beta \in I$, existan $i_1, i_2, \ldots, i_n \in I$ tales que
+	\begin{equation*}
+		A_{\alpha} \cap A_{i_1} \neq \varnothing, A_{i_1} \cap A_{i_2} \neq \varnothing, \ldots, A_{i_{n-1}} \cap A_{i_n} \neq \varnothing, A_{i_n} \cap A_{\beta} \neq \varnothing.
+	\end{equation*}
+
+	\begin{center}
+		\input{tikz/conexion_union.tex}
+	\end{center}
+\end{remark}
+
+\begin{proposition}
+	Sea $X$ un espacio métrico. Sea $A \subseteq X$ un subespacio métrico conexo denso. Entonces, $X$ es conexo.
+\end{proposition}
+
+\begin{proof}
+	Sea $g : X \to \left\{ 0, 1 \right\}$ una función continua arbitraria. Entonces, $g|_A$ es constante. Por continuidad de $g$, la extensión de $g|_A$ a $X$ es igual a $g$. Por lo tanto, $g$ es constante y entonces $X$ es conexo.
+\end{proof}
+
+\begin{corollary}
+	Sea $A$ conexo. Si $A \subseteq B \subseteq \overline{A}$, entonces $B$ es conexo.
+\end{corollary}
+
+\begin{proof}
+	Como $B \subseteq \overline{A}$, entonces $A$ es denso en $B$. Por lo tanto, $B$ es conexo.
+\end{proof}
+
+Veamos un ejemplo poco intuitivo de aplicar el corolario.
+
+\begin{example}
+	En $\mathbb{R}^{2}$, consideramos al conunto $X = (\bigcup_{n \in \mathbb{N}} \left\{ \frac{1}{n} \right\} \times [0, 1]) \cup [0, 1] \cup \{(0, 1)\}$.
+
+	\begin{center}
+		\input{tikz/conexion_ejemplo.tex}
+	\end{center}
+
+	El conjunto $X$ es conexo.
+\end{example}
+
+\begin{proof}[Solución]
+	Consideramos al conjunto $\bigcup_{n \in \mathbb{N}} \left\{ \frac{1}{n} \right\} \times [0, 1]$ y probamos que es conexo. Cada recta $\left\{ \frac{1}{n} \right\} \times [0, 1]$ es conexa, para todo $n \in \mathbb{N}$. Y la recta $[0, 1] \times \left\{ 0 \right\}$ es conexa e interseca a las rectas verticales en el punto $(\frac{1}{n}, 0)$. Por lo tanto, la unión es conexa.
+
+	Como $(0, 1)$ es punto límite del conjunto, está en la clausura y entonces $X$ es conexo.
+\end{proof}
+
+\section{Componentes conexas}
+
+Las componentes conexas de un espacio métrico las podemos pensar como los conjuntos conexos más grandes del espacio.
+
+\begin{definition}
+	Sea $X$ un espacio métrico y $x \in X$. Definimos a la \emph{componente conexa} de $x$ como
+	\begin{equation*}
+		C_x = \bigcup_{A \subseteq X, x \in A} A.
+	\end{equation*}
+\end{definition}
+
+\begin{remark}
+	Sean $x, y \in X$. Entonces, o bien $C_x \cap C_y = \varnothing$ o $C_x = C_y$. Y obviamente, $X = \cup_{x \in X} C_x$.
+\end{remark}
+
+A partir de esto, definimos los espacios totalmente disconexos.
+
+\begin{definition}
+	Sea $X$ un espacio métrico. Decimos que $X$ es \emph{totalmente disconexo} si toda componente conexa es un punto.
+\end{definition}
+
+\begin{example}
+	El espacio métrico $(\mathbb{Q}, |\cdot|)$ es totalmente disconexo.
+\end{example}
+
+\begin{proof}[Solución]
+	Sea $A \subseteq \mathbb{Q} \setminus \varnothing$. Entonces, existe un número irracional $x$ tal que $a < x < b$, para $a, b \in \mathbb{Q}$. Consideramos $(-\infty, x) \cap \mathbb{Q}$ y $(x, \infty) \cap \mathbb{Q})$. Ambos son abiertos disjuntos no vacíos. Entonces, ningún subconjunto con cardinal mayor a $1$ es conexo en $\mathbb{Q}$. Por lo tanto, como todo conjunto con cardinal $1$ es conexo, $\mathbb{Q}$ es totalmente disconexo.
+\end{proof}
+
+
+
+
+
+
+
+
+
+

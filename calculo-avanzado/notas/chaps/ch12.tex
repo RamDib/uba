@@ -1,0 +1,271 @@
+\chapter{Espacios normados}
+
+\section{Definición y ejemplos}
+
+Cuando hablamos de espacios normados, siempre vamos a pensar en espacios vectoriales sobre $\mathbb{R}$ o $\mathbb{C}$.
+
+\begin{definition}
+	Un \emph{espacio normado} es un par $(E, \left\lVert \cdot \right\rVert)$ donde $E$ es un espacio vectorial sobre $K$ ($\mathbb{R}$ o $\mathbb{C}$) y una norma $\left\lVert \cdot \right\rVert : E \to \mathbb{R}_{\ge 0}$ tal que
+	\begin{enumerate}
+		\item $\left\lVert x \right\rVert = 0$ si y sólo si $x = 0$.
+		\item $\left\lVert \lambda x \right\rVert = \left\lvert \lambda \right\rvert \left\lVert x \right\rVert$, para todo $x \in E$, $\lambda \in K$.
+		\item $\left\lVert x + y \right\rVert \leq \left\lVert x \right\rVert + \left\lVert y \right\rVert$, para todo $x, y \in E$.
+	\end{enumerate}
+\end{definition}
+
+Junto con la norma del espacio, conseguimos una distancia dada por $d(x, y) = \left\lVert x - y \right\rVert$.
+
+\begin{remark}
+	La distancia inducida por la norma es invariante por traslaciones, es decir $d(x, y) = d(x + z, y + z)$ para todo $x, y, z \in E$.
+\end{remark}
+
+No tan complicado de demostrar:
+
+\begin{remark}
+	En espacios normados, $\overline{B}(x, r) = \overline{B(x, r)}$.
+\end{remark}
+
+\begin{proposition}
+	La suma y el producto por escalar son continuas.
+\end{proposition}
+
+\begin{proof}
+	Veamos la suma $+ : E \times E \to E$. Notamos que
+	\begin{equation*}
+		\left\lVert (x + x') - (y + y')\right\rVert \leq \left\lVert x - y \right\rVert + \left\lVert x' - y' \right\rVert.
+	\end{equation*}
+
+	Para el producto,
+	\begin{equation*}
+		\left\lVert kx - k' x' \right\rVert \leq \left\lvert k \right\rvert \left\lVert x - x' \right\rVert + \left\lvert k' - k \right\rvert \left\lVert x' \right\rVert.
+	\end{equation*}
+\end{proof}
+
+\begin{remark}
+	La suma y el producto por un escalar fijo son uniformemente continuas.
+\end{remark}
+
+Veamos algunos ejemplos de espacios normados:
+
+\begin{example}
+	\color{red} COMPLETAR.
+\end{example}
+
+\begin{definition}
+	Un espacio normado es de \emph{Banach} si es completo.
+\end{definition}
+
+\begin{definition}
+	Un espacio normado es de \emph{Hilbert} si tiene un producto interno que induce su norma.
+\end{definition}
+
+
+\section{Funciones lineales}
+
+La definción es la misma que en Álgebra Lineal.
+
+\begin{definition}
+	Sean $E$ y $F$ espacios normados sobre $K$. Una función $f : E \to F$ es \emph{lineal} si
+	\begin{enumerate}
+		\item $f(x + y) = f(x) + f(y)$, para todo $x, y \in E$.
+		\item $f(\lambda x) = \lambda f(x)$, para todo $x \in E$, $\lambda \in K$.
+	\end{enumerate}
+\end{definition}
+
+Principalmente nos van a interesar las funciones continuas.
+
+\begin{definition}
+	Denotamos con $\mathcal{L}(E, F)$ al espacio (vectorial) de funciones \emph{lineales continuas} de $E$ a $F$.
+\end{definition}
+
+Probamos varias equivalencias útiles de la continuidad.
+
+\begin{proposition}
+	Sean $E$ y $F$ espacios normados, y sea $f : E \to F$ una función lineal. Son equivalentes:
+	\begin{enumerate}
+		\item $f$ es continuo en $0$;
+		\item $\exists x_0 \in E$ tal que $f$ es continuo en $x_0$;
+		\item $f$ es continuo;
+		\item $f$ es uniformemente continuo;
+		\item $\exists M > 0$ tal que $\|fx\| \le M\|x\|$ para todo $x \in E$ ($f$ es acotado);
+		\item $\forall A \subset E$ acotado, $f(A)$ es acotado.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	No lo demuestro, pero tampoco es tan complicado.
+\end{proof}
+
+En particular, definimos la norma de una función lineal continua.
+
+\begin{definition}
+	Sean $E$ y $F$ espacios normados y $f : E \to F$ lineal continua. Entonces, definimos la \emph{norma} de $f$ como
+	\begin{equation*}
+		\left\lVert f \right\rVert = \sup_{\left\lVert x \right\rVert \leq 1} \left\lVert f(x) \right\rVert.
+	\end{equation*}
+\end{definition}
+
+Y esto nos lleva a considerar el espacio $(\mathcal{L}, \left\lVert \cdot \right\rVert)$.
+
+\begin{proposition}
+	El par $(\mathcal{L}(E, F), \left\lVert \cdot \right\rVert)$ es un espacio normado.
+\end{proposition}
+
+\begin{proof}
+	Realmente no es difícil.
+\end{proof}
+
+\begin{remark}
+	Si $F$ es completo, entonces $\mathcal{L}(E, F)$ es de Banach.
+\end{remark}
+
+\begin{definition}
+	Dos normas $\left\lVert \cdot \right\rVert_1$ y $\left\lVert \cdot \right\rVert_2$ de un espacio normado $E$ son \emph{equivalentes} si existe un homeomorfismo entre $(E, \left\lVert \cdot \right\rVert_1)$ y $(E, \left\lVert \cdot \right\rVert_2)$.
+\end{definition}
+
+\begin{remark}
+	Esto es equivalente a decir que existen constantes $c, c' \in K$ tales que
+	\begin{equation*}
+		c \left\lVert x \right\rVert_2 \leq \left\lVert x \right\rVert_1 \leq c' \left\lVert x \right\rVert_2 \quad \text{para todo }x \in E.
+	\end{equation*}
+\end{remark}
+
+La siguiente proposición relaciona en núcleo de un funcional lineal continuo con su continuidad.
+
+\begin{proposition}
+	Sean $E$ un espacio normado sobre $K$ y sea $f : E \to K$. Entonces, $f$ es continua si y sólo si $\ker f$ es cerrado.
+\end{proposition}
+
+\begin{proof}
+	($\Rightarrow$) Por definición, $\ker f = f^{-1}(\left\{ 0 \right\})$ que claramente es cerrado.
+
+	($\Leftarrow$) Si $\ker f = E$, entonces $f = 0$ y ya estamos. Supongamos que $\ker f \subsetneq E$. Por lo tanto, existe $x_0 \in E \setminus \ker f$ y entonces $\ker f \oplus \left\langle x_0 \right\rangle = E$.
+
+	Sea $x \in E$. Podemos escribir a $x$ como
+	\begin{equation*}
+		x = \lambda x_0 + s \quad \text{donde } \lambda \in K, s \in \ker f.
+	\end{equation*}
+	Sin pérdida de generalidad, tomamos $\left\lVert x_0 \right\rVert = 1$.
+	Buscamos $M \in \mathbb{R}$ tal que
+	\begin{equation*}
+		\left\lvert f(x) \right\rvert \leq M \left\lvert x \right\rvert \quad \text{para todo }x \in E.
+	\end{equation*}
+	Notamos que
+	\begin{equation*}
+		x = f(x) x_0 + (x - f(x) x_0).
+	\end{equation*}
+	Y $(x - f(x) x_0) \in \ker f$ ya que $f(x - f(x) x_0) = f(x) - f(x) = 0$. Ahora tomamos norma y obtenemos
+	\begin{equation*}
+		\left\lvert f(x) \right\rvert =
+	\end{equation*}
+	Para que la descomposición $x = f(x) x_0 + (x - f(x) x_0)$ sea general, primero debemos normalizar $x_0$ respecto a la función $f$. Como $\ker f \subsetneq E$, existe un $x_1 \in E$ tal que $f(x_1) \ne 0$. Tomamos $x_0 = \frac{x_1}{f(x_1)}$, de modo que $f(x_0) = 1$. Con esta elección, la descomposición es válida para cualquier $x \in E$.
+
+	Llamemos $s_x = x - f(x) x_0$. Ahora, como por hipótesis $\ker f$ es un subespacio cerrado y $x_0 \notin \ker f$ (pues $f(x_0)=1$), la distancia de $x_0$ al núcleo es estrictamente positiva. Sea
+	\begin{equation*}
+		d = \inf_{s \in \ker f} \left\lVert x_0 - s \right\rVert > 0.
+	\end{equation*}
+	Para cualquier $x \in E$ con $f(x) \ne 0$, el vector $-s_x/f(x)$ también pertenece a $\ker f$. Por la definición de ínfimo, tenemos que:
+	\begin{equation*}
+		\left\lVert x_0 - \left( -\frac{s_x}{f(x)} \right) \right\rVert = \left\lVert x_0 + \frac{s_x}{f(x)} \right\rVert \ge d.
+	\end{equation*}
+	A partir de esta desigualdad, podemos acotar la norma de $x$:
+	\begin{equation*}
+		\left\lVert x \right\rVert = \left\lVert f(x) x_0 + s_x \right\rVert = \left\lvert f(x) \right\rvert \left\lVert x_0 + \frac{s_x}{f(x)} \right\rVert \ge \left\lvert f(x) \right\rvert d.
+	\end{equation*}
+	De esta relación podemos finalmente despejar $\left\lvert f(x) \right\rvert$:
+	\begin{equation*}
+		\left\lvert f(x) \right\rvert \le \frac{1}{d} \left\lVert x \right\rVert.
+	\end{equation*}
+	Esta desigualdad también es cierta si $f(x)=0$, pues daría $0 \le \frac{1}{d} \left\lVert x \right\rVert$. Al haber encontrado una constante $M = 1/d$ tal que $\left\lvert f(x) \right\rvert \le M \left\lVert x \right\rVert$ para todo $x \in E$, concluimos que $f$ es acotado y, por lo tanto, continuo.
+\end{proof}
+
+Una proposición útil.
+
+\begin{proposition}
+	Sea $E$ un espacio normado y $S, T \subseteq E$ subespacios vectoriales tales que $S$ es cerrado y $T$ tiene dimensión finita. Entonces, $S + T$ es cerrado.
+\end{proposition}
+
+\begin{proof}
+	Probemos primero el caso de $\dim T = 1$ y luego procedemos por inducción. Dado que $\dim T = 1$, existe $x_0 \in E$ tal que $T = \left\langle x_0 \right\rangle$. Si $x_0 \in S$, ya estamos.
+
+	Supongamos que $x_0 \not \in S$. Sea $(y_n)_{n \in \mathbb{N}}$ una sucesión de $S \oplus \left\langle x_0 \right\rangle$ convergente. Entonces,
+	\begin{equation*}
+		y_n = \lambda_n x_0 + s_n.
+	\end{equation*}
+	Sea $\varphi : S \oplus \left\langle x_0 \right\rangle \to K$ tal que $\varphi(y) = \lambda$, donde $\lambda$ es el coeficiente de $x_0$. Es fácil ver que $\varphi$ es lineal y que $\ker \varphi = S$. Como el núcleo de $\varphi$ es cerrado, $\varphi$ es continua y además, como es lineal, entonces es uniformemente continua.
+
+	Dado que $\varphi$ es uniformemente continua, $(\lambda_n)_{n \in \mathbb{N}}$ es de Cauchy en $K$, por ende converge a $\lambda \in K$. Por último, como $\lambda_n$ converge a $\lambda$ y $s_n$ converge a $s$, ya que $S$ es cerrado, entonces
+	\begin{equation*}
+		\lim_{n \to \infty} y_n = s + \lambda x_0 \in S \oplus \left\langle x_0 \right\rangle.
+	\end{equation*}
+	Por lo tanto, $S + T$ es cerrado.
+
+	Si $\dim T > 1$, repetimos hasta completar.
+\end{proof}
+
+
+\section{Extensión de funcionales}
+
+Nuestro objetivo es extender un funcional definido en un subespacio al espacio entero, pero preservando la norma.
+
+\begin{theorem}
+	Sea $E$ un espacio normado sobre $K$ y $S \subseteq E$ un subespacio vectorial. Sea $\varphi : S \to K$ continua y lineal. Entonces, existe $\tilde{\varphi} : E \to K$ continua y lineal tal que
+	\begin{equation*}
+		\tilde{\varphi}|_S = \varphi \quad \text{y} \quad \left\lVert \tilde{\varphi} \right\rVert = \left\lVert \varphi \right\rVert.
+	\end{equation*}
+\end{theorem}
+
+\begin{proof}
+	Usamos el lema de Zorn. Sea
+	$$\wp = \left\{ (W, \varphi_W)  \mid S \subseteq W \subseteq E, \varphi_W|_S = \varphi, \left\lVert \varphi_W \right\rVert = \left\lVert \varphi \right\rVert \right\}$$
+	y $(W, \varphi_W) \preceq (W', \varphi_{W'})$ si $W \subseteq W'$ y $\varphi_{W'}|_{W} = \varphi_{W}$.
+
+	Sea $\mathcal{C} \subseteq \wp$ una cadena. Entonces, $W = \bigcup_{i \in I} W_i$ y $\varphi_W (x) = \varphi_{W_i}(v)$ es una cota superior de la cadena. Veamos que preserva la norma. Calculamos
+	\begin{equation*}
+		\left\lVert \varphi_{W}(x) \right\rVert = \left\lVert \varphi_{W_i}(x) \right\rVert \leq \left\lVert \varphi_{W_i} \right\rVert \left\lVert x \right\rVert = \left\lVert \varphi \right\rVert \left\lVert x \right\rVert.
+	\end{equation*}
+	Entonces, $\left\lVert \varphi_{W} \right\rVert = \left\lVert \varphi \right\rVert$.
+
+	Por Zorn, existe un elemento maximal $(W, \varphi_{W})$. Necesariamente $W = E$, ya que sino extendemos con $W + \left\langle x \right\rangle$.
+\end{proof}
+
+Lo de extender con $W + \left\langle x \right\rangle$ lo vimos en clase y no tengo tiempo de escribirlo.
+
+\begin{proposition}
+	Sea $E$ un espacio normado sobre $\mathbb{R}$. Sea $\left\lVert v_1, v_2, \ldots \right\rVert$ numerables vectores con norma $1$. Si $E = \overline{\left\langle v_1, v_2, \ldots \right\rangle}$, entonces $E$ es separable.
+\end{proposition}
+
+\begin{proof}
+	Consideramos a $E$ sobre $\mathbb{Q}$. Entonces, $E = \overline{\left\langle v_1, v_2, \ldots \right\rangle_{\mathbb{R}}} \subseteq \overline{\overline{\left\langle v_1, v_2, \ldots \right\rangle_{\mathbb{Q}}}}$, el cual es numerable.
+\end{proof}
+
+\begin{remark}
+	Tomando $e_n = (0, \ldots, 0, 1, 0 \ldots)$, entonces vemos que $\ell^p$ es separable y $\ell^{\infty}$ no.
+\end{remark}
+
+\begin{theorem}
+	Si $E^*$ es separable, entonces $E$ es separable.
+\end{theorem}
+
+\begin{proof}
+	\color{red} COMPLETAR
+\end{proof}
+
+\begin{lemma}
+	Sean $E$ e $F$ espacios de Banach. Sea $T \in \mathcal{L}(E, F)$. Entonces, existe $M > 0$ y $r \in (0, 1)$ tales que
+	\begin{center}
+		\begin{minipage}{0.9\linewidth}
+			si para todo $y \in F$, existe $x \in E$ tal que
+			\begin{equation*}
+				\left\lVert y - T(x) \right\rVert \leq r \left\lVert y \right\rVert \quad \text{ y } \quad \left\lVert x \right\rVert \leq M \left\lVert y \right\rVert,
+			\end{equation*}
+			entonces para todo $y \in F$, existe $x \in E$ tal que
+			\begin{equation*}
+				y = T(x) \quad \text{ y } \quad \left\lVert x \right\rVert \leq \frac{M}{1-r} \left\lVert y \right\rVert.
+			\end{equation*}
+		\end{minipage}
+	\end{center}
+\end{lemma}
+
+
+

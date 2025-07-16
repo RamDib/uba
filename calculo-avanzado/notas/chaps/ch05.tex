@@ -1,0 +1,109 @@
+\chapter{Sucesiones y convergencia}
+
+Seguimos considerando a $(X, d)$ un espacio métrico arbitrario.
+
+\section{Convergencia de sucesiones}
+
+\begin{definition}
+	Sea $(x_n)_{n \in \mathbb{N}}$ una sucesión en $X$. Decimos que $\lim_{n \to \infty} x_{n} = x$ (o $x_{n} \xrightarrow[n \to \infty]{} x$) si
+	\begin{center}
+		\begin{minipage}{0.9\linewidth}
+			para todo $\varepsilon > 0$, existe $N \in \mathbb{N}$ tal que $n \geq N$ implica $d(x_n, x) < \varepsilon$.
+		\end{minipage}
+	\end{center}
+\end{definition}
+
+\begin{remark}
+	En general, no es necesario demostrar exactamente que $d(x_n, x) < \varepsilon$. Podemos remplazar $\varepsilon$ por cualquier expresión que ``genere'' a los reales positivos. Por ejemplo, si probamos que $d(x_n, x) \leq \frac{\varepsilon}{2}$, prácticamente estamos demostrando que $d(x_n, x) < \varepsilon$.
+\end{remark}
+
+\begin{proposition}
+	Sea $(x_n)_{n \in \mathbb{N}}$ una sucesión en $X$. Si
+	$$
+		\lim_{n \to \infty} x_n = x \quad\text{y}\quad \lim_{n \to \infty} x_n = y,
+	$$
+	entonces $x = y$.
+\end{proposition}
+
+
+\begin{proof}
+	Sea $\varepsilon > 0$. Entonces, existe $N \in \mathbb{N}$ tal que
+	$$
+		d(x_n, x) < \frac{\varepsilon}{2} \quad \text{y} \quad d(x_n, y) < \frac{\varepsilon}{2},
+	$$
+	para todo $n \geq N$. Por lo tanto,
+	\begin{align*}
+		0 \leq  d(x, y) \leq d(x, x_n) + d(x_n, y) < \varepsilon.
+	\end{align*}
+	Entonces, $d(x, y) = 0$ lo que implica que $x = y$.
+\end{proof}
+
+Además, valen todas las proposiciones que vimos en Taller de Cálculo Avanzado.
+
+\section{Sucesiones de Cauchy}
+
+\begin{definition}
+	Una sucesión $(x_n)_{n \in \mathbb{N}}$ en $X$ es una \emph{sucesión de Cauchy} si
+	\begin{center}
+		\begin{minipage}{0.9\linewidth}
+			para todo $\varepsilon > 0$, existe $N \in \mathbb{N}$ tal que $n, m \geq N$ implica $d(x_n, x_m) < \varepsilon$.
+		\end{minipage}
+	\end{center}
+\end{definition}
+
+\begin{remark}
+	Una sucesión de Cauchy no necesariamente tiene que converger. Por ejemplo, la sucesión $(\frac{1}{n})_{n \in \mathbb{N}}$ no converge en $\mathbb{Q} \setminus \{ 0 \}$.
+\end{remark}
+
+\begin{proposition}
+	Sea $(x_n)_{n \in \mathbb{N}}$ una sucesión en $X$. Si $(x_n)$ converge, entonces es de Cauchy.
+\end{proposition}
+
+\begin{proof}
+	Sea $\lim_{n \to \infty} x_n = x$ y sea $\varepsilon > 0$. Por definición de límite, existe $N \in \mathbb{N}$ tal que para todo $n \geq N$, se cumple $d(x_n, x) < \frac{\varepsilon}{2}$. Entonces, si $n, m \geq N$, tenemos que
+	$$
+		d(x_n, x_m) \leq d(x_n, x) + d(x, x_m) < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
+	$$
+	Por lo tanto, $(x_n)_{n \in \mathbb{N}}$ es una sucesión de Cauchy.
+\end{proof}
+
+\begin{remark}
+	El recíproco no siempre es cierto. Por ejemplo, en el espacio $\mathbb{Q}$ con la métrica usual, la sucesión de las aproximaciones decimales de $\sqrt{2}$ (e.g., $1, 1.4, 1.41, 1.414, \dots$) es de Cauchy pero no converge en $\mathbb{Q}$.
+\end{remark}
+\begin{proposition}
+	Toda sucesión de Cauchy está acotada.
+\end{proposition}
+
+\begin{proof}
+	Sea $(x_n)_{n \in \mathbb{N}}$ una sucesión de Cauchy. Por definición, para $\varepsilon = 1$, existe un $N \in \mathbb{N}$ tal que para todo $n, m \geq N$, vale $d(x_n, x_m) < 1$.
+
+	Fijando $m=N$, tenemos que $d(x_n, x_N) < 1$ para todo $n \ge N$. Esto significa que todos los términos de la sucesión a partir de $x_N$ están contenidos en la bola $B(x_N, 1)$. Consideremos el conjunto finito de distancias de los primeros términos a $x_N$: $\{d(x_1, x_N), d(x_2, x_N), \dots, d(x_{N-1}, x_N)\}$. Sea $R = \max\{1, d(x_1, x_N), \dots, d(x_{N-1}, x_N)\}$.
+
+	Entonces, para cualquier $n \in \mathbb{N}$, se cumple que $d(x_n, x_N) \leq R$. Esto demuestra que la sucesión entera está contenida en la bola $\overline{B}(x_N, R)$, y por lo tanto, está acotada.
+\end{proof}
+
+\begin{remark}
+	(Formulaciones equivalentes de convergencia). Una sucesión $(x_n)_{n \in \mathbb{N}}$ converge a $x$ si y solo si para todo entorno $V$ de $x$, existe un $N \in \mathbb{N}$ tal que $x_n \in V$ para todo $n \geq N$.
+\end{remark}
+
+\section{Relación entre sucesiones y clausura}
+
+Quizás una de las mayores utilidades de las sucesiones es que proveen una caracterización alternativa de la clausura de un conjunto.
+
+\begin{proposition}
+	Sea $A \subseteq X$. Un punto $x \in X$ pertenece a $\overline{A}$ si y sólo si existe una sucesión $(a_{n})_{n \in \mathbb{N}}$ de puntos de $A$ tal que $a_{n} \longrightarrow x$.
+\end{proposition}
+
+\begin{proof}
+	($\Rightarrow$) Supongamos que $x \in \overline{A}$. Por definición de clausura, para todo entorno de $x$, su intersección con $A$ es no vacía. En particular, para cada $n \in \mathbb{N}$, la bola $B(x, 1/n)$ es un entorno de $x$, por lo que $B(x, 1/n) \cap A \neq \emptyset$.
+
+	Podemos entonces construir una sucesión $(a_n)_{n \in \mathbb{N}}$ eligiendo para cada $n$ un elemento $a_n \in B(x, 1/n) \cap A$. Por construcción, $(a_n)$ es una sucesión de puntos de $A$ y además cumple que $d(a_n, x) < 1/n$.
+
+	Dado $\varepsilon > 0$, por la propiedad arquimediana existe $N \in \mathbb{N}$ tal que $1/N < \varepsilon$. Luego, para todo $n \geq N$, tenemos $d(a_n, x) < 1/n \leq 1/N < \varepsilon$. Esto prueba que $a_n \to x$.
+
+	($\Leftarrow$) Supongamos que existe una sucesión $(a_n)_{n \in \mathbb{N}}$ en $A$ tal que $a_n \to x$. Queremos ver que $x \in \overline{A}$. Para ello, debemos probar que toda bola centrada en $x$ intersecta a $A$.
+
+	Sea $B(x, \varepsilon)$ una bola arbitraria con $\varepsilon > 0$. Como $a_n \to x$, por definición de límite, existe $N \in \mathbb{N}$ tal que para todo $n \ge N$, $d(a_n, x) < \varepsilon$. Esto significa que $a_n \in B(x, \varepsilon)$. Como además $a_n \in A$ por hipótesis, tenemos que $a_n \in B(x, \varepsilon) \cap A$.
+
+	Por lo tanto, la intersección es no vacía, y concluimos que $x \in \overline{A}$.
+\end{proof}

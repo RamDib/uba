@@ -1,0 +1,200 @@
+\documentclass[11pt, a4paper, oneside]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\usepackage[margin=1in, headheight=14.68782pt]{geometry}
+\linespread{1.1}
+\usepackage{indentfirst}
+
+\usepackage{xcolor}
+\definecolor{accentcolor}{HTML}{005691}
+\definecolor{complementarycolor}{HTML}{560091}
+\definecolor{lightgray}{gray}{0.95}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{babel}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{svg.path}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accentcolor,
+    filecolor=magenta,
+    urlcolor=accentcolor,
+    citecolor=accentcolor,
+    hidelinks
+}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\color{accentcolor}\scshape \leftmark}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+    {\normalfont\bfseries\Huge\color{accentcolor}}
+    {\chaptertitlename\ \thechapter}
+    {20pt}
+    {\Huge}
+    [\vspace{10pt}\hrulefill]
+\titlespacing*{\chapter}{0pt}{50pt}{40pt}
+
+\titleformat{\section}
+    {\normalfont\Large\bfseries\color{accentcolor}\sffamily}
+    {\thesection}
+    {1em}
+    {}
+\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+\titleformat{\subsection}
+    {\normalfont\large\bfseries\sffamily}
+    {\thesubsection}
+    {1em}{}
+\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{theorems, skins}
+
+\tcbset{
+    mathbookbox/.style={
+        breakable,
+        colback=lightgray,
+        colframe=accentcolor,
+        boxrule=0.8pt,
+        arc=3mm,
+        leftrule=3pt,
+        rightrule=0pt,toprule=0pt,bottomrule=0pt,
+        boxsep=4pt,
+        parbox=false,
+    }
+}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{corollary}[theorem]{Corolario}
+\newtheorem{proposition}[theorem]{Proposición}
+\newtheorem{axiom}{Axioma}[chapter]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[chapter]
+\newtheorem{example}{Ejemplo}[chapter]
+\newtheorem{exercise}[example]{Ejercicio}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Observación}
+
+\tcolorboxenvironment{theorem}{mathbookbox, colframe=accentcolor!50!cyan}
+\tcolorboxenvironment{axiom}{mathbookbox, colframe=accentcolor!50!cyan}
+\tcolorboxenvironment{lemma}{mathbookbox, colframe=accentcolor!50!cyan}
+\tcolorboxenvironment{corollary}{mathbookbox, colframe=accentcolor!50!cyan, boxrule=0.4pt, colback=white} \tcolorboxenvironment{proposition}{mathbookbox, colframe=accentcolor!50!cyan}
+\tcolorboxenvironment{definition}{mathbookbox}
+\tcolorboxenvironment{example}{mathbookbox, boxrule=0.4pt, colback=white}
+\tcolorboxenvironment{exercise}{mathbookbox, boxrule=0.4pt, colback=white}
+
+\usepackage{enumitem}
+\setlist[enumerate]{itemsep=0.5ex, parsep=0.5ex, topsep=0.5ex}
+\setlist[itemize]{itemsep=0.5ex, parsep=0.5ex, topsep=0.5ex}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\DeclareMathOperator{\sen}{sen}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\ev}{ev}
+
+\newcommand{\diff}[1]{\text{d}#1}
+\newcommand{\der}[2]{\frac{\diff{#1}}{\diff{#2}} }
+\newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}}
+
+\DeclareEmphSequence{\color{accentcolor}\bfseries\itshape}
+
+\begin{document}
+
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+	{\fontsize{50pt}{52pt}\selectfont\color{accentcolor}\bfseries{Notas de Cálculo Avanzado}\MakeUppercase{}\par}
+	\vspace{2.5cm}
+	{\Huge\sffamily Ramiro Dibur \par}
+	\vspace{0.8cm}
+	\vspace{1.5cm}
+	{\Large 2025 \par}
+\end{center}
+\vspace*{\fill}
+
+\newpage
+
+\frontmatter
+
+\section*{Prefacio}
+
+Hola, ¿cómo estás? Te voy a contar un poco de qué se tratan estas notas. En primer lugar, el propósito principal de estas notas es ayudarme a aprender a mí. Sin dudas, escribir pensando en cómo explicar una demostración o planificar el orden de los contenidos es una de las maneras más poderosas para aprender. Segundo, si a alguien ---me refiero a vos--- le es de ayuda, entonces ya me conformo. No pretendo que estás notas sean un reemplazo de la cursada; sólo busco compartir mi camino. Tercero y por último, estoy aburrido.
+
+La estructura y contenido de las notas va a ser bastante relajado, pero voy a intentar que sea completo. Seguramente haya errores, así que tené cuidado con lo que leés. La idea es que puedas ir a un capitulo cualquiera y con leerlo ya más o menos tengas una idea de qué se trata. Consideralos como mini notas individuales compiladas.
+
+No sé si en esta versión o en otra de más adelante, pero voy a intentar de agregar los resueltos de las guías. Esto es un trabajo monstruoso, pero si llego a poder lo subo.
+
+Nada más. ¡Éxitos!
+
+\hfill --- Rama :)
+
+\tableofcontents
+
+\mainmatter
+
+\part{Teoría de conjuntos}
+
+\input{chaps/ch01.tex}
+
+\input{chaps/ch02.tex}
+
+\input{chaps/ch03.tex}
+
+\part{Espacios métricos y topología}
+
+\input{chaps/ch04.tex}
+
+\input{chaps/ch05.tex}
+
+\input{chaps/ch06.tex}
+
+\input{chaps/ch07.tex}
+
+\input{chaps/ch08.tex}
+
+\input{chaps/ch09.tex}
+
+\input{chaps/ch10.tex}
+
+\part{Espacios normados}
+
+\input{chaps/ch11.tex}
+
+\input{chaps/ch12.tex}
+
+\end{document}

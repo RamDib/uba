@@ -1,0 +1,81 @@
+\begin{tikzpicture}[
+		scale=1.1, % Escala general
+		font=\small, % Fuente para las fracciones
+		node_style/.style={minimum size=2.2em, inner sep=1pt}, % Estilo para nodos de fracciones
+		path_arrow/.style={->, >=stealth, thick, accentcolor, shorten >=2pt, shorten <=2pt}
+	]
+	% Coordenadas base para la tabla
+	\def\xstart{0}
+	\def\ystart{0}
+	\def\xstep{1.3} % Separación horizontal
+	\def\ystep{-1.2} % Separación vertical
+
+	% Dibujar la cuadrícula de fracciones p/q (todas)
+	% Fila q=1
+	\node[node_style] (f-1-1) at (\xstart + 1*\xstep, \ystart + 1*\ystep) {$\frac{1}{1}$};
+	\node[node_style] (f-2-1) at (\xstart + 2*\xstep, \ystart + 1*\ystep) {$\frac{2}{1}$};
+	\node[node_style] (f-3-1) at (\xstart + 3*\xstep, \ystart + 1*\ystep) {$\frac{3}{1}$};
+	\node[node_style] (f-4-1) at (\xstart + 4*\xstep, \ystart + 1*\ystep) {$\frac{4}{1}$};
+	\node at (\xstart + 4.8*\xstep, \ystart + 1*\ystep) {$\dots$};
+
+	% Fila q=2
+	\node[node_style] (f-1-2) at (\xstart + 1*\xstep, \ystart + 2*\ystep) {$\frac{1}{2}$};
+	\node[node_style] (f-2-2) at (\xstart + 2*\xstep, \ystart + 2*\ystep) {$\frac{2}{2}$};
+	\node[node_style] (f-3-2) at (\xstart + 3*\xstep, \ystart + 2*\ystep) {$\frac{3}{2}$};
+	\node[node_style] (f-4-2) at (\xstart + 4*\xstep, \ystart + 2*\ystep) {$\frac{4}{2}$};
+	\node at (\xstart + 4.8*\xstep, \ystart + 2*\ystep) {$\dots$};
+
+	% Fila q=3
+	\node[node_style] (f-1-3) at (\xstart + 1*\xstep, \ystart + 3*\ystep) {$\frac{1}{3}$};
+	\node[node_style] (f-2-3) at (\xstart + 2*\xstep, \ystart + 3*\ystep) {$\frac{2}{3}$};
+	\node[node_style] (f-3-3) at (\xstart + 3*\xstep, \ystart + 3*\ystep) {$\frac{3}{3}$};
+	\node[node_style] (f-4-3) at (\xstart + 4*\xstep, \ystart + 3*\ystep) {$\frac{4}{3}$};
+	\node at (\xstart + 4.8*\xstep, \ystart + 3*\ystep) {$\dots$};
+
+	% Fila q=4
+	\node[node_style] (f-1-4) at (\xstart + 1*\xstep, \ystart + 4*\ystep) {$\frac{1}{4}$};
+	\node[node_style] (f-2-4) at (\xstart + 2*\xstep, \ystart + 4*\ystep) {$\frac{2}{4}$};
+	\node[node_style] (f-3-4) at (\xstart + 3*\xstep, \ystart + 4*\ystep) {$\frac{3}{4}$};
+	\node[node_style] (f-4-4) at (\xstart + 4*\xstep, \ystart + 4*\ystep) {$\frac{4}{4}$};
+	\node at (\xstart + 4.8*\xstep, \ystart + 4*\ystep) {$\dots$};
+
+	% Puntos suspensivos verticales
+	\foreach \pxval in {1,...,4}{
+			\node at (\xstart + \pxval*\xstep, \ystart + 4.8*\ystep + 0.1*\ystep) {$\vdots$};
+		}
+
+	% Dibujar el camino de enumeración diagonal con flechas curvas en los "giros"
+
+	% Diagonal 1 (p+q=2)
+	% 1/1 -> (inicio de la siguiente diagonal) 2/1
+	\draw[path_arrow] (f-1-1) to [out=0, in=180, looseness=0.8] (f-2-1); % Curva suave a la derecha
+
+	% Diagonal 2 (p+q=3)
+	% 2/1 -> 1/2
+	\draw[path_arrow] (f-2-1) to [out=-135, in=45, looseness=0.8] (f-1-2); % Curva hacia abajo e izquierda
+	% 1/2 -> (inicio de la siguiente diagonal) 3/1
+	\draw[path_arrow] (f-1-2) to [out=0, in=180, looseness=0.8] (f-3-1); % Curva suave a la derecha
+
+	% Diagonal 3 (p+q=4)
+	% 3/1 -> 2/2
+	\draw[path_arrow] (f-3-1) to [out=-135, in=45, looseness=0.8] (f-2-2); % Curva hacia abajo e izquierda
+	% 2/2 -> 1/3
+	\draw[path_arrow] (f-2-2) to [out=-135, in=45, looseness=0.8] (f-1-3); % Curva hacia abajo e izquierda
+	% 1/3 -> (inicio de la siguiente diagonal) 4/1
+	\draw[path_arrow] (f-1-3) to [out=0, in=180, looseness=0.8] (f-4-1); % Curva suave a la derecha
+
+	% Diagonal 4 (p+q=5)
+	% 4/1 -> 3/2
+	\draw[path_arrow] (f-4-1) to [out=-135, in=45, looseness=0.8] (f-3-2); % Curva hacia abajo e izquierda
+	% 3/2 -> 2/3
+	\draw[path_arrow] (f-3-2) to [out=-135, in=45, looseness=0.8] (f-2-3); % Curva hacia abajo e izquierda
+	% 2/3 -> 1/4
+	\draw[path_arrow] (f-2-3) to [out=-135, in=45, looseness=0.8] (f-1-4); % Curva hacia abajo e izquierda
+
+	% Nota sobre el patrón
+	\node[align=center, text width=7cm, font=\scriptsize, below=0.8cm of f-1-4] at (\xstart + 2.5*\xstep, \ystart + 5.2*\ystep) {
+		Patrón de recorrido diagonal de todas las fracciones $\frac{p}{q}$.
+		Para $\mathbb{Q}^+$, se omiten las fracciones reducibles.
+	};
+
+\end{tikzpicture}
