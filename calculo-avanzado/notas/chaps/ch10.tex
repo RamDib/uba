@@ -24,7 +24,7 @@ Los espacios \textit{conexos} vendrían a ser espacios que están ``conectados''
 
 	(2 $\Rightarrow$ 3) Supongamos que existen $U, V \subseteq X$ abiertos disjuntos no vacíos tales que $U \cup V = X$. Consideramos $A = X \setminus U$ y $B = X \setminus V$. Ambos son cerrados al ser complementos de abiertos. Dado que $U \cup V = X$, obtenemos que $A \cap B = \varnothing$, por ende son disjuntos. Veamos que su unión es $X$. Sea $x \in X$. Entonces, o bien $x \in U$ o $x \in V$. Si $x \in U$, entonces $x \not \in V$, por lo tanto $x \in X \setminus V = B$. Análogamente, Si $x \in V$, entonces $x \not \in U$, por lo tanto $x \in X \setminus U = A$. Lo cual nos dice que $X = A \cup B$.
 
-	(3 $\Rightarrow$ 1) Supongamos que existen $A, B \subseteq X$ cerrados disjuntos no vacíos tales que $A \cup B = X$. Como $A \cup B = X$, obetnemos que $B = X \setminus A$. Dado que $A$ y $B$ son disjuntos no vacíos, $B \neq X$. También, $B$ es cerrado y, como es el complemento de un cerrado, $B$ es abierto.
+	(3 $\Rightarrow$ 1) Supongamos que existen $A, B \subseteq X$ cerrados disjuntos no vacíos tales que $A \cup B = X$. Como $A \cup B = X$, obtenemos que $B = X \setminus A$. Dado que $A$ y $B$ son disjuntos no vacíos, $B \neq X$. También, $B$ es cerrado y, como es el complemento de un cerrado, $B$ es abierto.
 \end{proof}
 
 Ahora sí definimos conexión.
@@ -87,7 +87,25 @@ La proposición de a continuación nos va a ser más útil adelante.
 \end{proposition}
 
 \begin{proof}
-	\color{red} COMPLETAR
+	Como $A$ y $B$ son abiertos en la topología subespacio de $X$, existen abiertos $V_A, V_B \subseteq Y$ tales que $A = V_A \cap X$ y $B = V_B \cap X$.
+
+	Ahora bien, puede pasar que $V_A \cap V_B \neq \varnothing$. Pero como $A \cap B = \varnothing$, tenemos que $(V_A \cap V_B) \cap X = \varnothing$.
+
+	Queremos modificar $V_A$ y $V_B$ para que sean disjuntos en $Y$ sin cambiar su intersección con $X$. Definimos
+	\[
+		\widetilde{V}_A := V_A \setminus \overline{V_B}, \qquad \widetilde{V}_B := V_B \setminus \overline{V_A}.
+	\]
+	Ambos conjuntos son abiertos como diferencia de abierto menos cerrado.
+
+	Veamos que siguen cortando a $X$ donde queremos. Como $A = V_A \cap X$ y $A \cap \overline{V_B} = \varnothing$, se sigue que
+	\[
+		\widetilde{V}_A \cap X = (V_A \setminus \overline{V_B}) \cap X = V_A \cap X = A.
+	\]
+	Análogamente, $\widetilde{V}_B \cap X = B$.
+
+	Finalmente, veamos que $\widetilde{V}_A$ y $\widetilde{V}_B$ son disjuntos. Si $x \in \widetilde{V}_A \cap \widetilde{V}_B$, entonces $x \in V_A$ y $x \notin \overline{V_B}$, pero también $x \in V_B$ y $x \notin \overline{V_A}$, lo cual es absurdo ya que $x \in V_B$ implica $x \in \overline{V_B}$ y análogamente para $V_A$.
+
+	Entonces, $\widetilde{V}_A$ y $\widetilde{V}_B$ son abiertos disjuntos tales que $A = \widetilde{V}_A \cap X$ y $B = \widetilde{V}_B \cap X$.
 \end{proof}
 
 Ahora vamos a ver otra forma de demostrar que un espacio métrico es conexo.
@@ -113,7 +131,7 @@ El siguiente teorema nos da una condición para que la unión de conexos sea con
 \end{theorem}
 
 \begin{proof}
-	Sea $g : \bigcup_{i \in I} A_j \to \left\{ 0, 1 \right\}$ una función continua arbitraria. Sea $x \in X$ tal que, para todo $i \in I$, $x \in A_i$. Entonces, consideramos $f(x)$. Si consideramos $f|_{A_i}$, entonces como es una función continua de un conexo a $\left\{ 0, 1 \right\}$, es constante. O sea, para todo $i \in I$, $f|_{A_i} = f(x)$. Entonces, $f$ es constante.
+	Sea $g : \bigcup_{i \in I} A_j \to \left\{ 0, 1 \right\}$ una función continua cualquiera. Sea $x \in X$ tal que, para todo $i \in I$, $x \in A_i$. Entonces, consideramos $f(x)$. Si consideramos $f|_{A_i}$, entonces como es una función continua de un conexo a $\left\{ 0, 1 \right\}$, es constante. O sea, para todo $i \in I$, $f|_{A_i} = f(x)$. Entonces, $f$ es constante.
 \end{proof}
 
 \begin{remark}
@@ -132,7 +150,7 @@ El siguiente teorema nos da una condición para que la unión de conexos sea con
 \end{proposition}
 
 \begin{proof}
-	Sea $g : X \to \left\{ 0, 1 \right\}$ una función continua arbitraria. Entonces, $g|_A$ es constante. Por continuidad de $g$, la extensión de $g|_A$ a $X$ es igual a $g$. Por lo tanto, $g$ es constante y entonces $X$ es conexo.
+	Sea $g : X \to \left\{ 0, 1 \right\}$ una función continua cualquiera. Entonces, $g|_A$ es constante. Por continuidad de $g$, la extensión de $g|_A$ a $X$ es igual a $g$. Por lo tanto, $g$ es constante y entonces $X$ es conexo.
 \end{proof}
 
 \begin{corollary}
@@ -146,13 +164,13 @@ El siguiente teorema nos da una condición para que la unión de conexos sea con
 Veamos un ejemplo poco intuitivo de aplicar el corolario.
 
 \begin{example}
-	En $\mathbb{R}^{2}$, consideramos al conunto $X = (\bigcup_{n \in \mathbb{N}} \left\{ \frac{1}{n} \right\} \times [0, 1]) \cup [0, 1] \cup \{(0, 1)\}$.
+	En $\mathbb{R}^{2}$, consideramos al conjunto $X = (\bigcup_{n \in \mathbb{N}} \left\{ \frac{1}{n} \right\} \times [0, 1]) \cup [0, 1] \cup \{(0, 1)\}$.
 
 	\begin{center}
 		\input{tikz/conexion_ejemplo.tex}
 	\end{center}
 
-	El conjunto $X$ es conexo.
+	Probar que $X$ es conexo.
 \end{example}
 
 \begin{proof}[Solución]
@@ -168,7 +186,7 @@ Las componentes conexas de un espacio métrico las podemos pensar como los conju
 \begin{definition}
 	Sea $X$ un espacio métrico y $x \in X$. Definimos a la \emph{componente conexa} de $x$ como
 	\begin{equation*}
-		C_x = \bigcup_{A \subseteq X, x \in A} A.
+		C_x = \bigcup_{A \subseteq X \text{ conexo, } x \in A} A.
 	\end{equation*}
 \end{definition}
 

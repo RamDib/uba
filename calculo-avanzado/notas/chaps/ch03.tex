@@ -4,13 +4,13 @@ Ahora sí arranca el primer capítulo importante de la materia.
 
 \section{Conjuntos finitos y numerables}
 
-Como se puede esperar, la definición de conjunto finito es bastante intuitiva.
+La definición de conjunto finito es relativamente intuitiva.
 
 \begin{definition}
-	Decimos que un conjunto $A$ es \emph{finito} si es vacío o existe una biyección $f: \llbracket n \rrbracket \to  A$. Definimos el $ \lvert A \rvert = n$ y $ \lvert \emptyset \rvert = 0$. Además, $A$ es \emph{infinito} si no es finito.
+	Decimos que un conjunto $A$ es \emph{finito} si es vacío o existe una biyección $f: \llbracket n \rrbracket \to  A$. Definimos el cardinal de $A$ como $\lvert A \rvert = n$ y $\lvert \emptyset \rvert = 0$. Además, $A$ es \emph{infinito} si no es finito.
 \end{definition}
 
-Por si no lo habías visto antes, la notación $\llbracket n \rrbracket$ es el conjunto de números naturales hasta $n$.
+La notación $\llbracket n \rrbracket$ se refiere al conjunto de números naturales hasta $n$ (inclusive).
 
 \begin{definition}
 	Decimos que $A$ es \emph{numerable} si existe una biyección $f: \mathbb{N} \to  A$. Además, si $A$ es numerable o finito decimos que es \emph{contable}.
@@ -52,7 +52,7 @@ En esencia, acá probamos que $\mathbb{N} \times \mathbb{N}$ es numerable. Es m�
 La idea de la notación de coordinabilidad es expresar que dos conjuntos tienen la misma cardinalidad.
 
 \begin{definition}
-	Si existe $f: A \to  B$ biyectiva, entonces se dice que $A$ y $B$ son \emph{coordinables} y lo denotamos como $A \sim B$.
+	Si existe una biyección $f: A \to  B$, entonces se dice que $A$ y $B$ son \emph{coordinables} y lo denotamos como $A \sim B$.
 \end{definition}
 
 Notemos que por definición, todo conjunto numerable es coordinable con $\mathbb{N}$.
@@ -72,21 +72,21 @@ Notemos que por definición, todo conjunto numerable es coordinable con $\mathbb
 Entonces, el conjunto de los números primos es numerable, así como $2 \mathbb{N}$.
 
 \begin{proposition}
-	Sea $X$ un conjunto \textit{numerable}. Si existe $f: X \twoheadrightarrow Y$ sobreyectiva, entonces $Y$ es contable.
+	Sea $X$ un conjunto \textit{numerable}. Si existe una función sobreyectiva $f: X \twoheadrightarrow Y$, entonces $Y$ es contable.
 \end{proposition}
 
 \begin{proof}
-	Si $X \neq \mathbb{N}$ simplemente consideramos una biyección de $\mathbb{N}$ a $X$. Entonces, podemos suponer que $X = \mathbb{N}$.
+	Si $X \neq \mathbb{N}$, simplemente consideramos una biyección de $\mathbb{N}$ a $X$. Entonces, podemos suponer que $X = \mathbb{N}$.
 
 	Sea $f: X \twoheadrightarrow Y$ sobreyectiva. Definimos la función
-	$$
+	\begin{equation*}
 		g: Y \to \mathbb{N} \text{ tal que } y \mapsto \min f^{-1}(y).
-	$$
+	\end{equation*}
 	La función $g$ está bien definida porque $f$ es sobreyectiva, lo que garantiza que $f^{-1}(y) \neq \emptyset$ para todo $y \in Y$. Como $g$ es inyectiva, la restricción $g|_{\operatorname{Im}g}$ es biyectiva. Dado que encontramos una biyección entre $Y$ y un subconjunto de $\mathbb{N}$, demostramos que $Y$ es contable.
 \end{proof}
 
 \begin{remark}
-	Un conjunto $Y$ es contable si y sólo si existe $f : \mathbb{N} \twoheadrightarrow Y$ sobreyectiva.
+	Un conjunto $Y$ es contable si y sólo si existe una función sobreyectiva $f : \mathbb{N} \twoheadrightarrow Y$.
 \end{remark}
 
 Ahora vamos a ver, probablemente, la proposición más útil de este capítulo.
@@ -96,15 +96,15 @@ Ahora vamos a ver, probablemente, la proposición más útil de este capítulo.
 \end{proposition}
 
 \begin{proof}
-	Sea $\{ A_{n} \}_{n \in \mathbb{N}}$ una famlia de conjuntos numerables. Dado que cada $A_n$ es numerable, en particular es coordinable con $\mathbb{N} \times \{ n \}$. Por lo tanto,
+	Sea $\{ A_{n} \}_{n \in \mathbb{N}}$ una familia de conjuntos numerables. Dado que cada $A_n$ es numerable, en particular es coordinable con $\mathbb{N} \times \{ n \}$. Por lo tanto,
 	\begin{equation*}
-		\bigcup_{n \in \mathbb{N}} A_n \sim \bigcup_{n \in \mathbb{N}} \mathbb{N} \times \{ n \} = \mathbb{N} \times \mathbb{N} \sim \mathbb{N}.
+		\bigcup_{n \in \mathbb{N}} A_n \sim \bigcup_{n \in \mathbb{N}} (\mathbb{N} \times \{ n \}) \sim \mathbb{N} \times \mathbb{N} \sim \mathbb{N}.
 	\end{equation*}
 	Por lo tanto, la unión numerable de conjuntos numerables es numerable.
 \end{proof}
 
 \begin{example}
-	El conjunto de los polinomio con coeficientes racionales $\mathbb{Q}[x]$ es numerable.
+	El conjunto de los polinomios con coeficientes racionales $\mathbb{Q}[x]$ es numerable.
 \end{example}
 
 \begin{proof}[Solución]
@@ -123,23 +123,22 @@ Ahora vamos a ver, probablemente, la proposición más útil de este capítulo.
 	y como $\mathbb{Q}^n$ es numerable para todo $n \in \mathbb{N}$, $\mathbb{Q}[x]$ es numerable.
 \end{proof}
 
-Notemos que omití algunos detalles en la demostración. Por ejemplo, la asociación que dí no es exactamente una biyección, ya que $a_n \neq 0$. Pero no es tan dramático el problema, simplemente con saber que $\mathbb{Q} \setminus \left\{ 0 \right\} \sim \mathbb{Q}$, entonces podemos encontrar la biyección.
-
+Notemos que omití algunos detalles en la demostración. Por ejemplo, la asociación que di no es exactamente una biyección, ya que $a_n \neq 0$. Pero no es tan dramático el problema, simplemente con saber que $\mathbb{Q} \setminus \left\{ 0 \right\} \sim \mathbb{Q}$, entonces podemos encontrar la biyección.
 
 \section{Conjuntos no numerables}
 
 El primer conjunto no numerable que vamos a ver es $\mathbb{R}$.
 
 \begin{proposition}
-	El conjunto de los numeros reales no es numerable.
+	El conjunto de los números reales no es numerable.
 \end{proposition}
 
 \begin{proof}[Solución]
-	Para facilitarnos la vida, podemos considerar la biyección $g: \mathbb{R} \to (0, 1)$ dada por $g(x) = \frac{\tan^{-1} (x)}{\pi} + \frac{1}{2}$.
+	Para facilitarnos la vida, podemos considerar la biyección $g: \mathbb{R} \to (0, 1)$ dada por $g(x) = \frac{\arctan (x)}{\pi} + \frac{1}{2}$.
 	\begin{center}
 		\color{red} INSERTAR GRÁFICO
 	\end{center}
-	Esto da una biyección entre $\mathbb{R}$ y $(0, 1)$. Por lo tanto, basta con demostrar que no existe una biyección entre $\mathbb{N}$ y $(0, 1)$ para ver que $\mathbb{R}$ no es cordinable con $\mathbb{N}$.
+	Esto da una biyección entre $\mathbb{R}$ y $(0, 1)$. Por lo tanto, basta con demostrar que no existe una biyección entre $\mathbb{N}$ y $(0, 1)$ para ver que $\mathbb{R}$ no es coordinable con $\mathbb{N}$.
 
 	Supongamos que $\mathbb{N}$ es coordinable con $(0, 1)$. Sea $f: \mathbb{N} \to (0, 1)$ una biyección tal que
 	\begin{align*}
@@ -149,9 +148,9 @@ El primer conjunto no numerable que vamos a ver es $\mathbb{R}$.
 		     & \dots
 	\end{align*}
 	Consideramos el número definido por agarrar los dígitos de la diagonal y sumarle $1$ si es menor que $9$ o restarle $1$ si es $9$. Nos queda el número
-	$$
+	\begin{equation*}
 		0.a'_{11}a'_{22}a'_{33}\dots
-	$$
+	\end{equation*}
 	Este número es distinto a $f(n)$ en el $n$-ésimo dígito decimal. Lo cual es absurdo, ya que si $f$ es biyectiva debería existir un natural $m$ tal que $f(m) = 0.a'_{11}a'_{22}a'_{33}\dots$. Por lo tanto, demostramos que $\mathbb{N}$ no es coordinable con $\mathbb{R}$.
 \end{proof}
 
@@ -161,7 +160,7 @@ Aclaro una pequeña notación. Cuando escribimos $Y^X$ nos referimos al conjunto
 \end{equation*}
 
 \begin{proposition}
-	El conjunto partes $\mathcal{P}(X)$ es coordinable con $2^X$.
+	El conjunto de partes $\mathcal{P}(X)$ es coordinable con $2^X$.
 \end{proposition}
 
 \begin{proof}
@@ -176,7 +175,7 @@ Aclaro una pequeña notación. Cuando escribimos $Y^X$ nos referimos al conjunto
 			0, & \text{ si } x \not\in A
 		\end{cases}.
 	\end{equation*}
-	Esta función claramente es bitectiva.
+	Esta función es biyectiva.
 \end{proof}
 
 Ahora vamos a ver el Teorema de Cantor.
@@ -186,13 +185,12 @@ Ahora vamos a ver el Teorema de Cantor.
 \end{theorem}
 
 \begin{proof}
-	Sea $X$ un conjunto. Queremos ver que no es coordinable con $\mathcal{P}(X)$. Supongamos que existe una biyección $f : X \to \mathcal{P}(X)$. Consideremos al siguiente subconjunto:
+	Sea $X$ un conjunto. Queremos ver que no es coordinable con $\mathcal{P}(X)$. Supongamos que existe una biyección $f : X \to \mathcal{P}(X)$. Consideremos el siguiente subconjunto:
 	\begin{equation*}
 		A = \{ x \in X \mid x \not \in f(x) \}.
 	\end{equation*}
 	La idea de este subconjunto es forzar a que sea distinto a cada elemento de la imagen de $f$. Por lo tanto, para todo $x \in X$, $A \neq f(x)$ ya que $A$ siempre tiene un elemento que no pertenece a $f(x)$, en particular $x$. Acabamos de probar que $f$ no es sobreyectiva, por lo tanto no es biyectiva y entonces $X$ y $\mathcal{P}(X)$ no son coordinables.
 \end{proof}
-
 
 \section{Cardinales y Axioma de Elección}
 
@@ -206,9 +204,11 @@ Otras formulaciones equivalentes son:
 
 \begin{enumerate}[label=(\roman*)]
 	\item Sea $X$ un conjunto. Existe una función
-	      $$f: \mathcal{P}(X) - \{ \emptyset \} \to X$$
+	      \begin{equation*}
+		      f: \mathcal{P}(X) - \{ \emptyset \} \to X
+	      \end{equation*}
 	      tal que $f(A) \in A$ para todo $A \in \mathcal{P}(X)$.
-	\item El producto cartesiano de conjuntos no vacíos es no\\ vacío.
+	\item El producto cartesiano de conjuntos no vacíos es no vacío.
 \end{enumerate}
 
 El axioma de elección también es equivalente al principio de buena ordenación.
@@ -236,29 +236,29 @@ Ahora sí, veamos un teorema que vamos a usar bastante.
 
 \begin{proof}
 	La idea detrás de esta demostración es particionar a los conjuntos $X$ e $Y$ en $A$, $B$ y $A'$, $B'$, respectivamente, de forma tal que
-	$$
+	\begin{equation*}
 		A \cap B = A' \cap B' = \emptyset,
-	$$
+	\end{equation*}
 	y
-	$$
+	\begin{equation*}
 		A \cup B = X \quad \text{y} \quad A' \cup B' = Y,
-	$$
+	\end{equation*}
 	y además
-	$$
+	\begin{equation*}
 		f(A) = A' \quad \text{y} \quad f(B) = B'.
-	$$
+	\end{equation*}
 	\begin{center}
 		\input{tikz/cardinalidad_demostracion.tex}
 	\end{center}
 
 	Esto se reduce a encontrar $A \subseteq X$ tal que
-	$$
+	\begin{equation*}
 		X - g(Y - f(A)) = A.
-	$$
+	\end{equation*}
 	Definimos $\Phi : \mathcal{P}(X) \to  \mathcal{P}(X)$ tal que $\Phi(A) = X - g(Y - f(A))$. Lo cual nos da la siguiente ecuación,
-	$$
+	\begin{equation*}
 		\Phi (A) = A.
-	$$
+	\end{equation*}
 	Veamos que $\Phi$ es un morfismo de orden con en $(\mathcal{P}(X), \subseteq )$. Sean $X_{0}$ y $X_{1}$ subconjuntos de $X$. Supongamos que $X_{0} \subseteq X_{1}$. Entonces,
 	\begin{align*}
 		X_{0}               & \subseteq X_{1}               \\
@@ -278,10 +278,10 @@ Cuando trabajamos con cardinales de conjuntos, para probar que dos conjuntos tie
 \end{definition}
 
 Por ejemplo, si $A$ es un conjunto numerable, entonces
-$$
+\begin{equation*}
 	\lvert A \rvert = \lvert \mathbb{N} \rvert.
-$$
-En general, como hay algunos cardinales que son más ocurrentes, los denotamos de una forma especial.
+\end{equation*}
+En general, como hay algunos cardinales que son más recurrentes, los denotamos de una forma especial.
 
 \begin{definition}
 	Denotamos
@@ -309,31 +309,30 @@ A continuación veremos una suerte de tricotomía pero para los cardinales. Para
 
 \begin{proof}
 	Consideramos el conjunto ordenado
-	$$
+	\begin{equation*}
 		\mathcal{A} = \{ (A, f_{A}) \mid f_{A}: A \subseteq X \hookrightarrow Y  \text{ es inyectiva}\}
-	$$
+	\end{equation*}
 	con el orden $(A, f_{A}) \preceq (B, f_{B})$ si $A \subseteq B$ y $f_{B}|_{A} = f_{A}$. Queremos utilizar el lema de Zorn, para eso necesitamos probar que toda cadena de $\mathcal{A}$ tiene cota superior.
 
 	Sea $\mathcal{C} = \{ (A_{i}, f_{A_{i}})\}_{i \in I}$ una cadena de $\mathcal{A}$. Consideremos el par $(A, f_{A})$ donde
-	$$
+	\begin{equation*}
 		A = \bigcup_{i \in I} A_{i}
-	$$
+	\end{equation*}
 	y
-	$$
+	\begin{equation*}
 		f_{A} : A \to Y \text{ donde } f_{A}(a) = f_{A_{i}}(a) \text{ si } a \in A_{i}.
-	$$
+	\end{equation*}
 	Es evidente que $(A_{i}, f_{A_{i}}) \preceq (A, f_{A})$ para todo $i \in I$.
 
 	Probemos que $f_{A}$ está bien definida ya que, para cualesquiera $A_{i}, A_{j}$ de $\mathcal{C}$ tales que $A_{i} \subseteq A_{j}$ (sin pérdida de generalidad), $f_{A_{j}|_{A_{i}} = f_{A_{i}}}$.
 
 	Veamos que $A \in \mathcal{A}$. Claramente $A \subseteq X$. Probemos que $f_{A}$ es inyectiva. Sean $a, a' \in A$ tales que $f_{A}(a) = f_{A}(a')$. Entonces, existe un $i \in I$ tal que $a, a' \in A_{i}$, ya que $\mathcal{C}$ es una cadena. Por lo tanto, obtenemos
-	$$
+	\begin{equation*}
 		f_{A_{i}}(a) =f_{A_{i}}(a'),
-	$$
+	\end{equation*}
 	y por inyectividad de $f_{A_{i}}$, $a = a'$. Lo cual prueba que $f_{A}$ es inyectiva. Entonces, como $A \in \mathcal{A}$, tenemos que $\mathcal{C}$ está acotado superiormente.
 
-	Como toda cadena de $\mathcal{A}$ está acotada superiormente, por el lema de Zorn, existe un elemento maximal. Sea $(B, f_{B})$ un elemento maximal. Necesariamente, $\operatorname{dom} f_{B} = X$ o
-	$\operatorname{Im} Y$, del caso contrario $(B, f_{B})$ no sería maximal. Si $\operatorname{dom} f_{B} = X$, ya conseguimos nuestra función inyectiva. Si $\operatorname{Im} Y$, entonces definimos $f: Y \hookrightarrow X$ donde $f(y) = f_{B}^{-1}(y)$.
+	Como toda cadena de $\mathcal{A}$ está acotada superiormente, por el lema de Zorn, existe un elemento maximal. Sea $(B, f_{B})$ un elemento maximal. Necesariamente, $\operatorname{dom} f_{B} = X$ o $\operatorname{Im} Y$, del caso contrario $(B, f_{B})$ no sería maximal. Si $\operatorname{dom} f_{B} = X$, ya conseguimos nuestra función inyectiva. Si $\operatorname{Im} Y$, entonces definimos $f: Y \hookrightarrow X$ donde $f(y) = f_{B}^{-1}(y)$.
 \end{proof}
 
 \begin{remark}
@@ -342,9 +341,9 @@ A continuación veremos una suerte de tricotomía pero para los cardinales. Para
 
 \begin{proposition}
 	Sea $A$ un conjunto \textit{infinito}. Entonces, existe una partición de $A$ tal que todas las partes son numerables. Es decir,
-	$$
+	\begin{equation*}
 		A = \bigsqcup_{i \in I} A_i,
-	$$
+	\end{equation*}
 	donde $A_i$ es numerable para todo $i \in I$.
 \end{proposition}
 
@@ -355,7 +354,7 @@ A continuación veremos una suerte de tricotomía pero para los cardinales. Para
 Volviendo a los cardinales.
 
 \begin{definition}
-	Sean $A$ y $B$ conjuntos disjuntos (por praciticidad). Si $a = \lvert A \rvert$ y $b = \lvert B \rvert$, entonces
+	Sean $A$ y $B$ conjuntos disjuntos (por practicidad). Si $a = \lvert A \rvert$ y $b = \lvert B \rvert$, entonces
 	\begin{itemize}
 		\item $a + b = |A \cup B|$.
 		\item $a \cdot b = |A \times B|$.

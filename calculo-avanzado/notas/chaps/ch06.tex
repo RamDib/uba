@@ -31,7 +31,7 @@ Previo a definir un espacio métrico separable, veamos qué es la topología de 
 \end{example}
 
 \begin{definition}
-	Deicmos que dos espacios métricos tienen \emph{topologías equivalentes} si inducen los mismos abiertos.
+	Decimos que dos espacios métricos tienen \emph{topologías equivalentes} si inducen los mismos abiertos.
 \end{definition}
 
 \begin{example}
@@ -121,7 +121,7 @@ A continuación enunciamos y demostramos el Teorema de Lindelöf.
 	$$
 		\mathcal{B} = \left\{ B\left(x, \frac{1}{n}\right) \right\}_{x \in D, n \in \mathbb{N}}
 	$$
-	es una base contable. Dado que $D \times \mathbb{N}$ es contable, $\mathcal{B}$ es contable, basta con ver que para todo $A \subseteq X$ abierto se cumple que para todo $a \in A$, existe $B \in \mathcal{B}$ tal que $a \in B \subseteq A$.
+	es una base contable. Dado que $D \times \mathbb{N}$ es contable, $\mathcal{B}$ es contable, basta con ver que para todo $A \subseteq X$ abierto y todo $a \in A$, existe $B \in \mathcal{B}$ tal que $a \in B \subseteq A$.
 
 	Sea $A \subseteq X$ un subconjunto abierto y sea $a \in A$. Por definición de abierto, existe una bola $B(a, r)$ con $r > 0$ tal que $B(a, r) \subseteq A$. Queremos encontrar $x \in D$ y $r' > 0$ tales que $a \in B(x, r') \subseteq B(a, r)$. Elegimos $r' = \frac{1}{n}$ tal que $\frac{1}{n} < \frac{r}{2}$. Consideramos ahora la bola $B(a, \frac{1}{n})$. Dado que $D$ es denso, existe $x \in D$ tal que $x \in B(a, \frac{1}{n})$.
 
@@ -156,7 +156,7 @@ A continuación enunciamos y demostramos el Teorema de Lindelöf.
 \end{corollary}
 
 \begin{proof}
-	Por el Teorema anterior, $(X, d)$ es separable si y sólo si existe una base contable de $X$. Basta con ver que $Y$ tiene una base contable. Consideramos $\mathcal{B}|_Y = \{ B_n \cap Y\}_{n \in \mathbb{N}}$. Esto claramente es una base contable de $Y$.
+	Por el Teorema anterior, $(X, d)$ es separable si y sólo si existe una base contable de $X$. Basta con ver que $Y$ tiene una base contable. Consideramos $\mathcal{B}|_Y = \{ B_n \cap Y\}_{n \in \mathbb{N}}$. Esto define una base contable de $Y$.
 \end{proof}
 
 \begin{proposition}
@@ -173,7 +173,7 @@ A continuación enunciamos y demostramos el Teorema de Lindelöf.
 
 	Como $\left| N \right| \leq \aleph_0$ y $\left| I \right| \leq \left| N \right| $, obtenemos que $\left| I \right| \leq \aleph_0$, es decir, $I$ es contable.
 
-	($\Leftarrow$) Sea $\mathcal{F}_n$ una familia disjunta de bolas abiertas de radio $\frac{1}{n}$ maximal. Es decir, toda bola de radio $\frac{1}{n}$ insterseca con algún elemento de $\mathcal{F}_n$. Por hipótesis, $\mathcal{F}_n$ es contable. Definimos $D_n$ como el conjunto de centros de las bolas de $\mathcal{F}_n$.
+	($\Leftarrow$) Sea $\mathcal{F}_n$ una familia disjunta de bolas abiertas de radio $\frac{1}{n}$ maximal. Es decir, toda bola de radio $\frac{1}{n}$ interseca con algún elemento de $\mathcal{F}_n$. Por hipótesis, $\mathcal{F}_n$ es contable. Definimos $D_n$ como el conjunto de centros de las bolas de $\mathcal{F}_n$.
 
 	Sea $D = \bigcup_{n \in \mathbb{N}} D_n$. Veamos que $D$ es denso en $X$. Sea $x \in X$, $r > 0$. Basta con ver que $B(x, r) \cap D \neq \emptyset$. Sea $n \in \mathbb{N}$ tal que $\frac{1}{n} < \frac{r}{2}$.
 

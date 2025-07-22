@@ -17,8 +17,8 @@ Recordemos también algunas de las propiedades que podía tener una relación.
 	\begin{itemize}
 		\item \textbf{Reflexiva} si $a \mathcal{R} a$, para todo $a \in A$.
 		\item \textbf{Simétrica} si $a \mathcal{R} b$ implica $b \mathcal{R} a$, para todo $a, b \in A$.
-		\item \textbf{Antisimétrica} si $a \mathcal{R} b$ y $b \mathcal{R} a$ implica $a = b$, para todo $a, b \in \mathcal{R}$.
-		\item \textbf{Transitiva} si $a \mathcal{R} b$ y $b \mathcal{R} c$ implica $a \mathcal{R} c$, para todo $a, b, c \in \mathcal{R}$.
+		\item \textbf{Antisimétrica} si $a \mathcal{R} b$ y $b \mathcal{R} a$ implica $a = b$, para todo $a, b \in A$.
+		\item \textbf{Transitiva} si $a \mathcal{R} b$ y $b \mathcal{R} c$ implica $a \mathcal{R} c$, para todo $a, b, c \in A$.
 	\end{itemize}
 \end{definition}
 
@@ -52,7 +52,7 @@ Además de \textit{conjunto ordenado}, también podemos decir \textit{conjunto p
 \begin{definition}
 	Sea $(A, \preceq)$ un conjunto ordenado tal que, para cualesquiera $a, b \in A$,
 	\begin{equation*}
-		a \preceq b \quad\text{ó}\quad b \preceq a.
+		a \preceq b \quad\text{o}\quad b \preceq a.
 	\end{equation*}
 	Entonces, decimos que $(A, \preceq)$ es un \emph{conjunto totalmente ordenado} (o una \emph{cadena}).
 \end{definition}
@@ -105,7 +105,7 @@ Utilizamos la notación $\sup B$ para el supremo de $B$ e $\inf B$ para el ínfi
 \begin{example}
 	Consideremos los siguientes conjuntos:
 	\begin{itemize}
-		\item $\sup [0, 1] = \max [0, 1] 1$ e $\inf [0, 1] = \min [0, 1] = 0$.
+		\item $\sup [0, 1] = \max [0, 1] = 1$ e $\inf [0, 1] = \min [0, 1] = 0$.
 		\item $\sup (0, 1) = 1$ e $\inf (0, 1) = 0$.
 		\item $\sup\{ \frac{1}{n} \mid n \in \mathbb{N} \} = 1$ e $\inf\{ \frac{1}{n} \mid n \in \mathbb{N} \} = 0$.
 	\end{itemize}
@@ -130,10 +130,10 @@ Vamos a definir morfismos e isomorfismos de orden que más adelante los vamos a 
 Por lo general, no hace falta aclarar qué orden estamos usando; suele estar implícito.
 
 \begin{example}
-	La función identidad $\mathrm{Id} : (mathbb{N}, \mid) \to (\mathbb{N}, \leq)$ es creciente.
+	La función identidad $\mathrm{Id} : (\mathbb{N}, \mid) \to (\mathbb{N}, \leq)$ es creciente.
 \end{example}
 
-Y si la inversa es cretiente, obtenemos la siguiente definición.
+Y si la inversa es creciente, obtenemos la siguiente definición.
 
 \begin{definition}
 	Sean $(A, \preceq_A)$ y $(B, \preceq_B)$ conjuntos ordenados. Decimos que una función $f : (A, \preceq_A) \to (B, \preceq_B)$ es un \emph{isomorfismo de orden} si es biyectiva y tanto $f$ como $f^{-1}$ son crecientes.
@@ -142,11 +142,3 @@ Y si la inversa es cretiente, obtenemos la siguiente definición.
 \begin{example}
 	La biyección $f : \mathbb{N} \to 2\mathbb{N}$ tal que $f(n) = 2n$ es un isomorfismo de orden.
 \end{example}
-
-
-
-
-
-
-
-

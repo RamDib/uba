@@ -3,14 +3,14 @@
 \section{Espacios métricos completos}
 
 \begin{definition}
-	Un espacio métrico $(X, d)$ se dice \emph{completo} si toda ucesión de Cauchy tiene límite en $X$.
+	Un espacio métrico $(X, d)$ se dice \emph{completo} si toda sucesión de Cauchy tiene límite en $X$.
 \end{definition}
 
 \begin{example}
 	Sea $(X, \delta)$ un espacio métrico con la métrica discreta. Entonces, $(X, \delta)$ es completo.
 \end{example}
 
-\begin{proof}[Solución]
+\begin{proof}
 	Toda sucesión de Cauchy en $(X, \delta)$ es eventualmente constante. Por lo tanto, converge a un elemento de $X$.
 \end{proof}
 
@@ -31,7 +31,7 @@
 \end{theorem}
 
 \begin{proof}
-	\framebox{1. $\Rightarrow$ 2.} Sea $X$ completo y sea $(C_n)_{n \in \mathbb{N}}$ una familia de cerrados encajados con diámetro tendiendo a $0$. Tomamos una sucesión $(x_n)_{n \in \mathbb{N}}$ tal que $x_n \in C_n$. Veamos que es de Cauchy. Sean $n, m \in \mathbb{N}$. Entonces,
+	(1. $\Rightarrow$ 2.) Sea $X$ completo y sea $(C_n)_{n \in \mathbb{N}}$ una familia de cerrados encajados con diámetro tendiendo a $0$. Tomamos una sucesión $(x_n)_{n \in \mathbb{N}}$ tal que $x_n \in C_n$. Veamos que es de Cauchy. Sean $n, m \in \mathbb{N}$. Entonces,
 	\begin{equation*}
 		d(x_n, x_m) \leq \diam C_n \longrightarrow 0.
 	\end{equation*}
@@ -39,7 +39,7 @@
 
 	Como los intervalos son encajados, $(x_n)_{n \geq N}$ está en $C_N$, y como $C_N$ es cerrado, $x_0 \in C_N$, para todo $N \in \mathbb{N}$. O sea, $x \in \bigcap_{n \in \mathbb{N}} C_n$.
 
-	\framebox{1. $\Rightarrow$ 2.} Supongamos 2. y sea $(x_n)_{n \in \mathbb{N}}$ una sucesión de Cauchy. Tomamos $C_m = \overline{\left\{ x_n \right\}}_{n \geq m}$. Todo $C_n$ es no vacío ya que $x_n \in C_n$ y claramente el diámetro tiende a $0$. Por lo tanto, existe $x \in \overline{\left\{ x_n \right\}}_{n \geq m}$. Como $d(x, x_n) \leq \diam C_n \longrightarrow 0$, $x_n \longrightarrow x$.
+	(2. $\Rightarrow$ 1.) Supongamos 2. y sea $(x_n)_{n \in \mathbb{N}}$ una sucesión de Cauchy. Tomamos $C_m = \overline{\left\{ x_n \right\}}_{n \geq m}$. Todo $C_n$ es no vacío ya que $x_n \in C_n$ y claramente el diámetro tiende a $0$. Por lo tanto, existe $x \in \overline{\left\{ x_n \right\}}_{n \geq m}$. Como $d(x, x_n) \leq \diam C_n \longrightarrow 0$, $x_n \longrightarrow x$.
 \end{proof}
 
 \section{Completitud de espacios de funciones}
@@ -61,7 +61,7 @@ Algo que nos va a servir más adelante es probar la completitud del espacio de f
 
 	Ya tenemos el candidato de límite, nos falta ver que $d_{\infty}(f, f_n) \longrightarrow 0$ y $f \in B(X, Y)$.
 
-	Como $(f_n)_{n \in \mathbb{N}}$ es de Cauchy en $B(X, Y)$, entonces para todo $\varepsilon > 0$, existe $N \in \mathbb{N}$ tal que $d_{\infty} (f_m, f_n) \leq \varepsilon$ para todo $m, n \geq \mathbb{N}$. Tomamos límite en $m$ y obtenemos que
+	Como $(f_n)_{n \in \mathbb{N}}$ es de Cauchy en $B(X, Y)$, entonces para todo $\varepsilon > 0$, existe $N \in \mathbb{N}$ tal que $d_{\infty} (f_m, f_n) \leq \varepsilon$ para todo $m, n \geq N$. Tomamos límite en $m$ y obtenemos que
 	\begin{equation*}
 		d_{\infty} (f, f_n) \leq \varepsilon, \text{ para todo } n \geq N.
 	\end{equation*}
@@ -82,7 +82,7 @@ Primero una definición.
 \begin{definition}
 	Sea $X$ e $Y$ un espacios métricos. Sea $f : X \to Y$. Decimos que $f$ es una \emph{contracción} si existe $\lambda \in (0, 1)$ tal que
 	\begin{equation*}
-		d_Y(f(x), f(x')) \leq \lambda d_X(x, y), \text{ para todo }x, x' \in X.
+		d_Y(f(x), f(x')) \leq \lambda d_X(x, x'), \text{ para todo }x, x' \in X.
 	\end{equation*}
 \end{definition}
 
@@ -153,7 +153,7 @@ Las propiedades topológicas son invariantes por homeomorfismos. Por ejemplo:
 	El intervalo abierto $(0, 1)$ es topológicamente completo ya que la función $f : \mathbb{R} \to (0, 1)$ dada por $t \mapsto \frac{1}{1 + e^t}$ es un homeomorfismo.
 \end{example}
 
-Más en general, tenemos la siguiente proposición.
+En general, se tiene el siguiente resultado:
 
 \begin{proposition}
 	Sea $X$ un espacio métrico completo. Sea $U \subseteq X$ abierto. Entonces, $U$ es topológicamente completo.
@@ -200,7 +200,7 @@ Definimos previamente algunos conceptos.
 	\begin{equation*}
 		\overline{B}_1 \supseteq \overline{B}_2 \supseteq \dots \text{ y } \overline{B}_n \subseteq V_n \cap \overline{B}_{n-1}, \forall n \in \mathbb{N}.
 	\end{equation*}
-	Como el diámetro de las bolas cerradas tiende a cero, tiene un punto de intersección, ya que $X$ es topolígicamente completo. Por ende, $\bigcap_{n \in \mathbb{N}} V_n$ es no vacío.
+	Como el diámetro de las bolas cerradas tiende a cero, tiene un punto de intersección, ya que $X$ es topológicamente completo. Por ende, $\bigcap_{n \in \mathbb{N}} V_n$ es no vacío.
 \end{proof}
 
 \begin{theorem}

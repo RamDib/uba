@@ -73,17 +73,17 @@ Cuando decimos que una función $f$ es continua, nos referimos a que $f$ es cont
 \end{remark}
 
 \begin{proposition}
-	Sean $f, g : X \to Y$ continuas tales que $f |_A = g|_A$ con $A \subseteq X$ denso. Entonces, $g = g'$ en $X$.
+	Sean $f, g : X \to Y$ continuas tales que $f |_A = g|_A$ con $A \subseteq X$ denso. Entonces, $f = g$ en $X$.
 \end{proposition}
 
 \begin{proof}
-	Sea $\Phi (x) = d(f(x), g(x))$. Por composición de funciones continuas, $\Phi$ es continua. Como $A \subseteq \Phi^{-1}(0)$ y $\left\{ 0 \right\}$ es cerrado, entonces $d(f(x), g(x)) = 0$ para todo $x \in \overline{D}$. Es decir, $f(x) = g(x)$ para todo $x \in X$.
+	Sea $\Phi(x) = d(f(x), g(x))$. Como $f|_A = g|_A$, se cumple que $\Phi(x) = 0$ para todo $x \in A$. Como $A$ es denso y $\Phi$ es continua, entonces $\Phi(x) = 0$ para todo $x \in \overline{A} = X$. Por lo tanto, $f(x) = g(x)$ para todo $x \in X$.
 \end{proof}
 
 
 \section{Homeomorfismos}
 
-Los homeomorfismo de cierta forma ``preservan'' la topología de un espacio.
+Los homeomorfismos de cierta forma ``preservan'' la topología de un espacio.
 
 \begin{definition}
 	Decimos que $f : X \to Y$ es un \emph{homeomorfismo} si
@@ -109,8 +109,8 @@ También, definimos otros términos.
 	Son equivalentes
 	\begin{itemize}
 		\item homeomorfismo.
-		\item continua y abierta.
-		\item continua y cerrada.
+		\item biyectiva, continua y abierta.
+		\item biyectiva, continua y cerrada.
 	\end{itemize}
 \end{remark}
 

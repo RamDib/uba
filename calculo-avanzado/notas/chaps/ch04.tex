@@ -1,6 +1,6 @@
 \chapter{Nociones básicas}
 
-Van a haber casi infinitas definiciones, así que preparate.
+Va haber casi infinitas definiciones, así que preparate.
 
 \section{Definición y ejemplos}
 
@@ -49,12 +49,12 @@ Veamos algunos ejemplos de espacios métricos.
 			      \item La norma $L^1$: $\|f\|_1 = \int_a^b |f(x)| dx$. La métrica inducida es $d(f, g) = \int_a^b |f(x) - g(x)| dx$.
 			      \item La norma $L^2$: $\|f\|_2 = \left( \int_a^b |f(x)|^2 dx \right)^{1/2}$. La métrica inducida es $d(f, g) = \left( \int_a^b |f(x) - g(x)|^2 dx \right)^{1/2}$.
 		      \end{itemize}
-		\item El espacio de secuencias $\ell^p$ para $1 \le p < \infty$: $l^p = \{ (x_n)_{n=1}^\infty \subset \mathbb{R} : \sum_{n=1}^\infty |x_n|^p < \infty \}$. La norma está definida por $\|x\|_p = \left( \sum_{n=1}^\infty |x_n|^p \right)^{1/p}$. La métrica es $d(x, y) = \|x - y\|_p$.
+		\item El espacio de secuencias $\ell^p$ para $1 \le p < \infty$: $\ell^p = \{ (x_n)_{n=1}^\infty \subset \mathbb{R} : \sum_{n=1}^\infty |x_n|^p < \infty \}$. La norma está definida por $\|x\|_p = \left( \sum_{n=1}^\infty |x_n|^p \right)^{1/p}$. La métrica es $d(x, y) = \|x - y\|_p$.
 		\item El espacio de secuencias $\ell^\infty$: $\ell^\infty = \{ (x_n)_{n=1}^\infty \subset \mathbb{R} : \sup_{n \in \mathbb{N}} |x_n| < \infty \}$. La norma es $\|x\|_\infty = \sup_{n \in \mathbb{N}} |x_n|$. La métrica es $d(x, y) = \|x - y\|_\infty$.
 	\end{enumerate}
 \end{example}
 
-De los ejemplos que dí, los más importantes de saber son el espacio de funciones continuas con la norma del supremo y el espacio de secuencias con la norma infinito.
+De los ejemplos que di, los más importantes de saber son el espacio de funciones continuas con la norma del supremo y el espacio de secuencias con la norma infinito.
 
 
 \section{Bolas, abiertos y cerrados}
@@ -79,7 +79,7 @@ Voy a ir agregando diagramas que ilustren más o menos la idea.
 	\input{tikz/em_bolas.tex}
 \end{center}
 
-¡Ojo! Si bien le decimos ``bola'', el conjunto puede tener una forma totalmente distinta. Por ejemplo, en $\mathbb{R}^2$, pensá qué pasa con las metricas $d_1$, $d_2$ y $d^{\infty}$.
+¡Ojo! Si bien le decimos ``bola'', el conjunto puede tener una forma totalmente distinta. Por ejemplo, en $\mathbb{R}^2$, pensá qué pasa con las métricas $d_1$, $d_2$ y $d^{\infty}$.
 
 \begin{example}
 	Consideremos $C([a, b], \mathbb{R})$ con la norma del supremo. ¿Cómo se ve la bola $B(0, 1)$?
@@ -268,7 +268,7 @@ A menudo nos va a servir la siguiente proposición.
 \begin{proof}
 	($\Rightarrow$) Supongamos que $d(x, A) = 0$. Consideramos una bola $B(x, r)$ con $r > 0$. Como $d(x, A) = 0$, existe un $a \in A$ tal que $d(x, a) < r$. Por lo tanto, $B(x, r) \cap A \neq \varnothing$. Por lo tanto, $x \in \overline{A}$.
 
-	($\Leftarrow$) Supongamos que $x \in \overline{A}$. Entonces, para toda bola $B(x, \frac{1}{n})$ con $n \in \mathbb{N}$, existe $a_n \in A$ tal que $a \in \frac{1}{n}$. Por lo tanto, consideramos a $d(a_n, x) \longrightarrow 0$. Entonces, $d(x, A) =0$.
+	($\Leftarrow$) Supongamos que $x \in \overline{A}$. Entonces, para toda bola $B(x, \frac{1}{n})$ con $n \in \mathbb{N}$, existe $a_n \in A$ tal que $d(x, a_n) < \frac{1}{n}$. Por lo tanto, consideramos a $d(a_n, x) \longrightarrow 0$. Entonces, $d(x, A) = 0$.
 \end{proof}
 
 

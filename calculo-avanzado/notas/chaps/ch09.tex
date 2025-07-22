@@ -27,7 +27,7 @@ Damos equivalencias de compacidad.
 \end{theorem}
 
 \begin{proof}
-	(1 $\Rightarrow$ 2) Sea $X$ compacto. Supongamos que existe una sucesión $(x_n)_{n \in \mathbb{N}}$ que no tiene ninguna subsucesión convergente. Por lo tanto, no tiene ningún punto de acumulación. Entonces, para cada $x \in X$, existe un $\varepsilon_x > 0$ tal que $B(x, \varepsilon_x)$ contiene únicamente finitos términos de $(x_n)_{n \in \mathbb{N}}$. Con esto, armamos el cubrimiento abierto $\mathcal{U} = \left\{ B(x, \varepsilon_x) \right\}_{x \in X}$. Por compacidad, existe un subcubrimiento finito. Esto es absurdo, ya que necesariamente una de las bolas tiene infinitos términos de la sucesión, pero como sabemos las bolas tienen finitos terminos de la sucesión.
+	(1 $\Rightarrow$ 2) Sea $X$ compacto. Supongamos que existe una sucesión $(x_n)_{n \in \mathbb{N}}$ que no tiene ninguna subsucesión convergente. Por lo tanto, no tiene ningún punto de acumulación. Entonces, para cada $x \in X$, existe un $\varepsilon_x > 0$ tal que $B(x, \varepsilon_x)$ contiene únicamente finitos términos de $(x_n)_{n \in \mathbb{N}}$. Con esto, armamos el cubrimiento abierto $\mathcal{U} = \left\{ B(x, \varepsilon_x) \right\}_{x \in X}$. Por compacidad, existe un subcubrimiento finito. Esto es una contradicción, ya que el subcubrimiento finito cubriría a todos los términos de la sucesión, forzando a alguna de las bolas a contener infinitos términos, contradiciendo la elección de los $\varepsilon_x$.
 
 	(2 $\Rightarrow$ 3) Sea $X$ tal que toda sucesión admite una subsucesión convergente. Para ver la completitud, basta con tomar una sucesión de Cauchy y tomar una subsucesión convergente.
 	Veamos la total acotación. Supongamos que $X$ no es totalmente acotado. Entonces, existe $\varepsilon_0 > 0$ tal que no hay un cubrimiento por finitas bolas de radio $\varepsilon$. Construimos una sucesión que no admite una subsucesión convergente. Sea $x_1 \in X$. Sea $x_2 \in X \setminus B(x_1, \varepsilon_0)$. Seguimos inductivamente y obtenemos que $x_n \in X \setminus \left( \bigcup_{i < n} B(x_i, \varepsilon_0)\right)$. Nuestra sucesión cumple que para $i \neq j$, $d(x_i, x_j) \geq \varepsilon_0$. Por hipótesis, $(x_n)_{n \in \mathbb{N}}$ tiene una subsucesión convergente $(x_{n_k})_{k \in \mathbb{N}}$. Sin embargo, $(x_{n_k})$ no es de Cauchy ya que $d(x_{n_{i}}, x_{n_j}) \geq \varepsilon_0$, por ende no es convergente.
@@ -53,6 +53,24 @@ Damos equivalencias de compacidad.
 	Sea $U_i$ tal que $x \in U_i$. Dado que $U_i$ es abierto, existe un $r > 0$ tal que $B(x, r) \subseteq U_i$. Por lo tanto, existe un $N \in \mathbb{N}$ tal que $B_{N} \subseteq B(x, r) \subseteq U_i$, lo cual es absurdo por construcción de $(B_n)$.
 \end{proof}
 
+Si estamos tratando en $\mathbb{R}^n$, podemos dar una caracterización de compacidad.
+
+\begin{theorem}[Heine–-Borel]
+	Sea $A \subseteq \mathbb{R}^n$. Entonces, $A$ es compacto si y sólo si es cerrado y acotado.
+\end{theorem}
+
+\begin{proof}
+	($\Rightarrow$) Supongamos que $A$ es compacto, es decir completo y totalmente acotado. Veamos que $A$ es cerrado y acotado. Como $A$ es completo, entonces es cerrado y como es totalmente acotado, en particular es acotado.
+
+	($\Leftarrow$) Supongamos que $A$ es cerrado y acotado. Veamos que $A$ es compacto. Basta con ver que toda sucesión de puntos de $A$ admite una subsucesión convergente.
+
+	Sea $(x_k)_{k in \mathbb{N}}$ una sucesión de puntos de $A$. Como $A$ es acotado, existe un $R > 0$ tal que $B(0, R)$ contiene a todos los puntos de la sucesión. Entonces, por el Teorema de Bolzano–-Weierstrass, existe una subsucesión convergente $(x_{n_k})_{k \in \mathbb{N}}$ que converge a un punto $x \in B(0, R)$. Como $A$ es cerrado, entonces $x \in A$. Por lo tanto, $A$ es compacto.
+\end{proof}
+
+\begin{remark}
+	Este teorema no es válido en espacios métricos generales. Por ejemplo, el conjunto $\mathbb{Q} \cap [0,1]$ es cerrado y acotado en $\mathbb{Q}$, pero no es compacto, ya que $\mathbb{Q}$ no es completo.
+\end{remark}
+
 \section{Propiedades de compactos}
 
 Veamos algunas propiedades de los compactos.
@@ -74,7 +92,7 @@ Veamos algunas propiedades de los compactos.
 	\begin{equation*}
 		\exists \varepsilon > 0 \mid \forall \delta > 0, \exists x, y \mid d(x, y) < \delta \text{ pero } d(f(x), f(y)) \geq \varepsilon.
 	\end{equation*}
-	Tomamos sucesiones $(x_n)_{n \in \mathbb{N}}$ e $(y_n)\mathbb{n \in \mathbb{N}}$ tales que existe $\varepsilon > 0$ tal que
+	Tomamos sucesiones $(x_n)_{n \in \mathbb{N}}$ e $(y_n)_{n \in \mathbb{\mathbb{N}}}$ tales que existe $\varepsilon > 0$ tal que
 	\begin{equation*}
 		d(x_n, y_n) \to 0 \text{ pero } d(f(x_n), f(y_n)) \geq \varepsilon.
 	\end{equation*}
@@ -82,7 +100,16 @@ Veamos algunas propiedades de los compactos.
 	Por compacidad de $X$, puedo tomar dos subsucesiones convergentes de $(x_n)_{n \in \mathbb{N}}$ e $(y_n)\mathbb{n \in \mathbb{N}}$ que tienden a $x_0$ e $y_0$, respectivamente. Entonces, $d(x_0, y_0) = \lim_{k \to \infty} d(x_{n_k}, y_{n_k}) = 0$, entonces $x_0 = y_0$. Sin embargo, esto implica que $d(f(x_0), f(y_0)) = 0$, lo cual es absurdo ya que $d(f(x_{n_k}), f(y_{n_k})) \to d(f(x_0), f(y_0))$ pero $d(f(x_{n_k}), f(y_{n_k})) \geq \varepsilon$.
 \end{proof}
 
-\begin{center}
-	\color{red} TEOREMA DE DINI
-\end{center}
+Enunciamos el Teorema de Dini, que de cierta manera nos da una forma de probar convergencia de funciones continuas en espacios compactos dada convergencia puntual más algunas hipótesis adicionales.
 
+\begin{theorem}[Dini]
+	Sea $X$ compacto y sea $(f_n)_{n \in \mathbb{N}}$ una sucesión de funciones continuas $f_n : X \to \mathbb{R}$ tal que $f_n \to f$ puntualmente y $(f_n)_{n \in \mathbb{N}}$ es monótona. Entonces $(f_n)_{n \in \mathbb{N}}$ converge uniformemente a $f$.
+\end{theorem}
+
+\begin{proof}
+	Sin pérdida de generalidad, supongamos que $(f_n)_{n \in \mathbb{N}}$ es monótona creciente. Sea $\varepsilon > 0$. Definimos $g_n = f - f_n$ y consideramos $A_n = g_n^{-1}((-\infty, \varepsilon))$. Como $f_n \to f$ puntualmente, entonces para todo $x \in X$, existe un $n \in \mathbb{N}$ tal que $g_n(x) < \varepsilon$. Por lo tanto, $X = \bigcup_{n \in \mathbb{N}} A_n$.
+	
+	Notemos también que $A_n$ es abierto, ya que $g_n$ es continua. Por lo tanto, $\left\{ A_n \right\}_{n \in \mathbb{N}}$ es un cubrimiento abierto de $X$. Como $X$ es compacto, existe un subcubrimiento finito $\left\{ A_{n_1}, A_{n_2}, \ldots, A_{n_k} \right\}$ tal que $X = A_{n_1} \cup A_{n_2} \cup \ldots \cup A_{n_k}$.
+
+	Como $(f_n)_{n \in \mathbb{N}}$ es monótona creciente, entonces $(g_n)_{n \in \mathbb{N}}$ es monótona decreciente. Por lo tanto, $A_n \subseteq A_{n+1}$ para todo $n \in \mathbb{N}$. Entonces, $X = A_{n_k}$. Se sigue que, para todo $x \in X$, existe un $n \in \mathbb{N}$ tal que $g_n(x) < \varepsilon$. Es decir, $|f(x) - f_n(x)| < \varepsilon$ para todo $x \in X$ y para todo $n \geq n_k$. Por lo tanto, $(f_n)_{n \in \mathbb{N}}$ converge uniformemente a $f$.
+\end{proof}

@@ -1,6 +1,6 @@
 \chapter{Reticulados}
 
-Otro capítulo corto. Lo único que vamos a ver es reticulados y el teorema del punto fijo.
+Otro capítulo corto. Lo único que vamos a ver es reticulados y el Teorema del Punto Fijo.
 
 \section{Definición y ejemplos}
 
@@ -38,7 +38,7 @@ Otro capítulo corto. Lo único que vamos a ver es reticulados y el teorema del 
 \begin{example}
 	El conjunto ordenado $(\mathbb{N},\mid)$ es un reticulado. En particular,
 	\begin{equation*}
-		\sup \{ a, b \} = \mathrm{mcd}\{ a, b \} \quad \text{e} \quad \inf \{ a, b \} = \mathrm{gcd}\{ a, b \}.
+		\sup \{ a, b \} = \operatorname{mcd}( a, b ) \quad \text{e} \quad \inf \{ a, b \} = \operatorname{gcd}( a, b ).
 	\end{equation*}
 \end{example}
 
@@ -49,7 +49,7 @@ Otro capítulo corto. Lo único que vamos a ver es reticulados y el teorema del 
 \end{definition}
 
 \begin{example}
-	El conjunto ordenado $(\mathcal{P}(X), \preceq)$ es un reticulado completo.
+	El conjunto ordenado $(\mathcal{P}(X), \subseteq)$ es un reticulado completo.
 \end{example}
 
 \begin{proof}[Solución]
@@ -72,26 +72,24 @@ Otro capítulo corto. Lo único que vamos a ver es reticulados y el teorema del 
 
 \section{Teorema del Punto Fijo}
 
-Finalmente, enunciamos y probamos el teorema del punto fijo.
+Finalmente, enunciamos y probamos el Teorema del Punto Fijo.
 
-\begin{theorem}
-	Sea $(\mathcal{O}, \preceq)$ un reticulado \textit{completo} y sea $f: \mathcal{O} \to  \mathcal{O}$ \textit{creciente}. Entonces, existe $x \in \mathcal{O}$ tal que $f(x)= x$.
+\begin{theorem}[Punto Fijo]
+	Sea $(\mathcal{O}, \preceq)$ un reticulado completo y sea $f: \mathcal{O} \to  \mathcal{O}$ creciente. Entonces, existe $x \in \mathcal{O}$ tal que $f(x)= x$.
 \end{theorem}
 
 \begin{proof}
-	Sea $A = \{ x \in \mathcal{O} \mid x \preceq f(x) \}$. Como $\mathcal{O}$ es un reticulado completo, considero $s = \sup A$. Recordemos que, para todo $a \in A$, $a \preceq s$. Y como $f$ es creciente, para todo $a \in A$,
-	$$
+	Sea $A = \{ x \in \mathcal{O} \mid x \preceq f(x) \}$. Como $\mathcal{O}$ es un reticulado completo, sea $s = \sup A$. Recordemos que, para todo $a \in A$, $a \preceq s$. Y como $f$ es creciente, para todo $a \in A$,
+	\begin{equation*}
 		f(a) \preceq f(s).
-	$$
+	\end{equation*}
 	Por definición de $A$, $a \preceq f(a)$ y a su vez $f(a) \preceq f(s)$, entonces, para todo $a \in A$,
-	$$
+	\begin{equation*}
 		a \preceq f(s).
-	$$
+	\end{equation*}
 	O sea, $f(s)$ es cota superior de $A$. Por definición del supremo, $s \preceq f(s)$ y entonces $s \in A$. A la desigualdad $s \preceq f(s)$ le aplicamos $f$ y obtenemos
-	$$
+	\begin{equation*}
 		f(s) \preceq f(f(s)).
-	$$
+	\end{equation*}
 	Por lo tanto, $f(s) \in A$; entonces tenemos $f(s) \preceq s$ y $s \preceq f(s)$, lo cual implica que $f(s) = s$.
 \end{proof}
-
-
