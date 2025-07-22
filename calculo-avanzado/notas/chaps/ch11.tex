@@ -169,7 +169,7 @@ Un resultado no tan sorprendente.
 	\begin{equation*}
 		d_K(x, x') < \delta_x \implies d_Y(f(x), f(x')) < \varepsilon, \quad \forall x' \in K, f \in \mathcal{F}.
 	\end{equation*}
-	Dado que $K$ es compacto y $\{B(x, \delta_x)\}_{x \in K}$ forma un cubrimiento abierto, tomamos un subcubrimiento finito $\{B(x_n, \delta_{x_n})\}_{1 \leq n \leq N}$ y consideramos $\delta = \min_{1 \leq n \leq N} \delta_{x_n}$. Entonces, para todo $x \in K$,
+	Dado que $K$ es compacto y $\{B(x, \delta_x)\}_{x \in K}$ forma un cubrimiento abierto, tomamos un subcubrimiento finito $\{B(x_n, \delta_{x_n})\}_{1 \leq n \leq N}$ y consideramos $\delta = \min_{1 \leq n \leq N} \delta_{x_n}$ que sirve uniformemente para todo $x \in K$. Entonces, para todo $x \in K$,
 	\begin{equation*}
 		d_K(x, x') < \delta_x \implies d_Y(f(x), f(x')) < \varepsilon, \quad \forall x' \in K, f \in \mathcal{F}.
 	\end{equation*}
@@ -235,7 +235,7 @@ Recordemos las definiciones de convergencia puntual y uniforme.
 Y convergencia uniforme.
 
 \begin{definition}
-	Sea $(f_n)_{n \in \mathbb{R}}$ una sucesión de funciones de $\mathbb{R}$ en $\mathbb{R}$ y $f : \mathbb{R} \to \mathbb{R}$. Decimos que converge \emph{puntualmente} a $f$ si para todo $\varepsilon > 0$, existe $N \in \mathbb{N}$ tal que
+	Sea $(f_n)_{n \in \mathbb{R}}$ una sucesión de funciones de $\mathbb{R}$ en $\mathbb{R}$ y $f : \mathbb{R} \to \mathbb{R}$. Decimos que converge \emph{uniformemente} a $f$ si para todo $\varepsilon > 0$, existe $N \in \mathbb{N}$ tal que
 	\begin{equation*}
 		\left\lvert f(x) - f_n(x) \right\rvert < \varepsilon, \quad \text{para todo }n \geq N, x \in \mathbb{R}.
 	\end{equation*}

@@ -92,15 +92,15 @@ La proposición de a continuación nos va a ser más útil adelante.
 	Ahora bien, puede pasar que $V_A \cap V_B \neq \varnothing$. Pero como $A \cap B = \varnothing$, tenemos que $(V_A \cap V_B) \cap X = \varnothing$.
 
 	Queremos modificar $V_A$ y $V_B$ para que sean disjuntos en $Y$ sin cambiar su intersección con $X$. Definimos
-	\[
+	\begin{equation*}
 		\widetilde{V}_A := V_A \setminus \overline{V_B}, \qquad \widetilde{V}_B := V_B \setminus \overline{V_A}.
-	\]
+	\end{equation*}
 	Ambos conjuntos son abiertos como diferencia de abierto menos cerrado.
 
 	Veamos que siguen cortando a $X$ donde queremos. Como $A = V_A \cap X$ y $A \cap \overline{V_B} = \varnothing$, se sigue que
-	\[
+	\begin{equation*}
 		\widetilde{V}_A \cap X = (V_A \setminus \overline{V_B}) \cap X = V_A \cap X = A.
-	\]
+	\end{equation*}
 	Análogamente, $\widetilde{V}_B \cap X = B$.
 
 	Finalmente, veamos que $\widetilde{V}_A$ y $\widetilde{V}_B$ son disjuntos. Si $x \in \widetilde{V}_A \cap \widetilde{V}_B$, entonces $x \in V_A$ y $x \notin \overline{V_B}$, pero también $x \in V_B$ y $x \notin \overline{V_A}$, lo cual es absurdo ya que $x \in V_B$ implica $x \in \overline{V_B}$ y análogamente para $V_A$.

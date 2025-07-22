@@ -26,7 +26,7 @@ No tan complicado de demostrar:
 \end{remark}
 
 \begin{proposition}
-	La suma y el producto por escalar son continuas.
+	La suma y el producto por escalar son continuos.
 \end{proposition}
 
 \begin{proof}
@@ -62,7 +62,7 @@ Veamos algunos ejemplos de espacios normados:
 
 \section{Funciones lineales}
 
-La definción es la misma que en Álgebra Lineal.
+La definición es la misma que en Álgebra Lineal.
 
 \begin{definition}
 	Sean $E$ y $F$ espacios normados sobre $K$. Una función $f : E \to F$ es \emph{lineal} si
@@ -75,7 +75,7 @@ La definción es la misma que en Álgebra Lineal.
 Principalmente nos van a interesar las funciones continuas.
 
 \begin{definition}
-	Denotamos con $\mathcal{L}(E, F)$ al espacio (vectorial) de funciones \emph{lineales continuas} de $E$ a $F$.
+	Denotamos por $\mathcal{L}(E, F)$ al espacio (vectorial) de funciones \emph{lineales continuas} de $E$ a $F$.
 \end{definition}
 
 Probamos varias equivalencias útiles de la continuidad.
@@ -130,7 +130,7 @@ Y esto nos lleva a considerar el espacio $(\mathcal{L}, \left\lVert \cdot \right
 	\end{equation*}
 \end{remark}
 
-La siguiente proposición relaciona en núcleo de un funcional lineal continuo con su continuidad.
+La siguiente proposición relaciona el núcleo de un funcional lineal continuo con su continuidad.
 
 \begin{proposition}
 	Sean $E$ un espacio normado sobre $K$ y sea $f : E \to K$. Entonces, $f$ es continua si y sólo si $\ker f$ es cerrado.
@@ -148,7 +148,7 @@ La siguiente proposición relaciona en núcleo de un funcional lineal continuo c
 	Sin pérdida de generalidad, tomamos $\left\lVert x_0 \right\rVert = 1$.
 	Buscamos $M \in \mathbb{R}$ tal que
 	\begin{equation*}
-		\left\lvert f(x) \right\rvert \leq M \left\lvert x \right\rvert \quad \text{para todo }x \in E.
+		\left\lvert f(x) \right\rvert \leq M \left\lVert x \right\rVert \quad \text{para todo }x \in E.
 	\end{equation*}
 	Notamos que
 	\begin{equation*}
@@ -186,7 +186,7 @@ Una proposición útil.
 \end{proposition}
 
 \begin{proof}
-	Probemos primero el caso de $\dim T = 1$ y luego procedemos por inducción. Dado que $\dim T = 1$, existe $x_0 \in E$ tal que $T = \left\langle x_0 \right\rangle$. Si $x_0 \in S$, ya estamos.
+	Probemos primero el caso de $\dim T = 1$ y luego procedemos por inducción. Dado que $\dim T = 1$, existe $x_0 \in E$ tal que $T = \left\langle x_0 \right\rangle$. Si $x_0 \in S$, entonces $S + T = S$ es cerrado.
 
 	Supongamos que $x_0 \not \in S$. Sea $(y_n)_{n \in \mathbb{N}}$ una sucesión de $S \oplus \left\langle x_0 \right\rangle$ convergente. Entonces,
 	\begin{equation*}
@@ -209,7 +209,7 @@ Una proposición útil.
 Nuestro objetivo es extender un funcional definido en un subespacio al espacio entero, pero preservando la norma.
 
 \begin{theorem}
-	Sea $E$ un espacio normado sobre $K$ y $S \subseteq E$ un subespacio vectorial. Sea $\varphi : S \to K$ continua y lineal. Entonces, existe $\tilde{\varphi} : E \to K$ continua y lineal tal que
+	Sea $E$ un espacio normado sobre $K$ y $S \subseteq E$ un subespacio vectorial. Sea $\varphi : S \to K$ lineal y continua. Entonces, existe $\tilde{\varphi} : E \to K$ lineal y continua tal que
 	\begin{equation*}
 		\tilde{\varphi}|_S = \varphi \quad \text{y} \quad \left\lVert \tilde{\varphi} \right\rVert = \left\lVert \varphi \right\rVert.
 	\end{equation*}
@@ -232,11 +232,11 @@ Nuestro objetivo es extender un funcional definido en un subespacio al espacio e
 Lo de extender con $W + \left\langle x \right\rangle$ lo vimos en clase y no tengo tiempo de escribirlo.
 
 \begin{proposition}
-	Sea $E$ un espacio normado sobre $\mathbb{R}$. Sea $\left\lVert v_1, v_2, \ldots \right\rVert$ numerables vectores con norma $1$. Si $E = \overline{\left\langle v_1, v_2, \ldots \right\rangle}$, entonces $E$ es separable.
+	Sea $E$ un espacio normado sobre $\mathbb{R}$. Sean $v_1, v_2, \ldots $ numerables vectores con norma $1$. Si $E = \overline{\left\langle v_1, v_2, \ldots \right\rangle}$, entonces $E$ es separable.
 \end{proposition}
 
 \begin{proof}
-	Consideramos a $E$ sobre $\mathbb{Q}$. Entonces, $E = \overline{\left\langle v_1, v_2, \ldots \right\rangle_{\mathbb{R}}} \subseteq \overline{\overline{\left\langle v_1, v_2, \ldots \right\rangle_{\mathbb{Q}}}}$, el cual es numerable.
+	Consideramos a $E$ sobre $\mathbb{Q}$. Entonces, $E = \overline{\left\langle v_1, v_2, \ldots \right\rangle_{\mathbb{R}}} \subseteq \overline{\overline{\left\langle v_1, v_2, \ldots \right\rangle_{\mathbb{Q}}}}$, el cual es un conjunto numerable.
 \end{proof}
 
 \begin{remark}
@@ -266,6 +266,3 @@ Lo de extender con $W + \left\langle x \right\rangle$ lo vimos en clase y no ten
 		\end{minipage}
 	\end{center}
 \end{lemma}
-
-
-
