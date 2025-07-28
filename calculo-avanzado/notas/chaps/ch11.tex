@@ -305,5 +305,83 @@ Por último, para series de potencias.
 	Sea $\sum a_n x^n$ una serie de potencias. Entonces, el radio de convergencia $R = \frac{1}{\limsup \sqrt[n]{\left\lvert a_n \right\rvert}}$. Es decir, en el intervalo $[-R, R]$, la serie converge uniformemente.
 \end{proposition}
 
+\section{Teorema de Stone--Weierstrass}
 
+Para enunciar y probar el Teorema de Stone--Weierstrass, haremos lo siguiente:
+\begin{itemize}
+	\item Álgebras de funciones.
+	\item Lemas preliminares.
+	\item Enunciado y demostración del teorema versión real.
+	\item Enunciado y demostración del teorema versión compleja.
+\end{itemize}
 
+Empezamos definiendo un álgebra de funciones.
+
+\begin{definition}
+	Sea $X$ un espacio métrico y sea $A \subseteq C(X, \mathbb{R})$. Decimos que $A$ es un \emph{álgebra de funciones} (o simplemente \emph{álgebra}) si $A$ es un subespacio vectorial de $C(X, \mathbb{R})$ y
+	\begin{center}
+		si $f, g \in A$, entonces $f \cdot g \in A$.
+	\end{center}
+
+	Además, decimos que un álbebra $A$ \emph{contiene a las constantes} si $1 \in A$. Y decimos que un conjunto $A$ \emph{separa puntos} si para todo $x, y \in X$ distintos, existe $f \in A$ tal que $f(x) \neq f(y)$.
+\end{definition}
+
+\begin{remark}
+	Si $A$ es un álgebra que contiene a las constantes, entonces para todo $f \in A$ y $p \in \mathbb{R}[x]$, $p(f) \in A$.
+\end{remark}
+
+Y el lema.
+
+\begin{lemma}
+	Si $A \subseteq C(X, \mathbb{R})$ es un álgebra, entonces su clausura $\overline{A}$ también es un álgebra.
+\end{lemma}
+
+\begin{proof}
+	Queremos ver que $\overline{A}$ es un subespacio vectorial cerrado bajo multiplicación puntual. Como $A$ es un álgebra, entonces $0 \in A$ y por lo tanto $0 \in \overline{A}$.
+
+	Sean $f, g \in \overline{A}$. Entonces, existen sucesiones $(f_n)_{n \in \mathbb{N}}$ y $(g_n)_{n \in \mathbb{N}}$ en $A$ tales que $f_n \rightrightarrows f$ y $g_n \rightrightarrows g$. Como $A$ es un álgebra, se cumple que $f_n + g_n \in A$ y $f_n \cdot g_n \in A$ para todo $n \in \mathbb{N}$.
+
+	Veamos primero que $f + g \in \overline{A}$. Se tiene que
+	\[
+		\|f_n + g_n - (f + g)\|_\infty \leq \|f_n - f\|_\infty + \|g_n - g\|_\infty \to 0.
+	\]
+	Por lo tanto, $f_n + g_n \rightrightarrows f + g$, y entonces $f + g \in \overline{A}$.
+
+	Veamos ahora que $f \cdot g \in \overline{A}$. Como las sucesiones $(f_n)$ y $(g_n)$ convergen uniformemente, en particular son uniformemente acotadas. Es decir, existe $M > 0$ tal que
+	\[
+		\|f_n\|_\infty \leq M, \quad \|g_n\|_\infty \leq M, \quad \text{para todo } n \in \mathbb{N}.
+	\]
+	Calculamos, para todo $x \in X$,
+	\begin{align*}
+		|f_n(x)g_n(x) - f(x)g(x)| 
+		&\leq |f_n(x)g_n(x) - f(x)g_n(x)| + |f(x)g_n(x) - f(x)g(x)| \\
+		&= |f_n(x) - f(x)| \cdot |g_n(x)| + |f(x)| \cdot |g_n(x) - g(x)| \\
+		&\leq \|f_n - f\|_\infty \cdot M + \|f\|_\infty \cdot \|g_n - g\|_\infty.
+	\end{align*}
+	Como $f_n \to f$ uniformemente, entonces $\|f\|_\infty \leq M + 1$ para $n$ suficientemente grande. Luego,
+	\[
+		\|f_n g_n - f g\|_\infty < \leq \|f_n - f\|_\infty \cdot M + (M + 1) \cdot \|g_n - g\|_\infty \to 0.
+	\]
+	Por lo tanto, $f_n g_n \rightrightarrows f g$ y como $f_n g_n \in A$, obtenemos que $f \cdot g \in \overline{A}$.
+
+	Con esto, $\overline{A}$ es cerrado bajo suma, producto por escalar (por linealidad), y producto puntual. Por lo tanto, $\overline{A}$ es un álgebra.
+\end{proof}
+
+Ahora sí enunciamos el teorema de Stone--Weierstrass.
+
+\begin{theorem}[Stone--Weierstrass]
+	Sea $X$ un espacio métrico compacto y sea $A \subseteq C(X, \mathbb{R})$ un álgebra que contiene a las constantes y separa puntos. Entonces, $\overline{A} = C(X, \mathbb{R})$.
+\end{theorem}
+
+Antes de probarlo, veamos cómo vamos a estructurar la demostración. Probamos que:
+\begin{enumerate}
+	\item Si $f \in \overline{A}$, entonces $|f| \in \overline{A}$.
+	\item Si $f, g \in \overline{A}$, entonces las funciones mínimo y máximo también están en $\overline{A}$.
+	\item Existe una función que interpola a dos puntos distintos de $X$.
+	\item Existe una función $g_x \in \overline{A}$ tal que $g_x(x) = f(x)$ y $g_x \leq f + \varepsilon$.
+	\item Existe $g \in \overline{A}$ tal que $g(x) = f(x)$ para todo $x \in X$ y $\| f - g \| \leq \varepsilon$.
+\end{enumerate}
+
+\begin{proof}
+	\textbf{1. Sea $f \in \overline{A}$. Sea $M > 0$ tal que $\|f\| < M$. Entonces, como $\overline{A}$ es un álgebra, entonces $\frac{f^2}{M^2} \in \overline{A}$. Por lo tanto, $|f| = \sqrt{\frac{f^2}{M^2}} \in \overline{A}$. Por el lema anteriormente visto, existe una sucesión tal que converge uniformemente a $\sqrt{\frac{f^2}{M^2}} = \frac{\|f\|}{M}$.
+\end{proof}
