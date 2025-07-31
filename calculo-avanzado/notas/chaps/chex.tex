@@ -1,0 +1,100 @@
+\chapter{Ejercicios Surtidos}
+
+Este capítulo es en preparación para el final. Contiene la resolución de distintos ejercicios que me fui encontrando en el camino y que me parecieron interesantes.
+
+\begin{exercise}
+    Todas las normas en $\mathbb{R}^n$ son equivalentes.
+\end{exercise}
+
+\begin{proof}
+    Sean $\| \cdot \|$ y $\| \cdot \|'$ normas arbitrarias de $\mathbb{R}^n$. Recordemos que dos normas son equivalentes si existen constantes $C_1, C_2 > 0$ tales que para todo $x \in \mathbb{R}^n$ se cumple:
+    \begin{equation*}
+        C_1 \| x \| \leq \| x \|' \leq C_2 \| x \|.
+    \end{equation*}
+    Un camino más fácil es probar que toda norma es equivalente a $\| \cdot \|_{\infty}$, ya que la equivalencia de normas es transitiva.
+
+    Veamos primero que existe una constante $C_1 > 0$ tal que para todo $x \in \mathbb{R}^n$ se cumple:
+    \begin{equation*}
+        \| x \| \leq C_1 \| x \|_{\infty}.
+    \end{equation*}
+    Consideramos
+    \begin{align*}
+        \| x \| = \| x_1 \cdot e_1 + \dots + x_n \cdot e_n \| &\leq |x_1| \cdot \| e_1 \| + \dots + |x_n| \cdot \| e_n \| \\
+        &\leq \| x \|_{\infty} \cdot (\| e_1 \| + \dots + \| e_n \|),
+    \end{align*}
+    y como $\| e_1 \| + \dots + \| e_n \|$ es constante, entonces podemos tomar $C_1 = \| e_1 \| + \dots + \| e_n \|$, obteniendo así 
+    \begin{equation*}
+        \| x \| \leq C_1 \| x \|_{\infty}.
+    \end{equation*}
+    
+    Ahora, veamos que existe una constante $C_2 > 0$ tal que para todo $x \in \mathbb{R}^n$ se cumple:
+    \begin{equation*}
+        \| x \|_{\infty} \leq C_2 \| x \|.
+    \end{equation*}
+    Definimos al conjunto $S = \{ x \in \mathbb{R}^n : \| x \| = 1 \}$, que es cerrado y acotado, por lo que es compacto. Definimos también la función $\varphi : S \to \mathbb{R}$ dada por $\varphi(x) = \| x \|_{\infty}$. Esta función es continua porque $\| x \|_{\infty}$ es una norma, y por lo tanto es continua en $\mathbb{R}^n$. Como $S$ es compacto, $\varphi$ alcanza su máximo en $S$ en un punto $x_0$.
+
+    Todo $x \in \mathbb{R}^n$ puede escribirse como $x = \| x \| \cdot \frac{x}{\| x \|}$ si $\| x \| \neq 0$, y por lo tanto
+    \begin{align*}
+        \| x \|_{\infty} &= \left\| \frac{x}{\| x \|} \right\|_{\infty} \cdot \| x \| \\
+        &\leq \varphi(x_0) \cdot \| x \|.
+    \end{align*}
+    Basta con tomar $C_2 = \varphi(x_0)$, y así obtenemos la desigualdad buscada.
+\end{proof}
+
+\begin{exercise}
+    Hallar el cardinal de $C(\mathbb{R}, \mathbb{R})$, el espacio de funciones continuas de $\mathbb{R}$ a $\mathbb{R}$.
+\end{exercise}
+
+\begin{proof}
+    Dado que $\mathbb{Q}$ es denso en $\mathbb{R}$, las funciones continuas en $\mathbb{R}$ están completamente determinadas por sus valores en $\mathbb{Q}$. Es decir, si $f, g \in C(\mathbb{R}, \mathbb{R})$ y $f(q) = g(q)$ para todo $q \in \mathbb{Q}$, entonces $f = g$. Por lo tanto, existe un biyección entre $C(\mathbb{R}, \mathbb{R})$ y $C(\mathbb{Q}, \mathbb{R})$. Entonces, basta con calcular el cardinal de $C(\mathbb{Q}, \mathbb{R})$.
+
+    Enumeramos a $\mathbb{Q}$ como $\{ q_1, q_2, \ldots \}$. Para definir una función en $C(\mathbb{Q}, \mathbb{R})$, necesitamos asignar un valor real a cada $q_i$. Como $\mathbb{R}$ tiene cardinalidad $2^{\aleph_0}$, el número de funciones de $\mathbb{Q}$ a $\mathbb{R}$ es $(2^{\aleph_0})^{\aleph_0} = 2^{\aleph_0 \cdot \aleph_0} = 2^{\aleph_0}$. Por lo tanto, el cardinal de $|C(\mathbb{R}, \mathbb{R})| \leq 2^{\aleph_0}$. Y para ver que el cardinal es igual, el conjunto de funciones constantes es un subconjunto de $C(\mathbb{R}, \mathbb{R})$ y tiene cardinalidad $2^{\aleph_0}$, ya que cada función constante puede ser identificada con un número real. Por lo tanto, el cardinal de $C(\mathbb{R}, \mathbb{R})$ es exactamente $2^{\aleph_0}$.
+\end{proof}
+
+\begin{exercise}
+    Sea $(X, d)$ un espacio métrico completo sin puntos aislados y sea $D \subseteq X$ un subconjunto denso numerable. Probar que $D$ no es un $G_\delta$.
+\end{exercise}
+
+\begin{proof}
+    Lo probamos por absurdo. Supongamos que $D$ es un conjunto $G_\delta$, entonces
+    \begin{equation*}
+        D = \bigcap_{n=1}^{\infty} U_n,
+    \end{equation*}
+    donde cada $U_n$ es un conjunto abierto y como $D \subseteq U_n$, también es denso. Consideramos ahora el complemento de $D$,
+    \begin{equation*}
+        X \setminus D = \bigcup_{n=1}^{\infty} (X \setminus U_n).
+    \end{equation*}
+    Cada $X \setminus U_n$ es el compleme de un conjunto abierto denso, por lo tanto es nunca denso, entonces tiene interior vacío. Por el Teorema de Baire, la unión numerable de nunca densos tiene interior vacío.           
+\end{proof}
+
+\begin{exercise}
+    Probar que:
+    \begin{enumerate}
+        \item[(a)] Las componentes conexas de un espacio métrico son cerradas.
+        \item[(b)] Si el espacio tiene finitas componentes conexas, las componentes son abiertas.
+        \item[(c)] Dar un ejemplo de un espacio métrico con una componente conexa no abierta.
+        \item[(d)] Si $f : E \to \mathbb{Z}$ es continua, entonces $f$ es constante en cada componente conexa de $E$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}[Solución]
+    (a) Sea $C$ una componente cerrada de un espacio métrico $X$. Probamos que la clausura de un conjunto conexo es conexo. 
+
+    Sea $A \subseteq X$ un conjunto conexo. Para ver que $\overline{A}$ es conexo, basta con probar que $\overline{A}$ no puede ser escrito como la unión disjunta de dos conjuntos abiertos no vacíos. Supongamos que $\overline{A} = U \cup V$ con $U$ y $V$ abiertos y no vacíos, y $U \cap V = \emptyset$. Entonces, $U \cap A$ y $V \cap A$ son conjuntos abiertos no vacíos en $A$, y por lo tanto, $A$ se puede escribir como la unión disjunta de estos dos conjuntos, lo cual contradice la conexidad de $A$. Por lo tanto, $\overline{A}$ es conexo.
+
+    Usando esto, dado que $C$ es una componente conexa, como $C \cap \overline{C} \neq \emptyset$ y $\overline{C}$ es conexo, entonces $\overline{C} \subseteq C$. Por lo tanto, $C$ es cerrado.
+
+    (b) Sea $X$ un espacio métrico con finitas componentes conexas. Podemos escribir a $X$ como la unión disjunta de sus componentes conexas,
+    \begin{equation*}
+        X = C_1 \cup C_2 \cup \dots \cup C_n,
+    \end{equation*}
+    donde cada $C_i$ es una componente conexa. En particular, como cada $C_i$ es cerrado y hay finitas componentes conexas, $\bigcup_{j \neq i} C_j$ es cerrado. Por lo tanto, su complemento 
+    \begin{equation*}
+        X \setminus \bigcup_{j \neq i} C_j = C_i
+    \end{equation*}
+    es abierto. Entonces, cada componente conexa es abierta.
+
+    (c) Un ejemplo de un espacio métrico con una componente conexa no abierta es el conjunto $\{ \frac{1}{n} \mid n \in \mathbb{N} \} \cup \{ 0 \}$. Sea $r > 0$. La bola abierta $B(0, r)$ contiene a algún $\frac{1}{N}$ para $N$ suficientemente grande, por lo tanto $\{ \frac{1}{n} \mid n \in \mathbb{N} \} \cup \{ 0 \}$ no es abierto.
+    
+    (d) Sea $f : E \to \mathbb{Z}$ continua. Sea $C$ una componente conexa de $E$. Como $C$ es conexa, no se puede expresar como unión de abiertos disjuntos no vacíos. Recordemos que todo subconjunto de $\mathbb{Z}$ es abierto, por lo tanto su preimagen es abierta. Supongamos que $f|_C$ no es constante, entonces podemos expresar a $C$ como la unión disjunta de dos conjuntos abiertos no vacíos, $f|_C^{-1}(a)$ y $f|_C^{-1}(b)$, donde $a, b \in \mathbb{Z}$ y $a \neq b$. Esto contradice que $C$ sea conexo. Por lo tanto, $f|_C$ es constante.
+\end{proof}
