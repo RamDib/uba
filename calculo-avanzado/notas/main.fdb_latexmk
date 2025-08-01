@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1753996975.25162 "/Users/ramirodibur/Projects/uba/calculo-avanzado/notas/main.tex" "main.pdf" "main" 1753996978.57939 0
+["pdflatex"] 1754077372.60869 "/Users/ramirodibur/Projects/uba/calculo-avanzado/notas/main.tex" "main.pdf" "main" 1754077375.93696 0
   "/Users/ramirodibur/Projects/uba/calculo-avanzado/notas/main.tex" 1753760542.10861 5669 2b32d045582382e07db664b99efb492c ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -320,11 +320,11 @@
   "chaps/ch10.tex" 1753069889.39465 12324 5c0d0f165938e0483dc7f526c82a7884 ""
   "chaps/ch11.tex" 1753737790.76978 19749 4348259fe7e5b98c92ded80b8df46357 ""
   "chaps/ch12.tex" 1753223104.55246 12255 70bc21d760a926d38c196cfd6d3f2744 ""
-  "chaps/chex.tex" 1753996974.99679 7484 d177607eae1eff19063d8fa2b4d9ec7d ""
-  "main.aux" 1753996978.41257 8453 feaa5020ff3a1e6c31320f5e9538356f "pdflatex"
-  "main.out" 1753996978.41429 9717 dbdb1c7774d3de10afb976bd809092cd "pdflatex"
+  "chaps/chex.tex" 1754077372.37213 13710 17e774c9abf2dc94336110d5ddca501c ""
+  "main.aux" 1754077375.77323 8453 f0226e06edf352d9d49ff208c0b24163 "pdflatex"
+  "main.out" 1754077375.77496 9717 dbdb1c7774d3de10afb976bd809092cd "pdflatex"
   "main.tex" 1753760542.10861 5669 2b32d045582382e07db664b99efb492c ""
-  "main.toc" 1753996978.41452 4750 9d53892fd4c6f968a9467b1cf2f77c01 "pdflatex"
+  "main.toc" 1754077375.77519 4750 9d53892fd4c6f968a9467b1cf2f77c01 "pdflatex"
   "tikz/cardinalidad_Q.tex" 1752695661.55297 3969 e4e6b84ccab07796662c774d2c206f53 ""
   "tikz/cardinalidad_demostracion.tex" 1752695661.55344 610 32f604285eac375810e57d9f37a9a768 ""
   "tikz/conexion_ejemplo.tex" 1752695661.55415 1636 a0055ca95f964fcb5c3e319171b82501 ""

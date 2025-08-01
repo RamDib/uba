@@ -56,15 +56,19 @@ Este capítulo es en preparación para el final. Contiene la resolución de dist
 \end{exercise}
 
 \begin{proof}
-    Lo probamos por absurdo. Supongamos que $D$ es un conjunto $G_\delta$, entonces
+    Lo probamos por absurdo. Supongamos que $D = \{x_n\}_{n \in \mathbb{N}}$ es un conjunto $G_\delta$, entonces
     \begin{equation*}
-        D = \bigcap_{n=1}^{\infty} U_n,
+        D = \bigcap_{n \in \mathbb{N}} U_n,
     \end{equation*}
-    donde cada $U_n$ es un conjunto abierto y como $D \subseteq U_n$, también es denso. Consideramos ahora el complemento de $D$,
+    donde cada $U_n$ es un conjunto abierto y como $D \subseteq U_n$, también es denso. Consideramos ahora a la sucesión de abiertos dada por
     \begin{equation*}
-        X \setminus D = \bigcup_{n=1}^{\infty} (X \setminus U_n).
+        V_n = U_n \setminus \bigcup_{k=1}^{n} x_k.
     \end{equation*}
-    Cada $X \setminus U_n$ es el compleme de un conjunto abierto denso, por lo tanto es nunca denso, entonces tiene interior vacío. Por el Teorema de Baire, la unión numerable de nunca densos tiene interior vacío.           
+    Cabe aclarar que $V_n$ es abierto porque es la diferencia de un abierto y un conjunto finito. Además, como no hay puntos aislados en $X$, cada $V_n$ sigue siendo denso. Entonces, consideramos
+    \begin{equation*}
+        \bigcap_{n \in \mathbb{N}} V_n = \bigcap_{n \in \mathbb{N}} (U_n \setminus \bigcup_{k=1}^{n} x_k) = \varnothing.
+    \end{equation*}
+    Sin embargo, esto contradice el Teorema de Baire, dado que la intersección numerable de conjuntos abiertos densos es densa; en particular, no puede ser vacía. Por lo tanto, $D$ no puede ser un conjunto $G_\delta$.
 \end{proof}
 
 \begin{exercise}
@@ -77,7 +81,7 @@ Este capítulo es en preparación para el final. Contiene la resolución de dist
     \end{enumerate}
 \end{exercise}
 
-\begin{proof}[Solución]
+\begin{proof}
     (a) Sea $C$ una componente cerrada de un espacio métrico $X$. Probamos que la clausura de un conjunto conexo es conexo. 
 
     Sea $A \subseteq X$ un conjunto conexo. Para ver que $\overline{A}$ es conexo, basta con probar que $\overline{A}$ no puede ser escrito como la unión disjunta de dos conjuntos abiertos no vacíos. Supongamos que $\overline{A} = U \cup V$ con $U$ y $V$ abiertos y no vacíos, y $U \cap V = \emptyset$. Entonces, $U \cap A$ y $V \cap A$ son conjuntos abiertos no vacíos en $A$, y por lo tanto, $A$ se puede escribir como la unión disjunta de estos dos conjuntos, lo cual contradice la conexidad de $A$. Por lo tanto, $\overline{A}$ es conexo.
@@ -97,4 +101,87 @@ Este capítulo es en preparación para el final. Contiene la resolución de dist
     (c) Un ejemplo de un espacio métrico con una componente conexa no abierta es el conjunto $\{ \frac{1}{n} \mid n \in \mathbb{N} \} \cup \{ 0 \}$. Sea $r > 0$. La bola abierta $B(0, r)$ contiene a algún $\frac{1}{N}$ para $N$ suficientemente grande, por lo tanto $\{ \frac{1}{n} \mid n \in \mathbb{N} \} \cup \{ 0 \}$ no es abierto.
     
     (d) Sea $f : E \to \mathbb{Z}$ continua. Sea $C$ una componente conexa de $E$. Como $C$ es conexa, no se puede expresar como unión de abiertos disjuntos no vacíos. Recordemos que todo subconjunto de $\mathbb{Z}$ es abierto, por lo tanto su preimagen es abierta. Supongamos que $f|_C$ no es constante, entonces podemos expresar a $C$ como la unión disjunta de dos conjuntos abiertos no vacíos, $f|_C^{-1}(a)$ y $f|_C^{-1}(b)$, donde $a, b \in \mathbb{Z}$ y $a \neq b$. Esto contradice que $C$ sea conexo. Por lo tanto, $f|_C$ es constante.
+\end{proof}
+
+\begin{exercise}
+    Sean $E$ y $F$ espacios de Banach y $D \subseteq E$ un subconjunto denso. Sea $(T_n)_{n \in \mathbb{N}} \subseteq \mathcal{L}(E, F)$ una sucesión de operadores tal que $\sup_{n \in \mathbb{N}} \| T_n \| < +\infty$. Supongamos que $(T_n(x))_{n \in \mathbb{N}}$ converge para todo $x \in D$. Probar que $(T_n)_{n \in \mathbb{N}}$ converge puntualmente a un $T \in \mathcal{L}(E, F)$.
+\end{exercise}
+
+\begin{proof}
+    Consideremos la función $\widetilde{T} : D \to F$ definida por
+    \begin{equation*}
+        \widetilde{T}(x) = \lim_{n \to \infty} T_n(x).
+    \end{equation*}
+    Esta función está bien definida porque la sucesión $(T_n(x))_{n \in \mathbb{N}}$ converge para todo $x \in D$. Consideramos ahora la extensión de $\widetilde{T}$ a todo $E$. Definimos $T : E \to F$ como
+    \begin{equation*}
+        T(x) = \lim_{n \to \infty} \widetilde{T}(x_n),
+    \end{equation*}
+    donde $(x_n)_{n \in \mathbb{N}}$ es una sucesión tal que $x_n \to x$. 
+
+    Veamos que existe el límite. Sea $(x_n)_{n \in \mathbb{N}}$ una sucesión que converge a $x \in X$. Queremos ver que $(\widetilde{T}(x_n))_{n \in \mathbb{N}}$ es convergente. Como estamos en un completo, basta ver que es de Cauchy. Sean $m, n \in \mathbb{N}$. Entonces,
+    \begin{align*}
+        \| \widetilde{T}(x_n) - \widetilde{T}(x_m) \|  &= \| \widetilde{T}(x_n - x_m) \| \\
+        &= \| \lim_{k \to \infty} T_k (x_n - x_m) \\
+        &\leq \sup_{k \in \mathbb{N}} \| T_k \| \cdot \| x_n - x_m \| \longrightarrow 0.
+    \end{align*}
+    Por lo tanto, es de Cauchy.
+    
+    Veamos que está bien definida. Sean $x \in E$, y consideremos dos sucesiones convergentes $(x_n)_{n \in \mathbb{N}}$ y $(y_n)_{n \in \mathbb{N}}$ en $D$ que convergen a $x$. Entonces, para todo $n$, tenemos que
+    \begin{align*}
+        \| \widetilde{T}(x_n) - \widetilde{T}(y_n) \| &= \left\| \lim_{k \to \infty} T_k(x_n) - \lim_{k \to \infty} T_k(y_n) \right\| \\
+        &\leq \lim_{k \to \infty} \| T_k(x_n) - T_k(y_n) \| \\
+        &\leq \sup_{k \in \mathbb{N}} \| T_k \| \cdot \| x_n - y_n \|.
+    \end{align*}
+    Por hipótesis, $\sup_{k \in \mathbb{N}} \| T_k \| < +\infty$, y como $x_n \to x$ y $y_n \to x$, entonces $\| x_n - y_n \| \to 0$. Por lo tanto, $T$ está bien definida.
+
+    Ahora, veamos que $T$ es lineal. Sea $x, y \in E$ y $\alpha, \beta \in \mathbb{R}$. Entonces,
+    \begin{align*}
+        T(\alpha x + \beta y) &= \lim_{n \to \infty} \widetilde{T}(\alpha x_n + \beta y_n) \\
+        &= \lim_{n \to \infty} \lim_{k \to \infty} T_k(\alpha x_n + \beta y_n) \\
+        &= \lim_{n \to \infty} (\alpha \lim_{k \to \infty} T_k(x_n) + \beta \lim_{k \to \infty} T_k(y_n)) \\
+        &= \alpha T(x) + \beta T(y).
+    \end{align*}
+    Por ende, $T$ es lineal.
+
+    Veamos que $T$ es continua. Basta con probar que es acotada. Consideremos $x \in E$ y una sucesión $(x_n)_{n \in \mathbb{N}}$ en $D$ tal que $x_n \to x$. Entonces,
+    \begin{align*}
+        \| T(x) \| &= \left\| \lim_{n \to \infty} \widetilde{T}(x_n) \right\| \\
+        &\leq \lim_{n \to \infty} \| \widetilde{T}(x_n) \| \\
+        &\leq \lim_{n \to \infty} \sup_{k \in \mathbb{N}} \| T_k \| \cdot \| x_n \| \\
+        &= \sup_{k \in \mathbb{N}} \| T_k \| \cdot \lim_{n \to \infty} \| x_n \| \\
+        &= \sup_{k \in \mathbb{N}} \| T_k \| \cdot \| x \|.
+    \end{align*}
+    Por lo tanto, $T$ es acotada, y como es lineal y acotada, entonces $T \in \mathcal{L}(E, F)$.
+\end{proof}
+
+\begin{exercise}
+    Sea $X$ compacto y $f : X \to X$ una isometría. Probar que $f$ es sobreyectiva.
+\end{exercise}
+
+\begin{proof}
+    Como $f$ es una isometría, preserva las distancias, es decir, para todo $x, y \in X$, se cumple que $d(x, y) = d(f(x), f(y))$.
+
+    Supongamos que $f$ no es sobreyectiva, entonces existe un $x_0 \in X$ tal que no está en la imagen de $f$. Por lo tanto, dado que $X$ es cerrado, su imagen también, y entonces $d(x_0, f(X)) > \varepsilon$, con $\varepsilon > 0$. Pero como $f$ es una isometría,
+    \begin{equation*}
+        \varepsilon < d(x_0, f(x_0)) = d(f(x_0), f^2(x_0)) = d(f^2(x_0), f^3(x_0)) = \cdots
+    \end{equation*}
+    También notemos que 
+    \begin{equation*}
+        \varepsilon < d(x_0, f(X)) < d(x_0, f^k(x_0)) = d(f^n(x_0), f^{n + k}(x_0)).
+    \end{equation*}
+    Por lo tanto, la sucesión $(f^n(x_0))_{n \in \mathbb{N}}$ no tiene subsucesión convergente, pero como estamos en un espacio compacto, esto es absurdo.
+\end{proof}
+
+\begin{exercise}
+    Sea $X$ un espacio métrico completo y $\{F_n\}_{n \in \mathbb{N}}$ una familia de cerrados tal que $X = \bigcup_{n \in \mathbb{N}} F_n$. Probar que $\bigcup_{n \in \mathbb{N}} (F_n)^{\circ}$ es denso.
+\end{exercise}
+
+\begin{proof}
+    Veamos que $\bigcup_{n \in \mathbb{N}} (F_n)^{\circ}$ es denso. 
+    
+    Sea $x \in X$ y $r > 0$. Necesitamos probar que $B(x, r) \cap \bigcup_{n \in \mathbb{N}} (F_n)^{\circ} \neq \varnothing$. Supongamos que la intersección es vacía. Como $\overline{B}\left(x, \frac{r}{2}\right)$ es un cerrado en un completo, es un subespacio completo. Consideramos ahora la intersección $F_n \cap \overline{B}\left(x, \frac{r}{2}\right)$ que es cerrada. Y también sabemos que $(F_n)^{\circ} \cap \overline{B}\left(x, \frac{r}{2}\right) = \varnothing$. Por lo tanto, $F_n \cap \overline{B}\left(x, \frac{r}{2}\right)$ es cerrado de interior vacío en el subespacio $\overline{B}\left(x, \frac{r}{2}\right)$. Entonces,
+    \begin{equation*}
+        \bigcup_{n \in \mathbb{N}} \left(F_n \cap \overline{B}\left(x, \frac{r}{2}\right)\right) = \overline{B}\left(x, \frac{r}{2}\right),
+    \end{equation*}
+    y por el Teorema de Baire, la unión numerable de nunca densos tiene interior vacío, lo cual es absurdo dado que $(\overline{B}\left(x, \frac{r}{2}\right))^{\circ} \neq \varnothing$. Por lo tanto, $\bigcup_{n \in \mathbb{N}} (F_n)^{\circ}$ es denso en $X$.
 \end{proof}
