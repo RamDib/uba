@@ -185,3 +185,122 @@ Este capítulo es en preparación para el final. Contiene la resolución de dist
     \end{equation*}
     y por el Teorema de Baire, la unión numerable de nunca densos tiene interior vacío, lo cual es absurdo dado que $(\overline{B}\left(x, \frac{r}{2}\right))^{\circ} \neq \varnothing$. Por lo tanto, $\bigcup_{n \in \mathbb{N}} (F_n)^{\circ}$ es denso en $X$.
 \end{proof}
+
+\begin{exercise}
+    Sea $E$ un espacio normado ---no lo aclara el ejercicio, pero consideremos al espacio sobre un cuerpo completo $K$--- y sea $S$ un subespacio vectorial de $E$. Probar:
+    \begin{enumerate}
+        \item[(a)] Si $\dim(S) < \infty$, entonces $S$ es cerrado en $E$.
+        \item[(b)] Dar un ejemplo de $E$ normado y $S$ subespacio propio de $E$ tal que $S$ es denso en $E$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    (a) Procedemos por inducción. Consideremos el subespacio $\{0\}$ de dimensión $0$, es trivialmente cerrado. 
+
+    Sea $S$ un subespacio vectorial cerrado y sea $x_0 \not\in S$. Queremos ver que $S \oplus \langle x_0 \rangle$ es cerrado. Sea $(v_n)_{n \in \mathbb{N}}$ una sucesión en $S \oplus \langle x_0 \rangle$ que converge a $v \in E$. Dado que $v_n \in S \oplus \langle x_0 \rangle$, se puede expresar como
+    \begin{equation*}
+        v_n = s_n + \lambda_n x_0,
+    \end{equation*}
+    donde $s_n \in S$ y $\lambda_n \in K$. Consideramos la función $\varphi : S \oplus \langle x_0 \rangle \to K$ tal que $\varphi(v) = \lambda$, donde $v = s + \lambda x_0$, con $s \in S$ y $\lambda \in K$. La función está bien definida ya que están en suma directa. No es difícil ver que $\varphi$ es lineal y $\ker \varphi = S$, y como $\ker \varphi$ es cerrado, $\varphi$ es continua, o sea, uniformemente continua.
+
+    Consideramos ahora $(\varphi(v_n))_{n \in \mathbb{N}}$. Dado que $(v_n)_{n \in \mathbb{N}}$ es convergente, es de Cauchy. Por lo tanto, $(\varphi(v_n))_{n \in \mathbb{N}}$ es de Cauchy, por continuidad uniforme de $\varphi$. Por último, como $K$ es completo, $(\varphi(v_n))_{n \in \mathbb{N}}$ converge a algún $\lambda \in K$. Por ende,
+    \begin{align*}
+        \lim_{n \to \infty} s_n &= \lim_{n \to \infty} (v_n - \lambda_n x_0) \\
+        &= \lim_{n \to \infty} v_n - \lim_{n \to \infty} \lambda_n x_0 \\
+        &= v - \lambda x_0,
+    \end{align*}
+    entonces $(s_n)_{n \in \mathbb{N}}$ converge a $s = v - \lambda x_0$. En particular,
+    \begin{align*}
+        \varphi(s) &= \varphi(v - \lambda x_0) \\
+        &= \varphi(v) - \varphi(\lambda x_0) \\
+        &= \lambda - \lambda \\
+        &= 0,
+    \end{align*}
+    entonces $s \in \ker \varphi$, o sea $s \in S$. Por lo tanto, $v = s + \lambda x_0$, donde $s \in S$ y $\lambda \in K$, entonces $v \in S \oplus \langle x_0 \rangle$. Esto prueba que $S \oplus \langle x_0 \rangle$ es cerrado.
+
+    Siguiendo inductivamente, cada subespacio de dimensión finita es cerrado.
+
+    (b) Consideramos al espacio $(c, \| \cdot \|_{\infty})$ de sucesiones convergentes y al subespacio $A = \{(a_n)_{n \in \mathbb{N}} \mid \text{eventualmente constante} \}$ (ver que es un subespacio son cuentas aburridas). Por lo tanto, sea $(x_n)_{n \in \mathbb{N}}$ una sucesión convergente a $x$. Entonces, consideramos la sucesión de sucesiones eventualmente constantes $(a^k)_{k \in \mathbb{N}}$ tal que 
+    \begin{align*}
+        a_n^k = \begin{cases}
+            x_n &\text{si } n \leq k, \\
+            x &\text{si } n > k. \\
+        \end{cases}
+    \end{align*}
+    Claramente $a^k \to (x_n)$, por lo que $A$ es un subespacio propio denso en $c$.
+\end{proof}
+
+\begin{exercise}
+    Sea $X$ un espacio métrico compacto. Demostrar que $X$ es completo y que todo subconjunto infinito $A$ de $X$ verifica que $A' \neq \varnothing$.
+\end{exercise}
+
+\begin{proof}
+    Probamos que toda sucesión posee una subsucesión convergente. Sea $(x_n)_{n \in \mathbb{N}}$ una sucesión en $X$ tal que no posee una subsucesión convergente. Por lo tanto, para todo $x \in X$, existe un $\varepsilon_x > 0$ tal que $B(x, \varepsilon_x)$ interseca con finitos puntos de la sucesión; de lo contrario, tendriamos un punto de acumulación de la sucesión y, por lo tanto, una subsucesión convergente. Consideramos al cubrimiento abierto $\{ B(x, \varepsilon_x) \}_{x \in X}$. Por compacidad de $X$, podemos tomar un subcubrimiento finito $\{ B(y_i, \varepsilon_i) \}_{1 \leq i \leq N}$, con $N \in \mathbb{N}$. Sin embargo, esto provoca un absurdo. O bien, la sucesión tiene finitos términos distintos, y por el Principio de Palomar, alguno se repite infinitas veces y obtenemos una subsucesión constante; o bien, posee toma infinitos valores distintos y entonces alguna de las bolas del cubrimiento finito contiene infinitos términos de la sucesión, lo cual es absurdo. Por lo tanto, toda sucesión posee una subsucesión convergente.
+
+    Ahora sí, probamos las dos afirmaciones del ejercicio. Sea $(x_n)_{n \in \mathbb{N}}$ una succesión de Cauchy. Como es de Cauchy y tiene una subsucesión convergente, entonces converge. Es decir, $X$ es completo. Sea $A$ un subconjunto infinito. Entonces, tiene un subconjunto numerable. Consideramos la sucesión asociada con el subconjunto numerable y obtenemos una subsucesión convergente. Por lo tanto, el límite de la subsucesión es un punto de acumulación del numerable y, en consecuencia, de $A$. Entonces, $A' \neq \varnothing$.
+\end{proof}
+
+\begin{exercise}
+    Asumiendo que ya se demostró que $(C([0, 1]), \| \cdot \|_{\infty})$ es un espacio normado, demostrar que es un espacio de Banach.
+\end{exercise}
+
+\begin{proof}
+    Sea $(f_n)_{n \in \mathbb{N}}$ una sucesión de Cauchy en $(C([0, 1]), \| \cdot \|_{\infty})$. 
+    Es decir, para todo $\varepsilon > 0$ existe $N \in \mathbb{N}$ tal que
+    \begin{equation*}
+        \| f_n - f_m \|_{\infty} < \varepsilon, \quad \forall m,n \ge N.
+    \end{equation*}
+
+    Sea $x \in [0,1]$. La sucesión $(f_n(x))_{n \in \mathbb{N}}$ es de Cauchy en $\mathbb{R}$ porque
+    \begin{equation*}
+        |f_n(x) - f_m(x)| \leq \| f_n - f_m \|_{\infty} \xrightarrow[m,n\to\infty]{} 0.
+    \end{equation*}
+    Como $\mathbb{R}$ es completo, definimos
+    \begin{equation*}
+        f(x) = \lim_{n \to \infty} f_n(x), \quad x \in [0,1].
+    \end{equation*}
+
+    Fijamos $\varepsilon>0$. Por ser $(f_n)$ de Cauchy, existe $N\in\mathbb{N}$ tal que
+    \begin{equation*}
+        \| f_n - f_m \|_{\infty} < \varepsilon, \quad \forall n,m \ge N.
+    \end{equation*}
+    Sea $m \ge N$ fijo. Para todo $x \in [0,1]$ tenemos
+    \begin{align*}
+        |f_m(x) - f(x)| 
+        &= \lim_{n \to \infty} | f_m(x) - f_n(x) | \\
+        &\le \limsup_{n \to \infty} \| f_m - f_n \|_{\infty} \\
+        &\le \varepsilon.
+    \end{align*}
+    Por lo tanto,
+    \begin{equation*}
+        \| f_m - f \|_{\infty} \le \varepsilon, \quad \forall m \ge N,
+    \end{equation*}
+    y concluimos que $f_n \to f$ uniformemente.
+
+    Como cada $f_n$ es continua y la convergencia es uniforme, $f$ también es continua.  
+    En particular, $f \in C([0,1])$.
+
+    La convergencia uniforme implica que
+    \begin{equation*}
+        \| f_n - f \|_{\infty} \xrightarrow[n \to \infty]{} 0.
+    \end{equation*}
+
+    Hemos probado que toda sucesión de Cauchy converge en $(C([0,1]), \| \cdot \|_\infty)$.
+    Por lo tanto, es un espacio de Banach.
+\end{proof}
+
+\begin{exercise}
+    Sea $X$ un espacio métrico totalmente acotado y sea $f : X \to X$ una isometría. Demostrar que $f(X)$ es denso en $X$.
+\end{exercise}
+
+\begin{proof}
+    Como $X$ es totalmente acotado, para todo $\varepsilon > 0$, existe un cubrimiento finito por bolas abiertas de radio menor que $\varepsilon$. Supongamos que existe $x_0 \in X$ y $\varepsilon_0 > 0$ tal que $B(x_0, \varepsilon_0) \cap f(X) = \varnothing$. Consideramos la sucesión $(f^n(x_0))_{n \in \mathbb{N}}$. Por hipótesis, 
+    \begin{equation*}
+        d(x_0, f^n(x_0)) \geq \varepsilon_0, \quad \text{para todo } n \in \mathbb{N}.
+    \end{equation*}
+    De lo contrario, tendríamos un absurdo. Por lo tanto,
+    \begin{equation*}
+        d(f^m(x_0), f^n(x_0)) \geq \varepsilon_0, \quad \text{para todo } m, n \in \mathbb{N}.
+    \end{equation*}
+    Sin embargo, esto produce un absurdo ya que $X$ es totalmente acotado.
+\end{proof}
