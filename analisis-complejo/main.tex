@@ -1,0 +1,279 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Modern Minimalist Math Textbook Template — tcolorbox (breakable)
+%
+%   Diseñado por: AI Assistant
+%   Motor: pdfLaTeX
+%   Licencia: MIT
+%
+%   Cambios en esta versión:
+%   - Tema cambiado a "Análisis Complejo"
+%   - Paleta de colores actualizada (azules profundos + acentos magenta)
+%   - Estructura y estilos: sin cambios
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, oneside]{book}
+
+%-------------------------------------------------------------------
+%   CORE PACKAGES
+%-------------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{varwidth}
+
+% Tikz
+\usetikzlibrary{patterns}
+
+% Unidades
+\usepackage{siunitx}
+
+% Dice
+\usepackage{epsdice}
+\newcommand\vcdice[1]{\vcenter{\hbox{\epsdice{#1}}}}
+
+% Varwidth
+\newenvironment{centeredvarwidth}[1][\linewidth]{%
+  \begin{center}
+    \begin{varwidth}{#1}
+}{%
+    \end{varwidth}
+  \end{center}
+}
+
+%-------------------------------------------------------------------
+%   COLOR PALETTE (Actualizada)
+%-------------------------------------------------------------------
+% Paleta: primario azul profundo, acento magenta, fondos muy claros
+\definecolor{primarycolor}{rgb}{0.12,0.28,0.70}    % Azul profundo
+\definecolor{accentcolor}{rgb}{0.78,0.10,0.46}     % Magenta sobrio
+\definecolor{boxbgcolor}{rgb}{0.975,0.98,0.995}    % Fondo muy claro azulado
+\definecolor{boxlinecolor}{rgb}{0.10,0.18,0.55}    % Azul más oscuro (no esencial)
+
+% Enfasis visual usa el color primario
+\renewcommand{\emph}[1]{\textbf{\textit{\textcolor{primarycolor}{#1}}}}
+
+% SPANISH LANGUAGE SUPPORT
+\usepackage[spanish, es-noquoting, es-noshorthands]{babel}
+
+%-------------------------------------------------------------------
+%   PAGE LAYOUT & TYPOGRAPHY
+%-------------------------------------------------------------------
+\usepackage[
+    a4paper,
+    left=3cm,
+    right=3cm,
+    top=2.5cm,
+    bottom=2.5cm,
+    headheight=15pt
+]{geometry}
+
+\usepackage{microtype}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\sffamily\bfseries\rightmark}
+\fancyhead[R]{\sffamily\bfseries\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0 pt}
+}
+
+%-------------------------------------------------------------------
+%   CHAPTER AND SECTION TITLE DESIGN
+%-------------------------------------------------------------------
+\usepackage{titlesec}
+
+% --- Chapter Title ---
+\titleformat{\chapter}[display]
+  {\sffamily\huge\bfseries\color{gray!80}}
+  {\filleft\fontsize{80}{80}\selectfont\thechapter}
+  {20pt}
+  {\filleft\color{primarycolor}}
+\titlespacing*{\chapter}{0pt}{-40pt}{40pt}
+
+% --- Section and Subsection Titles ---
+\titleformat{\section}
+  {\sffamily\Large\bfseries\color{primarycolor}}
+  {\thesection}
+  {1em}
+  {}
+\titleformat{\subsection}
+  {\sffamily\large\bfseries\color{gray!85}}
+  {\thesubsection}
+  {1em}
+  {}
+\titleformat{\subsubsection}
+  {\sffamily\bfseries\color{gray!70}}
+  {\thesubsubsection}
+  {1em}
+  {}
+  
+\titlespacing{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+%-------------------------------------------------------------------
+%   THEOREM STYLES (amsthm) — unchanged
+%-------------------------------------------------------------------
+\newtheoremstyle{mdtheorem}
+  {}
+  {}
+  {\itshape}
+  {}
+  {\sffamily\bfseries}
+  {.}
+  {.5em}
+  {}
+
+\theoremstyle{mdtheorem}
+\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{corollary}[theorem]{Corolario}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{proposition}[theorem]{Proposición}
+\newtheorem{conjecture}[theorem]{Conjetura}
+\newtheorem{claim}[theorem]{Afirmación}
+
+\newtheoremstyle{mddefinition}
+  {}
+  {}
+  {\normalfont}
+  {}
+  {\sffamily\bfseries}
+  {.}
+  {.5em}
+  {}
+
+\theoremstyle{mddefinition}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{example}[theorem]{Ejemplo}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Observación}
+\newtheorem{problem}[theorem]{Problema}
+
+%-------------------------------------------------------------------
+%   BOXES WITH tcolorbox (breakable)
+%-------------------------------------------------------------------
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{skins, breakable, theorems, hooks}
+
+\tcbset{
+  theobox/.style={
+    enhanced, breakable,
+    colback=boxbgcolor,
+    frame empty, boxrule=0pt,
+    borderline west={2pt}{0pt}{primarycolor!50!accentcolor},
+    left=10pt, right=10pt, top=8pt, bottom=10pt,
+    before upper=\vspace{2pt},
+    before skip=\topsep, after skip=\topsep,
+  },
+  infobox/.style={
+    enhanced, breakable,
+    colback=boxbgcolor,
+    frame empty, boxrule=0pt,
+    borderline west={2pt}{0pt}{primarycolor},
+    left=15pt, right=10pt, top=8pt, bottom=10pt,
+    before upper=\vspace{2pt},
+    before skip=\topsep, after skip=\topsep,
+  },
+}
+
+\tcolorboxenvironment{theorem}{theobox}
+\tcolorboxenvironment{corollary}{theobox}
+\tcolorboxenvironment{lemma}{theobox}
+\tcolorboxenvironment{proposition}{theobox}
+\tcolorboxenvironment{conjecture}{theobox}
+\tcolorboxenvironment{claim}{theobox}
+
+\tcolorboxenvironment{definition}{infobox}
+\tcolorboxenvironment{example}{infobox}
+\tcolorboxenvironment{problem}{infobox}
+% \tcolorboxenvironment{remark}{infobox}
+
+%-------------------------------------------------------------------
+%   HYPERLINKS (metadatos actualizados)
+%-------------------------------------------------------------------
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primarycolor,
+    citecolor=primarycolor,
+    urlcolor=accentcolor,
+    pdftitle={Análisis Complejo},
+    pdfauthor={Ramiro Dibur},
+    pdfsubject={Libro de texto de Matemáticas},
+    pdfkeywords={matemáticas, análisis complejo, funciones holomorfas, integral de contorno},
+    bookmarksopen=true,
+    bookmarksnumbered=true
+}
+
+%-------------------------------------------------------------------
+%   COMMANDS
+%-------------------------------------------------------------------
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\DeclareMathOperator{\area}{\acute{a}rea}
+\DeclareMathOperator{\Arg}{Arg}
+
+
+%-------------------------------------------------------------------
+%   DOCUMENT START
+%-------------------------------------------------------------------
+\begin{document}
+
+%==================================================================
+%   FRONT MATTER
+%==================================================================
+\frontmatter
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        
+        \sffamily
+        \bfseries
+        \textcolor{primarycolor}{\rule{\linewidth}{2pt}}
+        \vspace{0.4cm}
+        
+        {\Huge Análisis Complejo \par}
+        
+        \vspace{0.4cm}
+        \textcolor{primarycolor}{\rule{\linewidth}{2pt}}
+        
+        \vspace{2cm}
+        
+        {\Large Ramiro Dibur \par}
+        \vspace{1cm}
+        {\large 2025 \par}
+    \end{center}
+\end{titlepage}
+
+\tableofcontents
+
+%==================================================================
+%   MAIN MATTER
+%==================================================================
+\mainmatter
+
+\chapter*{Prefacio}
+
+Estas son mis notas de Análisis Complejo del segundo cuatrimestre de 2025. Las escribo más que nada para estudiar yo, pero las publico por si le llegan a ser útiles a alguien.
+
+\input{chapters/ch1.tex}
+
+\end{document}
