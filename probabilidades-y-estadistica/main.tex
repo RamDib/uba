@@ -30,6 +30,7 @@
 
 % Tikz
 \usetikzlibrary{patterns}
+\usetikzlibrary{decorations.pathreplacing}
 
 % Unidades
 \usepackage{siunitx}
@@ -172,6 +173,7 @@
 \tcbset{
   theobox/.style={
     enhanced, breakable,
+    parbox=false,
     colback=boxbgcolor,
     frame empty, boxrule=0pt,
     borderline west={2pt}{0pt}{primarycolor!50!cyan},
@@ -181,6 +183,7 @@
   },
   infobox/.style={
     enhanced, breakable,
+    parbox=false,
     colback=boxbgcolor,
     frame empty, boxrule=0pt,
     borderline west={2pt}{0pt}{primarycolor},

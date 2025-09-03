@@ -1,0 +1,363 @@
+\chapter{Nociones básicas}
+
+Formalizamos algunas conceptos de probabilidad que vienen de la intuición. 
+
+
+\section{Modelo probabilístico}
+
+Consideremos un experimento con distintos posibles resultados. 
+
+\begin{definition}
+    El \emph{espacio muestral} de un experimento es el conjunto de posibles resultados del experimento. 
+\end{definition}
+
+Usualmente denotamos un espacio muestral con $\Omega$.
+
+\begin{remark}
+    Todo resultado corresponde con un único elemento $\omega \in \Omega$.
+\end{remark}
+
+Veamos algunos ejemplos.
+
+\begin{example}
+    \label{ex:dados}
+    Consideremos el siguiente experimento:
+    \begin{centeredvarwidth}
+        \begin{enumerate}
+            \item Se tira un dado balanceado de $6$ caras.
+            \item Se graba el resultado.
+        \end{enumerate}
+    \end{centeredvarwidth}
+
+    En este caso, el espacio muestral es el conjunto
+    \begin{equation*}
+        \Omega = \{ 1, 2, 3, 4, 5, 6 \}.
+    \end{equation*}
+\end{example}
+
+Cabe aclarar que no importa de qué manera escribimos los resultados siempre y cuando la correspondencia con el resultado sea clara. Por ejemplo, podríamos haber definido el espacio muestral como
+\begin{equation*}
+    \Omega = \{ \vcdice{1}, \vcdice{2}, \vcdice{3}, \vcdice{4}, \vcdice{5}, \vcdice{6}\}.
+\end{equation*}
+
+\begin{example}
+    Consideremos el siguiente experimento:
+    \begin{centeredvarwidth}
+        \begin{enumerate}
+            \item Se tira una moneda $3$ veces.
+            \item Se graba el resultado.
+        \end{enumerate}
+    \end{centeredvarwidth}
+
+    El espacio muestral es
+    \begin{equation*}
+        \Omega = \{ CCC, CCS, \ldots, SSC, SSS \}.
+    \end{equation*}
+\end{example}
+
+Nótese que $\Omega$ se puede escribir como $\{ C, S \}^3$.
+
+\begin{example}
+    Consideremos el siguiente experimento:
+    \begin{centeredvarwidth}
+        \begin{enumerate}
+            \item Se elije un habitante de Buenos Aires al azar.
+            \item Se mide su altura en metros.
+        \end{enumerate}
+    \end{centeredvarwidth}
+
+    El espacio muestral podría ser
+    \begin{equation*}
+        \Omega = \R.
+    \end{equation*}
+\end{example}
+
+Uno podría argumentar que el espacio muestral debería ser
+\begin{equation*}
+    \Omega = [0, 3],
+\end{equation*}
+ya que es imposible que alguien mida $\SI{-1}{m}$ o $\SI{100}{m}$. Sin embargo, lo único que nos interesa es que, al medir a alguien, caiga dentro de $\Omega$.
+
+
+\section{Eventos}
+
+\begin{definition}
+    Sea $\Omega$ un espacio muestral. Un \emph{evento} es un subconjunto de $\Omega$.
+\end{definition}
+
+Veámoslo en algunos ejemplos.
+
+\begin{example}
+    Consideramos el experimento del ejemplo \ref{ex:dados}. El conjunto
+    \begin{equation*}
+        A = \{ \text{el resultado es un número par} \} = \{2, 4, 6\}
+    \end{equation*}
+    es un evento dado que $A \subseteq \Omega$.
+\end{example}
+
+Por ahora, usemos la noción intuitiva de probabilidades. 
+
+La probabilidad se le asigna a un evento, no a un resultado. Por ejemplo, cuando decimos
+\begin{equation*}
+    P(\vcdice{3}) = \frac{1}{6}
+\end{equation*}
+en realidad queremos decir
+\begin{equation*}
+    P(\{ \vcdice{3} \}) = \frac{1}{6}.
+\end{equation*}
+No obstante, por practicidad acudiremos a la primera notación.
+
+Usualmente calculamos la probabilidad de un evento de la siguiente manera:
+\begin{equation*}
+    P(A) = \frac{\# \text{ casos donde sucede } A}{\# \text{ casos totales}}.
+\end{equation*}
+
+Veamos por qué esto no es generalizable.
+
+\begin{example}
+    Consideremos el siguiente experimento:
+    \begin{centeredvarwidth}
+        \begin{enumerate}
+            \item Se tiran $2$ dados balanceados de $6$ caras.
+            \item Se suman los números de las caras.
+            \item Se graba el resultado.
+        \end{enumerate}
+    \end{centeredvarwidth}
+
+    Un espacio muestral podría ser
+    \begin{equation*}
+        \Omega = \{ 2, 3, \ldots, 12 \}.
+    \end{equation*}
+    Sin embargo, $P(2) \neq \frac{1}{10}$. Esto se puede resolver tomando el espacio muestral
+    \begin{equation*}
+        \Omega = \{ \vcdice{1} \vcdice{1}, \vcdice{1} \vcdice{2}, \ldots, \vcdice{6} \vcdice{5}, \vcdice{6} \vcdice{6} \}.
+    \end{equation*}
+    Por lo tanto, para todo resultado $\omega \in \Omega$, 
+    \begin{equation*}
+        P(\omega) = \frac{\# \text{ casos donde sucede } A}{\# \text{ casos totales}} = \frac{1}{36}.
+    \end{equation*}
+\end{example}
+
+A partir de este ejemplo surge una definición.
+
+\begin{definition}
+    Sea $\Omega$ un espacio muestral. Si $\Omega$ es finito y todos sus elementos tienen la misma probabilidad, decimos que $\Omega$ es un \emph{espacio muestral equiprobable}.
+\end{definition}
+
+Sin embargo, hasta ahora únicamente tratamos con espacios muestrales finitos. Veamos qué pasa con los infinitos.
+
+\begin{example}
+    Consideremos el siguiente experimento:
+    \begin{centeredvarwidth}
+        \begin{enumerate}
+            \item Se elije un punto del disco unitario $D = \{ (x, y) \in \R^2 \mid x^2 + y^2 = 1\}$ al azar.
+            \item Se graba el resultado.
+        \end{enumerate}
+    \end{centeredvarwidth}
+
+    Sea $A = \{ (x, y) \in \R^2 \mid x^2 + y^2 \leq \frac{1}{2} \}$.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=0.6]
+            % Dibuja y rellena el círculo grande (espacio muestral Omega)
+            \fill[black!10] (0,0) circle (3cm);
+            \draw (0,0) circle (3cm);
+            \node[above right] at (3,0) {$\Omega$};
+
+            % Dibuja y rellena el círculo más pequeño (evento A)
+            % Paso 1: Rellenar el círculo con un color sólido para el fondo
+            \fill[primarycolor!20] (0,0) circle (2.1213cm);
+            % Paso 2: Rellenar el mismo círculo con un patrón de líneas diagonales
+            \fill[pattern=north east lines, pattern color=primarycolor!50] (0,0) circle (2.1213cm);
+            % Borde del círculo A
+            \draw[primarycolor, thick] (0,0) circle (2.1213cm);
+            \node[below right] at (2,0) {$A$};
+        \end{tikzpicture}
+    \end{figure}
+
+    Por lo que 
+    \begin{equation*}
+        P(A) = \frac{\area(A)}{\area(\Omega)}.
+    \end{equation*}
+\end{example}
+
+
+\section{Eventos aleatorios}
+
+No podemos definirle una probablidad a todos los eventos de un espacio muestral.
+
+\begin{definition}
+    Un evento al cual le podemos definir una probabilidad es llamado un \emph{evento aleatorios}.
+\end{definition}
+
+Agregamos algunas reglas adicionales.
+
+\begin{definition}
+    Llamamos $\mathcal{F}$ a una familia de eventos a los cuales podemos calcularles su probabilidad si cumple los siguientes axiomas:
+    \begin{itemize}
+        \item[(F1)] $\Omega \in \mathcal{F}$.
+        \item[(F2)] Si $A \in \mathcal{F}$, entonces $A^{\textrm{c}} \in \mathcal{F}$.
+        \item[(F3)] Si $\{A_n\}_{n \in \N} \subseteq \mathcal{F}$, entonces $\bigcup_{n \in \N} A_n \in \mathcal{F}$. 
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    Si una familia cumple los axiomas (F1), (F2) y (F3), entonces se llama una $\sigma$-álgebra de conjuntos.
+\end{remark}
+
+\begin{example}
+    En el ejemplo \ref{ex:dados}, el espacio muestral
+    \begin{equation*}
+        \Omega = \{ 1, 2, 3, 4, 5, 6 \}
+    \end{equation*}
+    tiene a la familia de eventos $\mathcal{F} = \mathcal{P}(\Omega)$ que se les puede asignar una probabilidad.
+\end{example}
+
+Veamos algunas propiedades que podemos deducir.
+
+\begin{proposition}
+    \label{prop:familia-eventos}
+    Sea $\Omega$ un espacio muestral y $\mathcal{F} \subseteq \mathcal{P}(\Omega)$ una $\sigma$-álgebra. Las siguientes proposiciones son verdaderas:
+    \begin{enumerate}
+        \item $\varnothing \in \mathcal{F}$.
+        \item Si $\{A_n\}_{1 \leq n \leq N} \subseteq \mathcal{F}$, entonces $\bigcup_{1 \leq n \leq N} A_n \in \mathcal{F}$.
+        \item Si $\{A_n\}_{n \in \N} \subseteq \mathcal{F}$, entonces $\bigcap_{n \in \N} A_n \in \mathcal{F}$. (También la versión finita.)
+        \item Si $A, B \in \mathcal{F}$, entonces $A \setminus B \in \mathcal{F}$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    (\textit{1.}) Dado que $\Omega \in \mathcal{F}$ por (F1), obtenemos que $\varnothing = \Omega^{\textrm{c}} \in \mathcal{F}$ por (F2).
+
+    (\textit{2.}) Sea $\{A_n\}_{1 \leq n \leq N} \subseteq \mathcal{F}$. Consideremos la familia $\{B_n\}_{n \in \N}$ tal que 
+    \begin{equation*}
+        B_n = \begin{cases}
+            A_n & \text{si } 1 \leq n \leq N, \\
+            \varnothing & \text{si } n \geq N. \\
+        \end{cases}
+    \end{equation*}
+    Entonces, por (F3),
+    \begin{equation*}
+        \bigcup_{1 \leq n \leq N} A_n = \bigcup_{n \in \N} B_n \in \mathcal{F}.
+    \end{equation*}
+
+    (\textit{3.}) Sea $\{A_n\}_{n \in \N} \subseteq \mathcal{F}$. Por (F3),
+    \begin{equation*}
+        \bigcap_{n \in \N} A_n = \left(\bigcup_{n \in \N} A_n^{\mathrm{c}}\right)^{\textrm{c}} \in \mathcal{F}.
+    \end{equation*}
+
+    (\textit{4.}) Sean $A, B \in \mathcal{F}$. Dado que $B^{\mathrm{c}}$,
+    \begin{equation*}
+        A \setminus B = A \cap B^{\mathrm{c}} \in \mathcal{F}.
+    \end{equation*}
+\end{proof}
+
+\begin{example}
+    Consideremos el siguiente experimento:
+    \begin{centeredvarwidth}
+        \begin{enumerate}
+            \item Se elije un número real del intervalo $[0, 1]$ al azar.
+            \item Se graba el resultado.
+        \end{enumerate}
+    \end{centeredvarwidth}
+
+    Sea $\Omega = [0, 1]$ el espacio muestral y sea $\mathcal{F}$ la familia de eventos a los cuales les podemos asignar una probabilidad. Para un intervalo $[a, b]$ la probabilidad se puede calcular como
+    \begin{equation*}
+        P([a, b]) = b - a.
+    \end{equation*}
+
+    Aplicando las propiedades de la proposición \ref{prop:familia-eventos}, podemos deducir que en $\mathcal{F}$ están los eventos:
+    \begin{itemize}
+        \item Los intervalos abiertos y cerrados.
+        \item Uniones e intersecciones numerables de cerrados y/o abiertos.
+        \item Los puntos $\{x\}$ con $x \in [0, 1]$.
+        \item Los números racionales $\Q$.
+    \end{itemize}
+
+    ¿Cuál es la probabilidad de $\Q$? Basta con tomar $\{B_m\} = \{B(q_m, \frac{\varepsilon}{2^{m+1}})\}_{m \in \N}$ y ver que
+    \begin{align*}
+        P\left(\bigcup_{m \in \N} B_m\right) &\leq \sum_{m \in \N} P(B_m) \\
+        &\leq \sum_{m \in \N} \frac{\varepsilon}{2^m} \\
+        &\leq \varepsilon.
+    \end{align*}
+    Tomando $\varepsilon \to 0$, obtenemos que $P(\Q) = 0$.
+\end{example}
+
+
+\section{Definición de probabilidad}
+
+La \textit{idea de Laplace} de probabilidad consta en que la probabilidad de un evento es el límite de la frecuencia con la que sucede cuando la cantidad de ensayos tiende a infinito.
+
+Por otro lado, está la \textit{axiomatización de Kolmogorov}:
+
+\begin{definition}
+    Sea $\Omega$ un espacio muestra y $\mathcal{F} \subseteq \mathcal{P}(\Omega)$ una $\sigma$-álgebra. Una función probabilidad es una función $P: \mathcal{F} \to [0, 1]$ que cumple los siguientes axiomas:
+    \begin{itemize}
+        \item[(P1)] $P(\Omega) = 1$.
+        \item[(P2)] $P(A) \geq 0$ para todo $A \in \mathcal{F}$.
+        \item[(P3)] Si $\{A_n\}_{n \in \N} \subseteq \mathcal{F}$ una familia de eventos disjuntos, entonces $P(\bigcup_{n \in \N} A_n) = \sum_{n = 1}^{\infty} P(A_n)$.
+    \end{itemize}
+\end{definition}
+
+Con esto podemos definir un espacio de probabilidad.
+
+\begin{definition}
+    Sea $\Omega$ un espacio muestral, $\mathcal{F} \subseteq \mathcal{P}(\Omega)$ una familia de eventos y $P: \mathcal{F} \to [0, 1]$ una función probabilidad. Entonces, la terna $(\Omega, \mathcal{F}, P)$ es un \emph{espacio de probabilidad}.
+\end{definition}
+
+%
+% TODO: Propiedad de suma = 1 => terna espacio de proba
+%
+
+Probamos algunos resultados inmediatos.
+
+\begin{proposition}
+    Sea $(\Omega, \mathcal{F}, P)$ un espacio de probabilidad. Entonces, las siguientes proposiciones son verdaderas:
+    \begin{enumerate}
+        \item $P(\varnothing) = 0$.
+        \item Si $A$ y $B$ son eventos disjuntos, entonces $P(A \cup B) = P(A) + P(B)$.
+        \item Si $\{A_n\}_{1 \leq n \leq N}$ es una familia de eventos disjuntos, entonces $P(\bigcup_{1 \leq n \leq N} A_n) = \sum_{n = 1}^N P(A_n)$.
+        \item $P(A^{\textrm{c}}) = 1 - P(A)$.
+        \item Si $A \subseteq B$, entonces $P(A) \leq P(B)$.
+        \item $P(\bigcup_{n \in \N} A_n) \leq \sum_{n = 1}^{\infty} P(A_n)$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    (\textit{1.}) Consideremos la familia $\{ \Omega, \varnothing, \ldots \}$. Por (P3), 
+    \begin{align*}
+        P(\Omega) &= P(\Omega \cup \varnothing \cup \cdots) \\
+        &= P(\Omega) + \underbrace{P(\varnothing) + \cdots}_{=0}
+    \end{align*}
+
+    (\textit{2.}) La propiedad sale utilizando (P3) y tomando la familia $\{ A, B, \varnothing, \ldots \}$.
+
+    (\textit{3.}) Se prueba por inducción y ussando la proposición anterior.
+
+    (\textit{4.}) Podemos escribir como unión disjunta $\Omega = A \cup A^{\mathrm{c}}$. Y con la propiedad \textit{2.} obtenemos que
+    \begin{equation*}
+        1 = P(\Omega) = P(A) + P(A^{\mathrm{c}}),
+    \end{equation*}
+    entonces
+    \begin{equation*}
+        P(A^{\mathrm{c}}) = 1 - P(A).
+    \end{equation*}
+
+    (\textit{5.}) Como $B = (B \setminus A) \cup A$,
+    \begin{equation*}
+        P(A) \leq P(B \setminus A) + P(A) = P(B).
+    \end{equation*}
+
+    (\textit{6.}) Sea $\{A_n\}_{n \in \N}$ una familia de eventos. Consideremos $\{B_n\}_{n \in \N}$ tal que
+    \begin{equation*}
+        B_n = A_n \setminus \bigcup_{1 \leq k \leq n-1} A_k.
+    \end{equation*}
+    Como los eventos $B_n$ son disjuntos dos a dos,
+    \begin{equation*}
+        P\left(\bigcup_{n \in \N} A_n\right) = P\left(\bigcup_{n \in \N} B_n\right) = \sum_{n = 1}^{\infty} P(B_n) \leq \sum_{n = 1}^{\infty} P(A_n).
+    \end{equation*}
+\end{proof}
+
+
+

@@ -359,5 +359,317 @@ Probamos algunos resultados inmediatos.
     \end{equation*}
 \end{proof}
 
+\begin{example}
+    \label{ex:moneda-hasta-cara}
+    Consideremos el siguiente experimento:
+    \begin{centeredvarwidth}
+        \begin{enumerate}
+            \item Se tira una moneda balanceada hasta que salga cara.
+            \item Se anota la cantidad total de lanzamientos.
+        \end{enumerate}
+    \end{centeredvarwidth}
 
+    El espacio muestral es
+    \begin{equation*}
+        \Omega = \N,
+    \end{equation*}
+    con
+    \begin{equation*}
+        P(1) = \frac{1}{2}, \quad P(i) = \frac{1}{2^i}, \quad i \geq 1.
+    \end{equation*}
+\end{example}
 
+Ahora pensémoslo con infinitas tiradas de moneda.
+
+\begin{example}
+    Consideremos el experimento del ejemplo \ref{ex:moneda-hasta-cara}. Entonces, el espacio muestral es
+    \begin{equation*}
+        \Omega = \{0,1\}^{\N}.
+    \end{equation*}
+
+    Sea $C_k = \{ \text{la $k$-ésima moneda es cara} \}$ y definimos
+    \begin{equation*}
+        A_n = \{\text{las primeras $n$ monedas son cara}\}
+        = \bigcap_{k=1}^n C_k.
+    \end{equation*}
+    Entonces, $P(A_n) = \frac{1}{2^n}$. Consideremos
+    \begin{equation*}
+        A = \{ \text{sale siempre cara} \} = \bigcap_{n \in \N} A_n.
+    \end{equation*}
+    Por lo tanto $A \subseteq A_n$ para todo $n \in \N$. Así, $P(A) \leq P(A_n) = \frac{1}{2^n} \to 0$ y $P(A) = 0$.
+
+    Veamos otro evento:
+    \begin{equation*}
+        B = \{\text{a partir de algún momento salen sólo caras}\}.
+    \end{equation*}
+    Es decir, existe $n_0 \in \N$ tal que para todo $k \geq n_0$ la moneda $k$ es cara. En notación,
+    \begin{equation*}
+        B = \bigcup_{n_0 \in \N} \bigcap_{k=n_0}^\infty C_k.
+    \end{equation*}
+
+    Para cada $n_0$ fijo,
+    \begin{align*}
+        P\left(\bigcap_{k=n_0}^\infty C_k\right)
+        &= \lim_{m \to \infty} P\left(\bigcap_{k=n_0}^m C_k\right) \\
+        &= \lim_{m \to \infty} \frac{1}{2^{m-n_0+1}} \\
+        &= 0.
+    \end{align*}
+    Entonces, por subaditividad numerable,
+    \begin{equation*}
+        P(B) \leq \sum_{n_0 \in \N} 0 = 0.
+    \end{equation*}
+\end{example}
+
+Podemos mirar a $\omega = (\omega_k)_{k \in \N} \in \{0,1\}^\N$ como la expansión binaria de un número real $x \in [0,1]$:
+\begin{equation*}
+    x = \sum_{k=1}^\infty \frac{\omega_k}{2^k}.
+\end{equation*}
+De esta forma, elegir una secuencia infinita de lanzamientos es equivalente a elegir un número real en $[0,1]$.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[x=10cm,y=1cm]
+        % segmento [0,1]
+        \draw[thick] (0,0) -- (1,0);
+        \foreach \x/\lab in {0/0,0.25/\frac14,0.5/\frac12,0.75/\frac34,1/1}{
+            \draw[thick] (\x,0.1)--(\x,-0.1);
+            \node[below] at (\x,-0.1) {$\lab$};
+        }
+        % llaves para 0/1
+        \draw[decorate,decoration={brace,amplitude=6pt}] (0,0.25) -- (0.5,0.25) node[midway,above=6pt] {$0\ldots$};
+        \draw[decorate,decoration={brace,amplitude=6pt}] (0.5,0.25) -- (1,0.25) node[midway,above=6pt] {$1\ldots$};
+        % llaves para 00,01,10,11
+        \draw[decorate,decoration={mirror,brace,amplitude=5pt}] (0,-0.7) -- (0.25,-0.7) node[midway,below=6pt] {$00\ldots$};
+        \draw[decorate,decoration={mirror,brace,amplitude=5pt}] (0.25,-0.7) -- (0.5,-0.7) node[midway,below=6pt] {$01\ldots$};
+        \draw[decorate,decoration={mirror,brace,amplitude=5pt}] (0.5,-0.7) -- (0.75,-0.7) node[midway,below=6pt] {$10\ldots$};
+        \draw[decorate,decoration={mirror,brace,amplitude=5pt}] (0.75,-0.7) -- (1,-0.7) node[midway,below=6pt] {$11\ldots$};
+    \end{tikzpicture}
+\end{figure}
+
+\begin{proposition}
+    Sea $\{A_n\}_{n \in \N}$ una familia de eventos con $A_n \subseteq A_{n+1}$ para todo $n$. Entonces
+    \begin{equation*}
+        P\left(\bigcup_{n \in \N} A_n\right) = \lim_{n \to \infty} P(A_n).
+    \end{equation*}
+\end{proposition}
+
+\begin{proof}
+    Definimos $B_n = A_n \setminus A_{n-1}$ (con $A_0 = \varnothing$). Entonces
+    \begin{equation*}
+        \bigcup_{n \in \N} B_n = \bigcup_{n \in \N} A_n
+        \qquad \text{y} \qquad
+        B_i \cap B_j = \varnothing \;\; \text{si } i \neq j.
+    \end{equation*}
+    Como $P(B_n) = P(A_n) - P(A_{n-1})$, tenemos
+    \begin{align*}
+        P\left(\bigcup_{n \in \N} A_n\right)
+        &= \sum_{n=1}^\infty P(B_n) \\
+        &= \lim_{N \to \infty} \sum_{n=1}^N \big(P(A_n) - P(A_{n-1})\big) \\
+        &= \lim_{N \to \infty} \big(P(A_N) - P(A_0)\big).
+    \end{align*}
+    Como $A_0 = \varnothing$, queda
+    \begin{equation*}
+        P\left(\bigcup_{n \in \N} A_n\right) = \lim_{N \to \infty} P(A_N).
+    \end{equation*}
+\end{proof}
+
+\begin{corollary}
+    Tomando complementos se obtiene que, si $A_n \supseteq A_{n+1}$, entonces
+    \begin{equation*}
+        P\left(\bigcap_{n \in \N} A_n\right)
+        = 1 - P\left(\bigcup_{n \in \N} A_n^{\mathrm{c}}\right)
+        = 1 - \lim_{n \to \infty} P(A_n^{\mathrm{c}})
+        = \lim_{n \to \infty} P(A_n).
+    \end{equation*}
+\end{corollary}
+
+\section{Probabilidad condicional}
+
+Ya vimos cómo calcular probabilidades de eventos. Ahora queremos formalizar qué significa calcular probabilidades \textit{condicionadas} a que cierto evento ya ocurrió.
+
+\begin{example}
+    Tiro dos dados y sumo los resultados. Consideremos los eventos
+    \begin{align*}
+        A &= \{\text{la suma es $5$}\}, \\
+        B &= \{\text{el segundo dado es par}\}.
+    \end{align*}
+    El espacio muestral es
+    \begin{equation*}
+        \Omega = \{(a,b) \mid a,b \in \{1,\ldots,6\}\}.
+    \end{equation*}
+    En particular,
+    \begin{equation*}
+        A = \{(1,4),(4,1),(2,3),(3,2)\}.
+    \end{equation*}
+    Luego,
+    \begin{equation*}
+        P(A \mid B) = \frac{\# (A \cap B)}{\# B} = \frac{2}{18} = \frac{1}{9}.
+    \end{equation*}
+\end{example}
+
+El cálculo anterior nos motiva a introducir la definición general de probabilidad condicional.
+
+\begin{definition}
+    Dados $A$ y $B$ eventos, con $P(B) \neq 0$, la \emph{probabilidad condicional} de $A$ dado $B$ se define como
+    \begin{equation*}
+        P(A \mid B) = \frac{P(A \cap B)}{P(B)}.
+    \end{equation*}
+\end{definition}
+
+Veamos cómo aplica la definición en un ejemplo.
+
+\begin{example}
+    Consideremos una urna con $9$ bolitas de la siguiente forma:
+    \begin{itemize}
+        \item $5$ naranjas,
+        \item $4$ violetas, de las cuales $3$ tienen una cruz.
+    \end{itemize}
+    Denotemos $N=$ \{\text{naranja}\}, $V=$ \{\text{violeta}\}, $C=$ \{\text{tiene cruz}\}. Entonces,
+    \begin{align*}
+        P(N) &= \frac{5}{9}, &
+        P(N \mid V) &= \frac{1}{3}, &
+        P(C \mid V) &= \frac{1}{2}.
+    \end{align*}
+\end{example}
+
+A partir de la definición, podemos verificar fácilmente que $P(\,\cdot \mid B)$ cumple los axiomas de probabilidad.
+
+\begin{proposition}
+    Sea $B$ un evento con $P(B) \neq 0$. Entonces la aplicación
+    \begin{equation*}
+        A \mapsto P(A \mid B)
+    \end{equation*}
+    define una probabilidad sobre el espacio muestral condicionado.
+\end{proposition}
+
+\begin{proof}
+    Para todo $B$ con $P(B)>0$:
+    \begin{itemize}
+        \item[(P1)] $P(\Omega \mid B) = \frac{P(\Omega \cap B)}{P(B)} = \frac{P(B)}{P(B)}=1$.
+        \item[(P2)] Como $P$ es una probabilidad, $P(A \mid B) \geq 0$.
+        \item[(P3)] Si $\{A_n\}_{n \in \N}$ son eventos disjuntos dos a dos,
+        \begin{align*}
+            P\!\left(\bigcup_{n \in \N} A_n \,\middle|\, B\right)
+            &= \frac{P\!\left(\bigcup_{n \in \N}(A_n \cap B)\right)}{P(B)} \\
+            &= \frac{\sum_{n \in \N} P(A_n \cap B)}{P(B)} \\
+            &= \sum_{n \in \N} \frac{P(A_n \cap B)}{P(B)} \\
+            &= \sum_{n \in \N} P(A_n \mid B).
+        \end{align*}
+    \end{itemize}
+\end{proof}
+
+\begin{remark}
+    Es importante aclarar que $A \mid B$ no es un evento. Por lo tanto, expresiones como $P(A \mid B \mid C)$ no tienen sentido.
+\end{remark}
+
+\begin{proposition}
+    Para todo par de eventos $A, B$ con $P(B) \neq 0$, se cumple
+    \begin{equation*}
+        P(A \mid B) \, P(B) = P(A \cap B).
+    \end{equation*}
+\end{proposition}
+
+Este resultado es útil para calcular probabilidades conjuntas a partir de probabilidades condicionales.
+
+\begin{example}
+    Sacamos dos cartas de un mazo de $52$ cartas sin reemplazo. Sea
+    \begin{align*}
+        A_1 &= \{\text{la primera carta es trébol}\}, \\
+        A_2 &= \{\text{la segunda carta es trébol}\}.
+    \end{align*}
+    Entonces,
+    \begin{align*}
+        P(A_1) &= \frac{13}{52}, \\
+        P(A_2 \mid A_1) &= \frac{12}{51}.
+    \end{align*}
+    Aplicando la proposición anterior,
+    \begin{equation*}
+        P(A_1 \cap A_2) = P(A_1)\,P(A_2 \mid A_1) = \frac{13}{52} \cdot \frac{12}{51}.
+    \end{equation*}
+\end{example}
+
+\begin{proposition}[Regla del producto]
+    Para eventos $A_1, A_2, \dots, A_n$ se cumple
+    \begin{equation*}
+        P(A_1 \cap A_2 \cap \cdots \cap A_n)
+        = P(A_1)\,P(A_2 \mid A_1)\,P(A_3 \mid A_1 \cap A_2)\,\cdots\,P(A_n \mid A_1 \cap \cdots \cap A_{n-1}).
+    \end{equation*}
+\end{proposition}
+
+\begin{proof}[Idea de demostración]
+    La demostración se hace fácilmente por inducción en $n$.
+\end{proof}
+
+\section{Probabilidad total}
+
+La noción de probabilidad condicional nos permite descomponer probabilidades en términos de eventos disjuntos.
+
+\begin{proposition}[Probabilidad total en dos partes]
+    Sea $B \subseteq \Omega$ un evento. Entonces, para todo $A \subseteq \Omega$,
+    \begin{align*}
+        P(A) &= P(A \cap B) + P(A \cap B^{\mathrm c}) \\
+             &= P(A \mid B)\,P(B) + P(A \mid B^{\mathrm c})\,P(B^{\mathrm c}).
+    \end{align*}
+\end{proposition}
+
+Más en general, si $\{A_i\}_{i \in I}$ es una partición numerable de $\Omega$, se cumple la \textit{ley de la probabilidad total}:
+\begin{equation*}
+    P(B) = \sum_{i \in I} P(B \mid A_i)\,P(A_i).
+\end{equation*}
+
+\begin{example}
+    Consideremos el siguiente experimento:
+    \begin{centeredvarwidth}
+        \begin{enumerate}
+            \item En una caja hay $3$ monedas: una con dos caras y dos equilibradas.
+            \item Se elige una moneda al azar.
+            \item Se lanza la moneda.
+        \end{enumerate}
+    \end{centeredvarwidth}
+
+    Definamos los eventos
+    \begin{align*}
+        C &= \{\text{sale cara}\}, \\
+        A &= \{\text{la moneda elegida es la de dos caras}\}.
+    \end{align*}
+
+    Entonces,
+    \begin{align*}
+        P(C) &= P(C \mid A)\,P(A) + P(C \mid A^{\mathrm{c}})\,P(A^{\mathrm{c}}) \\
+             &= 1 \cdot \frac{1}{3} + \frac{1}{2} \cdot \frac{2}{3} \\
+             &= \frac{2}{3}.
+    \end{align*}
+\end{example}
+
+Este cálculo es un primer ejemplo de la \emph{fórmula de la probabilidad total}, que nos permite descomponer la probabilidad de un evento en función de una partición del espacio.
+
+\begin{example}
+    Ahora consideremos otro experimento. Lanzamos un dado. Sea
+    \begin{align*}
+        A &= \{\text{saco un $5$}\}, \\
+        B &= \{\text{saco un $7$}\}, \\
+        C &= \{\text{ni $5$ ni $7$}\} = (A \cup B)^{\mathrm c}.
+    \end{align*}
+
+    Supongamos que ganar depende de estos eventos: 
+    si ocurre $A$ se gana siempre, 
+    si ocurre $B$ nunca se gana, 
+    y si ocurre $C$ se gana con cierta probabilidad.
+
+    Denotemos $G=\{\text{ganar}\}$. Entonces, por probabilidad total,
+    \begin{align*}
+        P(G) &= P(G \mid A)\,P(A) + P(G \mid B)\,P(B) + P(G \mid C)\,P(C).
+    \end{align*}
+
+    Como $P(G \mid A)=1$, $P(G \mid B)=0$, y $P(A)=P(B)=\frac{1}{6}$, $P(C)=\frac{4}{6}$, se obtiene
+    \begin{align*}
+        P(G) &= 1 \cdot \frac{1}{6} + 0 \cdot \frac{1}{6} + P(G \mid C)\,\frac{4}{6}.
+    \end{align*}
+
+    Si además sabemos que $P(G \mid C)=\frac{1}{2}$, queda
+    \begin{equation*}
+        P(G) = \frac{1}{6} + \frac{1}{2}\cdot\frac{4}{6} = \frac{6}{15}.
+    \end{equation*}
+\end{example}
+
+Estos ejemplos muestran cómo las probabilidades condicionales y la probabilidad total se combinan para calcular probabilidades en situaciones más complejas.
