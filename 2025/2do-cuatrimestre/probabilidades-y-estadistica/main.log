@@ -1,16 +1,16 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.23)  2 SEP 2025 23:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.23)  8 SEP 2025 01:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/ramirodibur/Projects/uba/probabilidades-y-estadistica/main.tex
-(/Users/ramirodibur/Projects/uba/probabilidades-y-estadistica/main.tex
+**/Users/ramirodibur/Projects/uba/2025/2do-cuatrimestre/probabilidades-y-estadistica/main.tex
+(/Users/ramirodibur/Projects/uba/2025/2do-cuatrimestre/probabilidades-y-estadistica/main.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2024/06/29 v1.4n Standard LaTeX document class
-(/usr/local/texlive/2025/texmf-dist/tex/latex/base/bk11.clo
-File: bk11.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/base/bk12.clo
+File: bk12.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count196
 \c@chapter=\count197
@@ -817,12 +817,12 @@ LaTeX Info: Redefining \% on input line 242.
 * \topmargin=-36.0119pt
 * \headheight=15.0pt
 * \headsep=19.8738pt
-* \topskip=11.0pt
-* \footskip=27.46295pt
-* \marginparwidth=53.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=38.0pt
 * \marginparsep=7.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -895,7 +895,7 @@ LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 3
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 3.
+(Font)              <12> on input line 3.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 3.
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -935,27 +935,27 @@ Cap\'{\i }tulo 1.
 File: dice.pdf Graphic file (type pdf)
 <use dice.pdf>
 Package pdftex.def Info: dice.pdf  used on input line 40.
-(pdftex.def)             Requested size: 8.24995pt x 8.25038pt.
+(pdftex.def)             Requested size: 9.04172pt x 9.04167pt.
 File: dice.pdf Graphic file (type pdf)
 <use dice.pdf>
 Package pdftex.def Info: dice.pdf  used on input line 40.
-(pdftex.def)             Requested size: 8.24997pt x 8.25038pt.
+(pdftex.def)             Requested size: 9.04172pt x 9.04167pt.
 File: dice.pdf Graphic file (type pdf)
 <use dice.pdf>
 Package pdftex.def Info: dice.pdf  used on input line 40.
-(pdftex.def)             Requested size: 8.24997pt x 8.25038pt.
+(pdftex.def)             Requested size: 9.04172pt x 9.04167pt.
 File: dice.pdf Graphic file (type pdf)
 <use dice.pdf>
 Package pdftex.def Info: dice.pdf  used on input line 40.
-(pdftex.def)             Requested size: 8.24995pt x 8.25038pt.
+(pdftex.def)             Requested size: 9.04172pt x 9.04167pt.
 File: dice.pdf Graphic file (type pdf)
 <use dice.pdf>
 Package pdftex.def Info: dice.pdf  used on input line 40.
-(pdftex.def)             Requested size: 8.24995pt x 8.25038pt.
+(pdftex.def)             Requested size: 9.04172pt x 9.04167pt.
 File: dice.pdf Graphic file (type pdf)
 <use dice.pdf>
 Package pdftex.def Info: dice.pdf  used on input line 40.
-(pdftex.def)             Requested size: 8.24997pt x 8.25038pt.
+(pdftex.def)             Requested size: 9.04172pt x 9.04167pt.
 
 
 [2
@@ -964,84 +964,127 @@ Package pdftex.def Info: dice.pdf  used on input line 40.
 File: dice.pdf Graphic file (type pdf)
 <use dice.pdf>
 Package pdftex.def Info: dice.pdf  used on input line 102.
-(pdftex.def)             Requested size: 8.24997pt x 8.25038pt.
+(pdftex.def)             Requested size: 9.04172pt x 9.04167pt.
 File: dice.pdf Graphic file (type pdf)
 <use dice.pdf>
 Package pdftex.def Info: dice.pdf  used on input line 106.
-(pdftex.def)             Requested size: 8.24997pt x 8.25038pt.
+(pdftex.def)             Requested size: 9.04172pt x 9.04167pt.
 File: dice.pdf Graphic file (type pdf)
 <use dice.pdf>
 Package pdftex.def Info: dice.pdf  used on input line 133.
-(pdftex.def)             Requested size: 8.24995pt x 8.25038pt.
+(pdftex.def)             Requested size: 9.04172pt x 9.04167pt.
 File: dice.pdf Graphic file (type pdf)
 <use dice.pdf>
 Package pdftex.def Info: dice.pdf  used on input line 133.
-(pdftex.def)             Requested size: 8.24995pt x 8.25038pt.
+(pdftex.def)             Requested size: 9.04172pt x 9.04167pt.
 File: dice.pdf Graphic file (type pdf)
 <use dice.pdf>
 Package pdftex.def Info: dice.pdf  used on input line 133.
-(pdftex.def)             Requested size: 8.24995pt x 8.25038pt.
+(pdftex.def)             Requested size: 9.04172pt x 9.04167pt.
 File: dice.pdf Graphic file (type pdf)
 <use dice.pdf>
 Package pdftex.def Info: dice.pdf  used on input line 133.
-(pdftex.def)             Requested size: 8.24997pt x 8.25038pt.
+(pdftex.def)             Requested size: 9.04172pt x 9.04167pt.
 File: dice.pdf Graphic file (type pdf)
 <use dice.pdf>
 Package pdftex.def Info: dice.pdf  used on input line 133.
-(pdftex.def)             Requested size: 8.24997pt x 8.25038pt.
+(pdftex.def)             Requested size: 9.04172pt x 9.04167pt.
 File: dice.pdf Graphic file (type pdf)
 <use dice.pdf>
 Package pdftex.def Info: dice.pdf  used on input line 133.
-(pdftex.def)             Requested size: 8.24995pt x 8.25038pt.
+(pdftex.def)             Requested size: 9.04172pt x 9.04167pt.
 File: dice.pdf Graphic file (type pdf)
 <use dice.pdf>
 Package pdftex.def Info: dice.pdf  used on input line 133.
-(pdftex.def)             Requested size: 8.24997pt x 8.25038pt.
+(pdftex.def)             Requested size: 9.04172pt x 9.04167pt.
 File: dice.pdf Graphic file (type pdf)
 <use dice.pdf>
 Package pdftex.def Info: dice.pdf  used on input line 133.
-(pdftex.def)             Requested size: 8.24997pt x 8.25038pt.
+(pdftex.def)             Requested size: 9.04172pt x 9.04167pt.
 
 
 LaTeX Info: Redefining \. on input line 139.
 LaTeX Info: Redefining \% on input line 139.
 [3]
 
-LaTeX Info: Redefining \. on input line 203.
-LaTeX Info: Redefining \% on input line 203.
+LaTeX Info: Redefining \. on input line 186.
+LaTeX Info: Redefining \% on input line 186.
 [4]
 
-LaTeX Info: Redefining \. on input line 285.
-LaTeX Info: Redefining \% on input line 285.
+LaTeX Info: Redefining \. on input line 248.
+LaTeX Info: Redefining \% on input line 248.
 [5{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
+Overfull \hbox (2.32343pt too wide) in paragraph at lines 299--300
+[]\T1/lmr/m/n/12 (-20) Si $\OMS/lmsy/m/n/12 f\OML/lmm/m/it/12 A[]\OMS/lmsy/m/n/12 g[] ^^R F$ \T1/lmr/m/n/12 (-20) una fa-mi-lia de even-tos dis-jun-tos, en-ton-ces $\OML/lmm/m/it/12 P\OT1/lmr/m/n/12 (-20) ([][] \OML/lmm/m/it/12 A[]\OT1/lmr/m/n/12 (-20) ) =
+ []
 
-LaTeX Info: Redefining \. on input line 307.
-LaTeX Info: Redefining \% on input line 307.
+
+
+LaTeX Info: Redefining \. on input line 301.
+LaTeX Info: Redefining \% on input line 301.
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 15.13803pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.13803pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.13803pt}.
+
 [6]
+Overfull \hbox (19.8217pt too wide) in paragraph at lines 320--321
+[]\T1/lmr/m/it/12 (-20) Si $\OMS/lmsy/m/n/12 f\OML/lmm/m/it/12 A[]\OMS/lmsy/m/n/12 g[]$ \T1/lmr/m/it/12 (-20) es una fa-mi-lia de even-tos dis-jun-tos, en-ton-ces $\OML/lmm/m/it/12 P\OT1/lmr/m/n/12 (-20) ([][] \OML/lmm/m/it/12 A[]\OT1/lmr/m/n/12 (-20) ) =
+ []
 
-LaTeX Info: Redefining \. on input line 380.
-LaTeX Info: Redefining \% on input line 380.
+
+
+LaTeX Info: Redefining \. on input line 355.
+LaTeX Info: Redefining \% on input line 355.
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 15.13803pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.13803pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.13803pt}.
+
 [7]
 
-LaTeX Info: Redefining \. on input line 426.
-LaTeX Info: Redefining \% on input line 426.
+LaTeX Info: Redefining \. on input line 421.
+LaTeX Info: Redefining \% on input line 421.
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 15.13803pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.13803pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.13803pt}.
+
 [8]
 
-LaTeX Info: Redefining \. on input line 508.
-LaTeX Info: Redefining \% on input line 508.
+LaTeX Info: Redefining \. on input line 484.
+LaTeX Info: Redefining \% on input line 484.
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 15.13803pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.13803pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.13803pt}.
+
 [9]
 
-LaTeX Info: Redefining \. on input line 557.
-LaTeX Info: Redefining \% on input line 557.
+LaTeX Info: Redefining \. on input line 533.
+LaTeX Info: Redefining \% on input line 533.
 [10]
 
-LaTeX Info: Redefining \. on input line 613.
-LaTeX Info: Redefining \% on input line 613.
-[11])
+LaTeX Info: Redefining \. on input line 589.
+LaTeX Info: Redefining \% on input line 589.
+[11]
+Overfull \hbox (27.97148pt too wide) detected at line 596
+\OML/lmm/m/it/12 P\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 A[] \OMS/lmsy/m/n/12 \ \OML/lmm/m/it/12 A[] \OMS/lmsy/m/n/12 \ [] \ \OML/lmm/m/it/12 A[]\OT1/lmr/m/n/12 ) = \OML/lmm/m/it/12 P\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 A[]\OT1/lmr/m/n/12 ) \OML/lmm/m/it/12 P\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 A[] \OMS/lmsy/m/n/12 j \OML/lmm/m/it/12 A[]\OT1/lmr/m/n/12 ) \OML/lmm/m/it/12 P\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 A[] \OMS/lmsy/m/n/12 j \OML/lmm/m/it/12 A[] \OMS/lmsy/m/n/12 \ \OML/lmm/m/it/12 A[]\OT1/lmr/m/n/12 )  []  \OML/lmm/m/it/12 P\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 A[] \OMS/lmsy/m/n/12 j \OML/lmm/m/it/12 A[] \OMS/lmsy/m/n/12 \ [] \ \OML/lmm/m/it/12 A[]\OT1/lmr/m/n/12 )\OML/lmm/m/it/12 :
+ []
 
-LaTeX Info: Redefining \. on input line 285.
-LaTeX Info: Redefining \% on input line 285.
-[12]
+
+
+LaTeX Info: Redefining \. on input line 642.
+LaTeX Info: Redefining \% on input line 642.
+[12])
 
 LaTeX Info: Redefining \. on input line 286.
 LaTeX Info: Redefining \% on input line 286.
@@ -1057,13 +1100,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 7746C0F14C16521D1DEB3086C33EFAA0;1191.
  ) 
 Here is how much of TeX's memory you used:
- 36618 strings out of 473190
- 777419 string characters out of 5715800
- 1204678 words of memory out of 5000000
- 59097 multiletter control sequences out of 15000+600000
- 637637 words of font info for 151 fonts, out of 8000000 for 9000
+ 36626 strings out of 473190
+ 777497 string characters out of 5715800
+ 1205703 words of memory out of 5000000
+ 59100 multiletter control sequences out of 15000+600000
+ 638124 words of font info for 153 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 86i,15n,96p,1062b,1429s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 86i,15n,96p,1084b,1429s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{theorem.1.20} has been referenced but does not exist, replaced by a fixed one
 
@@ -1073,8 +1116,8 @@ pdfTeX warning (dest): name{theorem.1.15} has been referenced but does not exist
 
 pdfTeX warning (dest): name{theorem.1.3} has been referenced but does not exist, replaced by a fixed one
 
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (15 pages, 288907 bytes).
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (15 pages, 285932 bytes).
 PDF statistics:
  327 PDF objects out of 1000 (max. 8388607)
  231 compressed objects within 3 object streams
