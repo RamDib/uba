@@ -1,0 +1,37 @@
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=1.1]
+  % Parámetros editables
+  \def\r{2.2}      % módulo = |z|
+  \def\ang{40}     % ángulo (en grados): Arg(z)
+
+  % Puntos
+  \coordinate (O) at (0,0);
+  \coordinate (X) at (1,0);        % punto en el eje real
+  \coordinate (Z) at (\ang:\r);
+
+  % Ejes
+  \draw[->] (-0.6,0) -- (3.0,0) node[below right] {$\Re$};
+  \draw[->] (0,-0.6) -- (0,2.6) node[above left] {$\Im$};
+
+  % Círculos
+  \draw[densely dotted] (O) circle (1);
+  \draw[dashed] (O) circle (\r);
+
+  % Vector z
+  \draw[very thick,-{Latex}] (O) -- (Z)
+    node[pos=1, above right] {$z$};
+
+  % Proyecciones
+  \path let \p1 = (Z) in
+    coordinate (Xproj) at (\x1,0)
+    coordinate (Yproj) at (0,\y1);
+  \draw[dotted] (Z) -- (Xproj) node[below] {$r\cos\theta$};
+  \draw[dotted] (Z) -- (Yproj) node[left]  {$r\sin\theta$};
+
+  % Punto y ángulo
+  \fill (Z) circle (0.03);
+  \pic [draw, ->, "$\theta$", angle radius=11mm, angle eccentricity=1.15]
+      {angle = X--O--Z};
+\end{tikzpicture}
+\end{figure}

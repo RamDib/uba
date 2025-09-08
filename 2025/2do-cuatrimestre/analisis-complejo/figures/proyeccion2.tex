@@ -1,0 +1,159 @@
+\begin{figure}[H]
+    \centering
+    % Código obtenido de https://tex.stackexchange.com/questions/546979/sphere-shell-using-tikz
+    \begin{tikzpicture}[declare function={%
+            stereox(\x,\y)=2*\x/(1+\x*\x+\y*\y);%
+            stereoy(\x,\y)=2*\y/(1+\x*\x+\y*\y);%
+            stereoz(\x,\y)=(-1+\x*\x+\y*\y)/(1+\x*\x+\y*\y);
+            Px=1.75;Py=-1.5;Qx=-1.5;Qy=-1.25;amax=2.5;},scale=2.5,
+            line join=round,line cap=round,
+            dot/.style={circle,fill,inner sep=1pt},>={Stealth[length=1.2ex]}, scale=0.8]
+    \pgfmathsetmacro{\myaz}{15}
+    \path[save path=\pathSphere]   (0,0) circle[radius=1];
+    \begin{scope}[3d view={\myaz}{18}]
+    \draw (-amax,amax) -- (-amax,-amax) coordinate (bl) -- (amax,-amax) 
+    coordinate (br)-- (amax,amax);
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%% PLANO por N y la recta wz en \C (como ya tenías)
+    \pgfmathsetmacro{\dx}{Qx-Px}
+    \pgfmathsetmacro{\dy}{Qy-Py}
+    \pgfmathsetmacro{\dn}{sqrt(\dx*\dx+\dy*\dy)}
+    \pgfmathsetmacro{\ux}{\dx/\dn}
+    \pgfmathsetmacro{\uy}{\dy/\dn}
+
+    \pgfmathsetmacro{\mx}{(Px+Qx)/2}
+    \pgfmathsetmacro{\my}{(Py+Qy)/2}
+
+    % Vector hacia N desde M=(mx,my,0)
+    \pgfmathsetmacro{\vx}{-\mx}
+    \pgfmathsetmacro{\vy}{-\my}
+    \pgfmathsetmacro{\vz}{1}
+
+    % Lámina del plano (opcional, ya la tenés: podés dejarla o quitarla)
+    \pgfmathsetmacro{\L}{1.2*amax}
+    \pgfmathsetmacro{\H}{1.6}
+    % Normal del plano n = u x v
+    \pgfmathsetmacro{\nx}{\uy*1 - 0*\vy}
+    \pgfmathsetmacro{\ny}{0*\vx - \ux*1}
+    \pgfmathsetmacro{\nz}{\ux*\vy - \uy*\vx}
+    \pgfmathsetmacro{\nn}{sqrt(\nx*\nx+\ny*\ny+\nz*\nz)}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%% CIRCUNFERENCIA: intersección (esfera ∩ plano) pasa por N, φ(w), φ(z)
+    % Centro C = proyección ortogonal del 0 sobre el plano: C = ( (n·M)/||n||^2 ) n
+    \pgfmathsetmacro{\ndotM}{\nx*\mx + \ny*\my + \nz*0}
+    \pgfmathsetmacro{\Cx}{(\ndotM/(\nn*\nn))*\nx}
+    \pgfmathsetmacro{\Cy}{(\ndotM/(\nn*\nn))*\ny}
+    \pgfmathsetmacro{\Cz}{(\ndotM/(\nn*\nn))*\nz}
+
+    % Radio r = sqrt(1 - d^2), con d = |n·M|/||n||
+    \pgfmathsetmacro{\rC}{sqrt(max(0,1 - (\ndotM*\ndotM)/(\nn*\nn)))}
+
+    % Base ortonormal en el plano: a = u (ya unitario), b = (n_unit x a) normalizado
+    \pgfmathsetmacro{\nxu}{\nx/\nn}
+    \pgfmathsetmacro{\nyu}{\ny/\nn}
+    \pgfmathsetmacro{\nzu}{\nz/\nn}
+    \pgfmathsetmacro{\bx}{- \nzu*\uy}
+    \pgfmathsetmacro{\by}{  \nzu*\ux}
+    \pgfmathsetmacro{\bz}{  \nxu*\uy - \nyu*\ux}
+    \pgfmathsetmacro{\bn}{sqrt(\bx*\bx+\by*\by+\bz*\bz)}
+    \pgfmathsetmacro{\bx}{\bx/\bn}
+    \pgfmathsetmacro{\by}{\by/\bn}
+    \pgfmathsetmacro{\bz}{\bz/\bn}
+
+    % Dibujo por aproximación poligonal
+    \def\step{4}
+    \foreach \t in {0,\step,...,356}{
+      \pgfmathsetmacro{\ct}{cos(\t)}
+      \pgfmathsetmacro{\st}{sin(\t)}
+      \pgfmathsetmacro{\ctb}{cos(\t+\step)}
+      \pgfmathsetmacro{\stb}{sin(\t+\step)}
+      \draw[teal!70!black, thick]
+        ({\Cx + \rC*(\ux*\ct + \bx*\st)},
+         {\Cy + \rC*(\uy*\ct + \by*\st)},
+         {\Cz + \rC*( 0*\ct + \bz*\st)})
+        -- 
+        ({\Cx + \rC*(\ux*\ctb + \bx*\stb)},
+         {\Cy + \rC*(\uy*\ctb + \by*\stb)},
+         {\Cz + \rC*( 0*\ctb + \bz*\stb)});
+    }
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{scope}
+    \tikzset{protect=\pathSphere}
+    \draw (-amax,amax) -- (amax,amax) node[below left,xshift=-2em]{$\C$};
+    \end{scope}
+    \begin{scope}
+    \clip[reuse path=\pathSphere];
+    \draw[dashed] (-amax,amax) -- (amax,amax);
+    \end{scope}
+    \begin{scope}[canvas is xy plane at z=0]
+      \draw[dashed] (\myaz:1) arc[start angle=\myaz,end angle=\myaz+180,radius=1];
+      \draw        (\myaz:1) arc[start angle=\myaz,end angle=\myaz-180,radius=1];
+      \path[save path=\pathPlane] (\myaz:amax) -- (\myaz+180:amax) --(bl) -- (br) -- cycle;
+      \begin{scope}
+        \clip[use path=\pathPlane];
+        \draw[dashed, use path=\pathSphere];
+      \end{scope}
+      \begin{scope}
+        \tikzset{protect=\pathPlane}
+        \draw[use path=\pathSphere];
+      \end{scope}
+    \end{scope}
+
+    % Segmentos de proyección y puntos
+    \draw[-=0.3] (Px,Py,0) node[dot,label=below:{$w$}](w){}
+      -- ({stereox(Px,Py)},{stereoy(Px,Py)},{stereoz(Px,Py)})
+         node[dot,label=left:{$\varphi(w)$}](w*){};
+    \draw[-] (Qx,Qy,0) node[dot,label=below:{$z$}](z){}
+      -- ({stereox(Qx,Qy)},{stereoy(Qx,Qy)},{stereoz(Qx,Qy)})
+         node[dot,label=above left:{$\varphi(z)$}](z*){};
+    \draw[dashed] (w*) -- (0,0,1) node[dot,label=above:{$N$}](N){} -- (z*);
+    \node at (0.5,0,0.8) [label=above right:{$\mathbb{S}$}] {};
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%% PLANO: pasa por N y por la recta wz en C
+    % Dirección de la recta en C: d = (dx,dy,0)
+    \pgfmathsetmacro{\dx}{Qx-Px}
+    \pgfmathsetmacro{\dy}{Qy-Py}
+    \pgfmathsetmacro{\dn}{sqrt(\dx*\dx+\dy*\dy)}
+    \pgfmathsetmacro{\ux}{\dx/\dn}
+    \pgfmathsetmacro{\uy}{\dy/\dn}
+
+    % Un punto de la recta (el medio entre w y z)
+    \pgfmathsetmacro{\mx}{(Px+Qx)/2}
+    \pgfmathsetmacro{\my}{(Py+Qy)/2}
+
+    % Vector hacia N desde ese punto: v = N - M = (-mx,-my,1)
+    \pgfmathsetmacro{\vx}{-\mx}
+    \pgfmathsetmacro{\vy}{-\my}
+    \pgfmathsetmacro{\vz}{1}
+    \pgfmathsetmacro{\vn}{sqrt(\vx*\vx+\vy*\vy+\vz*\vz)}
+    \pgfmathsetmacro{\vxu}{\vx/\vn}
+    \pgfmathsetmacro{\vyu}{\vy/\vn}
+    \pgfmathsetmacro{\vzu}{\vz/\vn}
+
+    % Tamaños de la "lámina" (largos a gusto)
+    \pgfmathsetmacro{\L}{1.2*amax}
+    \pgfmathsetmacro{\H}{1.6}
+
+    % Esquinas del rectángulo en el plano: M ± L*u ± H*vhat
+    \coordinate (P1) at ({\mx+\L*\ux+\H*\vxu}, {\my+\L*\uy+\H*\vyu}, {\H*\vzu});
+    \coordinate (P2) at ({\mx-\L*\ux+\H*\vxu}, {\my-\L*\uy+\H*\vyu}, {\H*\vzu});
+    \coordinate (P3) at ({\mx-\L*\ux-\H*\vxu}, {\my-\L*\uy-\H*\vyu}, {-\H*\vzu});
+    \coordinate (P4) at ({\mx+\L*\ux-\H*\vxu}, {\my+\L*\uy-\H*\vyu}, {-\H*\vzu});
+
+    % Lámina del plano (ligeramente translúcida)
+    \fill[teal!20, opacity=0.12] (P1)--(P2)--(P3)--(P4)--cycle;
+
+    % Intersección con C (z=0): la misma recta por M con dirección u
+    \begin{scope}[canvas is xy plane at z=0]
+      \draw[teal!50!black, thick]
+        ({\mx-\L*\ux},{\my-\L*\uy}) -- ({\mx+\L*\ux},{\my+\L*\uy});
+    \end{scope}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \end{scope}
+    \end{tikzpicture}
+\end{figure}

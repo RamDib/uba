@@ -1,0 +1,130 @@
+\chapter{Funciones de variable compleja}
+
+En este capítulo se introducen nuevos conceptos como la holomorfía, aplicaciones conformes y más.
+
+\section{Derivabilidad}
+
+La definición de derivabilidad en $\C$ es practicamente indistinguible a la de $\R$.
+
+\begin{definition}
+    Sea $f : D \subseteq \C \to \C$ con $D$ abierto. Decimos que $f$ es \emph{derivable} en $z_0$ si existe
+    \begin{equation*}
+        f'(z_0) = \lim_{z \to z_0} \frac{f(z) - f(z_0)}{z - z_0}.
+    \end{equation*}
+\end{definition}
+
+En general, vamos a identificar a $f: D \subseteq \C \to \C$ con la función $g: D' \subseteq \R^2 \to \R^2$ dada por
+\begin{equation*}
+    g(x, y) = (u(x, y), v(x, y)) = (\Re(f(x + iy)), \Im(f(x + iy))).
+\end{equation*}
+Sin embargo, usaremos de forma intercambiable ambas funciones, dado que gran parte de los conceptos son aplicables a las dos.
+
+Tal como en $\R^2$ vale el álgebra de límites.
+
+\begin{proposition}
+    Sean $f: D \subseteq \C \to \C$ y $g: E \subseteq \C \to \C$ derivables (y que cumplan todas las hipótesis necesarias). Entonces,
+    \begin{enumerate}
+        \item $(f + g)' = f' + g'$.
+        \item $(f \cdot g)' = f' \cdot g + f \cdot g'$.
+    \end{enumerate}
+\end{proposition}
+
+Muchas veces vamos a querer escribir la derivabilidad de $f$ en $z_0$ de la siguiente manera equivalente: existe $L \in \C$ tal que para todo $\epsilon > 0$, existe $\delta > 0$ que cumple que 
+\begin{equation*}
+    \text{si } |z - z_0| < \delta, \text{ entonces } |f(z) - f(z_0) - L(z - z_0)| < |z - z_0| \epsilon.
+\end{equation*}
+
+A continuación probamos las condiciones de Cauchy--Riemann, que son extremadamente útiles para probar la derivabilidad de una función compleja.
+
+\begin{proposition}[condiciones de Cauchy--Riemann]
+    Sea $f : D \subseteq \C \to \C$ con $D$ abierto. Entonces, $f$ es derivable en $z_0 = x_0 + i y_0$ si y sólo si $u$ y $v$ son diferenciables en $(x_0, y_0)$ y
+    \begin{equation*}
+        \begin{cases}
+            u_x (x_0, y_0) = v_y(x_0, y_0) \\
+            u_y (x_0, y_0) = -v_x(x_0, y_0).
+        \end{cases}
+    \end{equation*}
+\end{proposition}
+
+\begin{proof}
+    La demostración no es tan complicada, pero sí es bastante larga. Por lo tanto, no la incluyo acá. 
+\end{proof}
+
+
+\section{Holomorfía}
+
+Definamos qué es una función holomorfa.
+
+\begin{definition}
+    Sea $f : D \subseteq \C \to \C$ con $D$ abierto. Decimos que $f$ es \emph{holomorfa} en $z_0$ si es derivable en algún entorno de $z_0$. Más en general, $f$ es holomorfa si es holomorfa en todo punto de su dominio.
+\end{definition}
+
+Llamamos \textit{dominio} a un conjunto a un conjunto abierto y conexo. Esto no se debe confundir con el dominio de una función, aunque usualmente terminan siendo lo mismo.
+
+\begin{proposition}
+    Sea $f : D \subseteq \C \to \C$ holomorfa, con $D$ dominio. Si $u(x, y)$ es constante, entonces $f$ es constante.
+\end{proposition}
+
+\begin{proof}
+    Dado que $f$ es holomorfa, entonces se cumplen las condiciones de Cauchy--Riemann. Entonces,
+    \begin{equation*}
+        \begin{cases}
+            0 = u_x (x_0, y_0) = v_y(x_0, y_0) \\
+            0 = u_y (x_0, y_0) = -v_x(x_0, y_0).
+        \end{cases}
+    \end{equation*}
+    Integrando las derivadas parciales, obtenemos que $u$ y $v$ son constantes y, por lo tanto, $f$ es constante.
+\end{proof}
+
+Otra propiedad útil.
+
+\begin{proposition}
+    Sea $f : D \subseteq \C \to \C$ holomorfa, con $D$ dominio. 
+    Si $|f|$ es constante, entonces $f$ también lo es.
+\end{proposition}
+
+\begin{proof}
+    Supongamos $|f(z)| = c$ para algún $c \geq 0$.  
+    Si $c = 0$, entonces $f = 0$, que es constante.  
+
+    Supongamos $c > 0$. Escribimos $f = u + iv$. La condición $|f|^2 = u^2+v^2 = c^2$ implica
+    \begin{equation*}
+        u u_x + v v_x = 0
+        \quad\text{y}\quad
+        u u_y + v v_y = 0.
+    \end{equation*}
+    Como $f$ es holomorfa, $u$ y $v$ satisfacen las ecuaciones de Cauchy–Riemann:
+    \begin{equation*}
+        u_x = v_y \quad\text{y}\quad u_y = -v_x.
+    \end{equation*}
+    Reemplazando, obtenemos
+    \begin{equation*}
+        u u_x + v v_x = u v_y - v u_y = 0,
+    \end{equation*}
+    \begin{equation*}
+        u u_y + v v_y = -u v_x + v u_x = 0.
+    \end{equation*}
+    Es decir,
+    \begin{equation*}
+        \begin{cases}
+            u v_y - v u_y = 0, \\
+            -u v_x + v u_x = 0.
+        \end{cases}
+    \end{equation*}
+    Esto significa que el determinante
+    \begin{equation*}
+        \begin{vmatrix}
+            u & v \\
+            u_x & v_x
+        \end{vmatrix}
+        = 0,
+        \quad\text{y}\quad
+        \begin{vmatrix}
+            u & v \\
+            u_y & v_y
+        \end{vmatrix}
+        = 0.
+    \end{equation*}
+    Como $u$ y $v$ no son ambas nulas, se deduce que $u_x=v_x=u_y=v_y=0$. sPor lo tanto $u,v$ son constantes, y en consecuencia $f$ es constante.
+\end{proof}
+

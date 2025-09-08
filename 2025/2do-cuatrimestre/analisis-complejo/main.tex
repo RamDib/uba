@@ -13,7 +13,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[11pt, a4paper, oneside]{book}
+\documentclass[12pt, a4paper, oneside]{book}
 
 %-------------------------------------------------------------------
 %   CORE PACKAGES
@@ -26,11 +26,35 @@
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{tikz}
+\usepackage{tikz-3dplot}
 \usepackage{float}
 \usepackage{varwidth}
 
 % Tikz
 \usetikzlibrary{patterns}
+\usetikzlibrary{arrows.meta,calc,angles,quotes}
+\usepackage{dsfont}
+% based on 
+% https://tex.stackexchange.com/a/38995/121799 
+% https://tex.stackexchange.com/a/76216 
+% https://tex.stackexchange.com/a/59168/194703 
+% https://tex.stackexchange.com/q/448920/194703 
+\makeatletter 
+\tikzset{ 
+reuse path/.code={\pgfsyssoftpath@setcurrentpath{#1}} 
+} 
+\tikzset{even odd clip/.code={\pgfseteorule}, 
+protect/.code={ 
+\clip[overlay,even odd clip,reuse path=#1] 
+(current bounding box.south west) rectangle (current bounding box.north east)
+; 
+}} 
+\makeatother 
+\usetikzlibrary{3d,arrows.meta,decorations.markings,perspective}
+\tikzset{->-/.style={decoration={% https://tex.stackexchange.com/a/39282/194703
+  markings,
+  mark=at position #1 with {\arrow{>}}},postaction={decorate}},
+  ->-/.default=0.55}
 
 % Unidades
 \usepackage{siunitx}
@@ -77,6 +101,8 @@
 
 \usepackage{microtype}
 
+\linespread{1.241}
+
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
@@ -96,7 +122,7 @@
 
 % --- Chapter Title ---
 \titleformat{\chapter}[display]
-  {\sffamily\huge\bfseries\color{gray!80}}
+  {\sffamily\Huge\bfseries\color{gray!80}}
   {\filleft\fontsize{80}{80}\selectfont\thechapter}
   {20pt}
   {\filleft\color{primarycolor}}
@@ -172,7 +198,7 @@
     colback=boxbgcolor,
     frame empty, boxrule=0pt,
     borderline west={2pt}{0pt}{primarycolor!50!accentcolor},
-    left=10pt, right=10pt, top=8pt, bottom=10pt,
+    left=15pt, right=15pt, top=10pt, bottom=10pt,
     before upper=\vspace{2pt},
     before skip=\topsep, after skip=\topsep,
   },
@@ -181,7 +207,7 @@
     colback=boxbgcolor,
     frame empty, boxrule=0pt,
     borderline west={2pt}{0pt}{primarycolor},
-    left=15pt, right=10pt, top=8pt, bottom=10pt,
+    left=15pt, right=15pt, top=10pt, bottom=10pt,
     before upper=\vspace{2pt},
     before skip=\topsep, after skip=\topsep,
   },
@@ -263,17 +289,18 @@
     \end{center}
 \end{titlepage}
 
+\input{chapters/prefacio.tex}
+
 \tableofcontents
 
 %==================================================================
 %   MAIN MATTER
 %==================================================================
+
 \mainmatter
 
-\chapter*{Prefacio}
-
-Estas son mis notas de Análisis Complejo del segundo cuatrimestre de 2025. Las escribo más que nada para estudiar yo, pero las publico por si le llegan a ser útiles a alguien.
-
 \input{chapters/ch1.tex}
+
+\input{chapters/ch2.tex}
 
 \end{document}

@@ -1,0 +1,282 @@
+\chapter{Números complejos}
+
+Comenzamos con un repaso de la definición de los números complejos, algunas funciones relevantes, propiedades, conceptos topológicos, la esfera de Riemann y homografías.
+
+\section{Definición y propiedades}
+
+Recordemos cómo se definien los números comlejos.
+
+\begin{definition}
+    Definimos a los \emph{números complejos} como el conjunto
+    \begin{equation*}
+        \C = \{ a + bi \mid a, b \in \R \} \quad \text{donde } i^2 = -1 \text{ es la unidad imaginaria},
+    \end{equation*}
+    provisto de la suma
+    \begin{equation*}
+        (a + bi) + (c + di) = (a + b) + (c + d)i
+    \end{equation*}
+    y el producto
+    \begin{equation*}
+        (a + bi) \cdot (c + di) = (ac - bd) + (ad + bc)i.
+    \end{equation*}
+\end{definition}
+
+\begin{remark}
+    Si tratamos a un número complejo como una expresión algebraica y luego utilizamos que $i^2 = -1$, obtenemos el producto definido.
+\end{remark}
+
+Naturalmente, para un número complejo $z = a + bi$, decimos que $\Re(z) = a$ es la \textit{parte real} e $\Im(z) = b$ la \textit{parte imaginaria}. También, definimos el \textit{módulo} (o \textit{valor absoluto}) como $|z| = \sqrt{a^2 + b^2}$. Por último, definimos el conjugado.
+
+\begin{definition}
+    El \emph{conjugado} de un número complejo $z = a + bi \in \C$ es
+    \begin{equation*}
+        \overline{z} = a - bi.
+    \end{equation*}
+\end{definition}
+
+Nos interesa averiguar cómo es el inverso de un número complejo.
+
+\begin{proposition}
+    Sea $z \in \C \setminus \{0\}$. Entonces, el inverso es
+    \begin{equation*}
+        z^{-1} = \frac{\overline{z}}{|z|^2}.
+    \end{equation*}
+\end{proposition}
+
+\begin{proof}
+    Basta con probar que $z \overline{z} = |z|^2$. Escribimos a $z = a + bi$ y entonces 
+    \begin{align*}
+        z \overline{z} &= (a + bi) (a - bi) \\
+        &= (a)^2 - (bi)^2 \\
+        &= a^2 + b^2 \\
+        &= |z|^2.
+    \end{align*}
+    Reordenando la ecaución, obtenemos el resultado.
+\end{proof}
+
+
+\section{Forma polar}
+
+Una de las formas más útiles de expresar a un número complejo es en su forma polar.
+
+\begin{definition}
+    Sea $z = a + bi \in \C \setminus \{0\}$. Definimos el \emph{argumento} de un número complejo como todo $\theta \in \R$ que cumple
+    \begin{equation*}
+        \Re(z) = |z| \cos \theta \quad\text{e}\quad \Im(z) = |z| \sin \theta
+    \end{equation*}
+    y lo denotamos $\arg(z)$. También, si $\theta \in [0, 2\pi)$, lo llamamos el \emph{argumento principal} y lo denotamos $\Arg(z)$.
+\end{definition}
+
+\begin{remark}
+    Para el cero las condiciones se cumplen trivialmente.
+\end{remark}
+
+El argumento y el módulo se trasladan intuitivamente a una representación gráfica.
+
+\input{figures/complejo.tex}
+
+Por trigonometría, podemos deducir la siguiente expresión:
+\begin{equation*}
+    z = r (\cos \theta + i \sen \theta),
+\end{equation*}
+donde $r = |z|$ y $\theta = \Arg(z)$. 
+
+Así también surge la \textit{fórmula de Euler}.
+
+\begin{theorem}[Fórmula de Euler]
+    Sea $z \in \C$. Entonces, podemos expresarlo como
+    \begin{equation*}
+        z = |z| e^{i \Arg(z)} = r e^{i \theta}.
+    \end{equation*}
+\end{theorem}
+
+La demostración de esto la vemos más adelante.
+
+
+\section{Raíces}
+
+Para encontrar la raíz $n$-ésima de un número complejo, lo más fácil es escribirlo en forma de Euler y luego elevar a $\frac{1}{n}$. (No voy a ir más en detalle que esto.)
+
+\begin{proposition}
+    Sean $z_0, z_1, \dots, z_{n-1} \in \C$ las raíces $n$-ésimas de $w \in \C \setminus \{0\}$, con $m,n \in \mathbb{N}$ y $n \geq 2$. Entonces
+    \begin{equation}
+        \sum_{i=0}^{n-1} z_i^m \;=\;
+        \begin{cases}
+            n\,w^k & \text{si } m = k n,\; k \in \mathbb{N},\\
+            0 & \text{en caso contrario}.
+        \end{cases}
+    \end{equation}
+\end{proposition}
+
+(No lo demuestro, pero sale expresando las raíces en forma de Euler y utilizando la expresión de la suma de la progresión geométrica.)
+
+
+\section{Topología y continuidad}
+
+{\color{red} TODO: ESCRIBIR PROPIEDADES}
+
+
+\section{Esfera de Riemann}
+
+Consideramos antes a $\C$ junto con el infinito.
+
+\begin{definition}
+    Definimos el \emph{plano complejo extendido} $\widehat{\C} = \C \cup \{\infty\}$.
+\end{definition}
+
+El plano complejo extendido tiene una interpretación intuitiva dada por la \textit{proyección estereográfica}. (En realidad, voy a arrancar con la inversa de la proyección estereográfica porque me resulta más intuitivo.) 
+
+Nos situamos en $\R^3$ y consideramos a la esfera unitaria $\mathbb{S}^2$. Identificamos el plano $xy$ con $\C$ y definimos la biyección $\varphi : \C \to \mathbb{S}^2 \setminus \{N\}$ de la siguiente forma: si $z = x + iy$,
+\begin{equation*}
+    \varphi(z) = \left(\frac{2x}{|z|^2 + 1}, \frac{2y}{|z|^2 + 1}, \frac{|z|^2 - 1}{|z|^2 + 1}\right).
+\end{equation*}
+
+\input{figures/proyeccion.tex}
+
+Observamos que para conseguir $\varphi(z)$, se traza una recta de $z$ a $N$ y $\Phi(z)$ es el punto donde $\mathbb{S}^2$ y la recta se intersecan.  Sin embargo, ningún punto de $\C$ termina en $N$. ¿Podemos extender $\varphi$? La respuesta es sí y se relaciona con el plano complejo extendido.
+
+Si $|z| \to \infty$, entonces $\varphi(z) \to N$. Entonces, en $\widehat{\C}$, definimos $\varphi(\infty) = N$.
+
+\begin{proposition}
+    La proyección estereográfica envía circunferencias en $\mathbb{S}^2$ a circunferencias o rectas en $\C$.
+\end{proposition}
+
+\begin{proof}
+    Sea $\mathcal C\subset\mathbb S^2$ una circunferencia y sea $\Pi:\; ax+by+cz=d$ el plano que la contiene.
+    Escribimos la inversa de la proyección estereográfica:
+    \begin{equation*}
+    x=\frac{2u}{|w|^2+1},\quad
+    y=\frac{2v}{|w|^2+1},\quad
+    z=\frac{|w|^2-1}{|w|^2+1},\qquad w=u+iv\in\C.
+    \end{equation*}
+    Sustituyendo en la ecuación de $\Pi$ y multiplicando por $|w|^2+1$ llegamos a
+    \begin{equation*}
+    (c-d)|w|^2-2au-2bv-(c+d)=0.
+    \end{equation*}
+    Si $c\neq d$, esto equivale a $|w|^2+\alpha u+\beta v+\gamma=0$, que describe una circunferencia en $\C$.
+    Si $c=d$, obtenemos $2au+2bv+(c+d)=0$, que describe una recta en $\C$.
+\end{proof}
+
+\begin{remark}
+    Observemos que que $c=d$ equivale a que el polo norte $(0,0,1)$ pertenezca a $\Pi$, \textit{i.e.} a que $\mathcal C$ pase por el polo norte. (El caso tangencial $a=b=0,\ c=d$ no produce circunferencia en la esfera y queda excluido por hipótesis.)
+\end{remark}
+
+Si bien la demostración es puramente algebraica, tenemos una interpretación gráfica.
+
+\input{figures/proyeccion2.tex}
+
+Dado que la circunferencia pasa por $N$, la proyección es una recta en vez de una circunferencia.
+
+
+\section{Homografías}
+
+Definimos las homografías que luego van a ser útiles.
+
+\begin{definition}
+    Una \textbf{homografía} es una función $f : \widehat{\C} \to \widehat{\C}$
+    \begin{equation*}
+        f(z) = \frac{az+b}{cz+d},
+    \end{equation*}
+    donde $a,b,c,d \in \C$ y $ad - bc \neq 0$.
+\end{definition}
+
+Hay dos valores de $f$ que quizás no son inmediatamente obvios: para $c \neq 0$,
+\begin{equation*}
+    \begin{cases}
+        f(-\frac{d}{c}) = \infty, \\
+        f(\infty) = \frac{a}{c}.
+    \end{cases}
+\end{equation*}
+
+Las \textit{homografías básicas} son:
+\begin{enumerate}
+    \item \textbf{Traslación:} 
+    \begin{equation*}
+        T_a(z) = z + a, \qquad a \in \C.
+    \end{equation*}
+    \item \textbf{Homotecia:} 
+    \begin{equation*}
+        H_r(z) = r z, \qquad r > 0.
+    \end{equation*}
+    \item \textbf{Rotación:} 
+    \begin{equation*}
+        R_\alpha(z) = \alpha z, \qquad |\alpha| = 1.
+    \end{equation*}
+    \item \textbf{Inversión:} 
+    \begin{equation*}
+        I(z) = \frac{1}{z}.
+    \end{equation*}
+\end{enumerate}
+
+\begin{proposition}
+    Sea $f:\widehat{\C}\to\widehat{\C}$ una homografía con $c\neq 0$. Entonces, existen aplicaciones afines $g,h:\C\to\C$ tales que
+    \begin{equation*}
+        f = g \circ i \circ h, \qquad \text{donde } i(z)=\frac{1}{z}.
+    \end{equation*}
+\end{proposition}
+
+\begin{proof}
+    Sea $q \in \C$ tal que $ad - qc = 0$, o sea $q = \frac{ad}{c}$. Entonces
+    \begin{align*}
+        f(z) &= \frac{az+b}{cz+d} 
+        = \frac{az+b+q-q}{cz+d} 
+        = \frac{az+\tfrac{ad}{c}}{cz+d} + \frac{b-q}{cz+d}.
+    \end{align*}
+    De este modo,
+    \begin{align*}
+        f(z) &= \frac{az+\tfrac{d}{c}\,c}{cz+d} + \frac{b-\tfrac{ad}{c}}{cz+d} \\
+             &= \frac{a}{c} + \Bigl(b-\frac{ad}{c}\Bigr)(cz+d)^{-1}.
+    \end{align*}
+    Luego, definiendo
+    \[
+        h(z) = cz+d, 
+        \qquad g(w) = \frac{a}{c} + \Bigl(b-\frac{ad}{c}\Bigr)w,
+    \]
+    se obtiene que $f = g \circ i \circ h$.
+\end{proof}
+
+\begin{proposition}
+    La imagen de cualquier circunferencia o recta por una homografía es una circunferencia o una recta.
+\end{proposition}
+
+\begin{proof}
+    El único caso complicado es el de las inversiones. Consideramos una circunferencia dada por la ecuación
+    \begin{equation*}
+        |z - z_0| = r, \qquad r \in \R_{\geq 0}.
+    \end{equation*}
+    Equivalentemente,
+    \begin{equation*}
+        (z - z_0)(\overline{z} - \overline{z_0}) = r^2.
+    \end{equation*}
+    Como en la inversión $i(z)=\dfrac{1}{z}$ tenemos $\overline{z}=\dfrac{1}{\overline{i(z)}}=\dfrac{1}{\overline{w}}$ con $w=i(z)$, resulta
+    \begin{equation*}
+        \Bigl(\frac{1}{w}-z_0\Bigr)\Bigl(\frac{1}{\overline{w}}-\overline{z_0}\Bigr)=r^2.
+    \end{equation*}
+    Multiplicando ambos lados por $|w|^2$, se obtiene
+    \begin{equation*}
+        (1-z_0w)(1-\overline{z_0}\,\overline{w})=r^2|w|^2.
+    \end{equation*}
+    Desarrollando,
+    \begin{equation*}
+        1 - z_0 w - \overline{z_0}\,\overline{w} + |z_0|^2 |w|^2 = r^2 |w|^2.
+    \end{equation*}
+    Es decir,
+    \begin{equation*}
+        (|z_0|^2-r^2)|w|^2 - z_0 w - \overline{z_0}\,\overline{w} + 1 = 0,
+    \end{equation*}
+    que es la ecuación de una circunferencia o de una recta en el plano complejo, según que $|z_0|^2-r^2\neq 0$ o $|z_0|^2-r^2=0$. 
+    Por lo tanto, la inversión envía circunferencias en circunferencias o rectas, y lo mismo vale para toda homografía.
+\end{proof}
+
+Veamos que toda homografía está determinada unívocamente por tres puntos.
+
+\begin{proposition}
+    Sean $z_1, z_2, z_3 \in \C$. Hay una única homografía que satisface
+    \begin{equation*}
+        f(z_1) = 0, \quad f(z_2) = 1, \quad f(z_3) = \infty.
+    \end{equation*}
+\end{proposition}
+
+\begin{proof}
+    {\color{red} COMPLETAR}
+\end{proof}
