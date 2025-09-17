@@ -1,0 +1,386 @@
+\chapter{Series en el plano complejo}
+
+\section{Series numéricas y criterios de convergencia}
+
+\begin{definition}
+    Sea $(a_n)_{n \in \N_0}$ una sucesión de números complejos. 
+    Decimos que la serie $\sum a_n$ \emph{converge} si existe el límite
+    \begin{equation*}
+        \lim_{N \to \infty} \sum_{n=0}^N a_n,
+    \end{equation*}
+    y lo denotamos por $\sum_{n=0}^\infty a_n$. Además, si la serie de valores absolutos converge,
+    \begin{equation*}
+        \sum_{n=0}^\infty |a_n| < +\infty,
+    \end{equation*}
+    decimos que $\sum a_n$ \emph{converge absolutamente}.
+\end{definition}
+
+Un primer hecho importante es que la convergencia absoluta implica la convergencia usual.  
+
+\begin{proposition}
+    Si $(a_n)_{n \in \N_0} \subseteq \C$ y la serie $\sum_{n=0}^{\infty} |a_n|$ converge, 
+    entonces $\sum_{n=0}^{\infty} a_n$ converge.
+\end{proposition}
+
+\begin{proof}
+    Sean $m<n$ y
+    \begin{equation*}
+        S_n = \sum_{j=0}^n a_j, \qquad 
+        \sigma_n = \sum_{j=0}^n |a_j|.
+    \end{equation*}
+    Entonces
+    \begin{equation*}
+        |S_n - S_m|
+        = \left|\sum_{j=0}^n a_j - \sum_{j=0}^m a_j\right|
+        = \left|\sum_{j=m+1}^n a_j\right|
+        \leq \sum_{j=m+1}^n |a_j|
+        = \sigma_n - \sigma_m.
+    \end{equation*}
+    Como la serie de valores absolutos converge, 
+    la diferencia $\sigma_n - \sigma_m$ se puede hacer arbitrariamente pequeña. 
+    Por lo tanto, $(S_n)$ es de Cauchy y la serie converge.
+\end{proof}
+
+A continuación presentamos algunos criterios prácticos para decidir la convergencia de series.  
+
+\begin{proposition}[Criterio de la comparación]
+    Sean $(a_n)$, $(b_n)$ sucesiones de números reales positivos tales que $a_n \leq b_n$. Entonces:
+    \begin{enumerate}
+        \item Si $\sum b_n$ converge, también lo hace $\sum a_n$.
+        \item Si $\sum a_n = +\infty$, entonces $\sum b_n = +\infty$.
+    \end{enumerate}
+\end{proposition}
+
+Este criterio se usa sobre todo para comparar con series conocidas (geométrica, armónica, $p$-series, etc.).  
+
+\begin{proposition}[Criterio de la raíz $n$-ésima de Cauchy]
+    Sea $(a_n)$ sucesión de números complejos y sea
+    \begin{equation*}
+        \alpha = \limsup_{n \to \infty} |a_n|^{1/n}.
+    \end{equation*}
+    Entonces:
+    \begin{enumerate}
+        \item Si $\alpha < 1$, la serie $\sum a_n$ converge absolutamente.
+        \item Si $\alpha > 1$, la serie $\sum a_n$ diverge.
+        \item Si $\alpha = 1$, el criterio no es concluyente.
+    \end{enumerate}
+\end{proposition}
+
+El criterio de la raíz es particularmente útil cuando $a_n$ involucra potencias elevadas en $n$, por ejemplo $a_n = \frac{n^k}{m^n}$.  
+
+\begin{proposition}[Criterio de D’Alembert]
+    Sea $(a_n)$ sucesión de números complejos y sea
+    \begin{equation*}
+        \beta = \limsup_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right|.
+    \end{equation*}
+    Entonces:
+    \begin{enumerate}
+        \item Si $\beta < 1$, la serie $\sum a_n$ converge absolutamente.
+        \item Si $\beta > 1$, la serie $\sum a_n$ diverge.
+        \item Si $\beta = 1$, el criterio no es concluyente.
+    \end{enumerate}
+\end{proposition}
+
+Este último criterio, también llamado del \textit{cociente}, es uno de los más usados en la práctica, sobre todo cuando los términos de la serie contienen factoriales o potencias encadenadas.
+
+\begin{proposition}[Criterio de la comparación en el límite]
+    Sean $(a_n)$, $(b_n)$ sucesiones de números reales positivos.
+    \begin{enumerate}
+        \item Si $\lim_{n \to \infty} \tfrac{a_n}{b_n} = c > 0$, entonces $\sum a_n$ y $\sum b_n$ 
+        convergen o divergen simultáneamente.
+        \item Si $\lim_{n \to \infty} \tfrac{a_n}{b_n} = 0$ y $\sum b_n$ converge, entonces 
+        $\sum a_n$ también converge.
+        \item Si $\lim_{n \to \infty} \tfrac{a_n}{b_n} = +\infty$ y $\sum b_n = +\infty$, 
+        entonces $\sum a_n = +\infty$.
+    \end{enumerate}
+\end{proposition}
+
+Este criterio refina al de comparación directa y es muy útil cuando la razón de los términos se estabiliza.
+
+\begin{proposition}[Criterio de la integral]
+    Sea $(a_n)$ una sucesión de números reales no negativos y 
+    $f : [0,+\infty) \to [0,+\infty)$ una función continua y decreciente tal que $f(n) = a_n$
+    para todo $n \in \N_0$. Entonces, la serie $\sum a_n$ converge si y sólo si 
+    converge la integral impropia
+    \begin{equation*}
+        \int_0^{\infty} f(t)\,dt.
+    \end{equation*}
+\end{proposition}
+
+Este criterio se conoce también como \textit{criterio de la integral de Cauchy} y permite conectar 
+la teoría de series con el análisis de integrales impropias.
+
+\begin{definition}
+    Sean $(a_n)$ y $(b_n)$ dos sucesiones de números complejos. Definimos el 
+    \emph{producto de Cauchy} como la sucesión $(c_k)$ dada por
+    \begin{equation*}
+        c_k = \sum_{j=0}^k a_{k-j} b_j.
+    \end{equation*}
+\end{definition}
+
+Este producto aparece de manera natural al multiplicar series de potencias, 
+y será especialmente relevante en el estudio de funciones analíticas.
+
+\begin{proposition}[Convolución de series absolutamente convergentes]
+    Sean $(a_n)$ y $(b_n)$ sucesiones de números complejos tales que 
+    $\sum a_n$ y $\sum b_n$ son absolutamente convergentes. 
+    Entonces, la serie formada por el producto de Cauchy $(c_k)$ es absolutamente convergente y además
+    \begin{equation*}
+        \sum_{k=0}^\infty |c_k| \;\leq\;
+        \left( \sum_{k=0}^\infty |a_k| \right)
+        \left( \sum_{k=0}^\infty |b_k| \right).
+    \end{equation*}
+\end{proposition}
+
+\begin{proof}
+    Recordemos que el producto de Cauchy está dado por
+    \begin{equation*}
+        c_n = \sum_{j=0}^n a_j b_{n-j}.
+    \end{equation*}
+    En particular,
+    \begin{align*}
+        |c_0| &\leq |a_0 b_0|, \\
+        |c_1| &\leq |a_0 b_1| + |a_1 b_0|, \\
+        |c_2| &\leq |a_0 b_2| + |a_1 b_1| + |a_2 b_0|, \\
+              &\;\;\vdots \\
+        |c_n| &\leq |a_0 b_n| + |a_1 b_{n-1}| + \dots + |a_n b_0|.
+    \end{align*}
+
+    Sumando las desigualdades anteriores, obtenemos
+    \begin{align*}
+        \sum_{k=0}^n |c_k|
+        &\leq \sum_{j=0}^n \sum_{m=0}^{\,n-j} |a_j|\,|b_m| \\
+        &= \sum_{j=0}^n |a_j| \left( \sum_{m=0}^{\,n-j} |b_m| \right).
+    \end{align*}
+    Como $\sum b_n$ converge absolutamente, el sumando interno está acotado por
+    $\sum_{m=0}^\infty |b_m|$. Así,
+    \begin{equation*}
+        \sum_{k=0}^n |c_k|
+        \leq \left(\sum_{j=0}^n |a_j|\right) \left(\sum_{m=0}^\infty |b_m|\right).
+    \end{equation*}
+
+    Finalmente, dejando $n \to \infty$,
+    \begin{equation*}
+        \sum_{k=0}^\infty |c_k|
+        \leq \left(\sum_{j=0}^\infty |a_j|\right)\left(\sum_{m=0}^\infty |b_m|\right).
+    \end{equation*}
+    Esto prueba tanto la convergencia absoluta de la serie de Cauchy como la desigualdad deseada.
+\end{proof}
+
+\begin{proposition}[Suma por partes]
+    Sean $(a_n)$, $(b_n)$ sucesiones de números complejos y definamos
+    \begin{equation*}
+        A_n = \sum_{k=0}^n a_k.
+    \end{equation*}
+    Entonces, para todo $N>k$ se cumple
+    \begin{equation*}
+        \sum_{n=k}^N a_n b_n
+        = A_N b_N - A_{k-1} b_k - \sum_{n=k}^{N-1} A_n (b_{n+1}-b_n).
+    \end{equation*}
+\end{proposition}
+
+\begin{proof}
+    Comenzamos desarrollando la suma:
+    \begin{align*}
+        \sum_{n=k}^N a_n b_n
+        &= \sum_{n=k}^N (A_n - A_{n-1}) b_n \\
+        &= \sum_{n=k}^N A_n b_n - \sum_{n=k}^N A_{n-1} b_n \\
+        &= A_N b_N - A_{k-1} b_k + \sum_{n=k}^{N-1} A_n b_n - \sum_{n=k+1}^N A_{n-1} b_n.
+    \end{align*}
+    Reordenando,
+    \begin{align*}
+        \sum_{n=k}^N a_n b_n
+        &= A_N b_N - A_{k-1} b_k + \sum_{n=k}^{N-1} A_n b_n - \sum_{n=k}^{N-1} A_n b_{n+1} \\
+        &= A_N b_N - A_{k-1} b_k - \sum_{n=k}^{N-1} A_n (b_{n+1}-b_n),
+    \end{align*}
+    que es la identidad buscada.
+\end{proof}
+
+Este resultado se conoce también como \textit{fórmula de Abel} y es muy útil para analizar series con términos oscilantes.  
+
+\begin{proposition}[Criterio de Dirichlet]
+    Sea $(a_n)$ una sucesión de números reales con $a_{n+1} \leq a_n$ y $a_n \to 0$.  
+    Sea $(b_n)$ una sucesión de números complejos tal que
+    \begin{equation*}
+        B_n = \left|\sum_{k=0}^n b_k\right| \leq C \quad \text{para todo } n.
+    \end{equation*}
+    Entonces, la serie $\sum a_n b_n$ es convergente.
+\end{proposition}
+
+\begin{proof}
+    Usando suma por partes, para todo $N$ se tiene
+    \begin{align*}
+        \left|\sum_{k=0}^N a_k b_k\right|
+        &\leq |B_N a_N| + \sum_{n=0}^{N-1} |B_n|\,|a_n - a_{n+1}| \\
+        &\leq C|a_N| + C \sum_{n=0}^{N-1} (a_n - a_{n+1}).
+    \end{align*}
+    Como $a_n \to 0$, al tomar $N \to \infty$ resulta
+    \begin{equation*}
+        \left|\sum_{k=0}^\infty a_k b_k\right| \leq C a_0,
+    \end{equation*}
+    lo cual prueba la convergencia de la serie.
+\end{proof}
+
+\begin{remark}
+    Sea $(a_n)$ una sucesión de reales no negativos, decreciente y tal que $a_n \to 0$. 
+    Entonces, la serie $\sum a_n z^n$ converge absolutamente si $|z| < 1$, y converge también si $|z|=1$ pero $z \neq 1$.
+\end{remark}
+
+Este resultado es una aplicación directa del criterio de Dirichlet al caso de las llamadas 
+\textit{series de Dirichlet}, y nos servirá para analizar ejemplos clásicos como la serie armónica alternada.
+
+
+\section{Series de funciones}
+
+Sea $(f_n: D \subseteq \C \to \C)_{n \in \N}$ una sucesión de funciones. Denotamos por
+\begin{equation*}
+    S_n(z) = \sum_{i=0}^n f_i(z)
+\end{equation*}
+a las sumas parciales.
+
+\begin{definition}
+    Decimos que una serie de funciones $\sum f_n$ \emph{converge puntualmente} si $S_n(z)$ converge para todo $z \in \D$. Además, si $S_n$ converge uniformemente, decimos que la serie $\sum f_n$ converge \emph{uniformemente}.
+\end{definition}
+
+\begin{remark}
+    Notemos que la convergencia puntual habla sobre la convergencia de una sucesión numérica; en cambio, la convergencia uniforme habla sobre sucesión de funciones.
+\end{remark}
+
+\begin{proposition}
+    Sea $(f_n: D \subseteq \C \to \C)_{n \in \N}$ una sucesión de funciones continuas tal que $\sum f_n$ converge uniformemente. Entonces, $\sum f_n$ es continua.
+\end{proposition}
+
+\begin{proof}
+    consideremos las sumas parciales $S_n$. En sí, la proposición vale para sucesiones de funciones en general.
+\end{proof}
+
+Para la convergencia puntual, simplemente podemos fijar algún $z \in \C$ y utilizar los criterios de las series numéricas. Sin embargo, no tenemos un criterio para la convergencia uniforme.
+
+\begin{proposition}[Criterio de Weierstrass]
+    Sea $(f_n: D \subseteq \C \to \C)_{n \in \N}$ una sucesión de funciones que cumplen
+    \begin{enumerate}
+        \item Para cada $n \in \N$, existe $M_n > 0$ tal que $|f_n| < M_n$.
+        \item La serie $\sum M_n$ converge.
+    \end{enumerate}
+    Entonces, $\sum f_n$ converge uniformemente.
+\end{proposition}
+
+Otra noción de convergencia:
+
+\begin{definition}
+    Sea $(f_n: D \subseteq \C \to \C)_{n \in \N}$ una sucesión de funciones continuas. Decimos que $\sum f_n$ \emph{converge normalmente} si, para todo $K \subseteq D$ compacto,
+    \begin{equation*}
+        \sum_{n = 0}^{\infty } \Vert f_n \Vert_K \text{ converge}.
+    \end{equation*}
+\end{definition}
+
+
+\section{Series de potencias}
+
+\begin{definition}
+    Sea $(a_n)_{n \in \N}$ una sucesión en $\C$ y $z_0 \in \C$. Le decimos \emph{series de potencias} a las series de la forma
+    \begin{equation*}
+        \sum_{n=0}^{\infty} a_n (z - z_0)^n.
+    \end{equation*}
+\end{definition}
+
+Nos limitamos a las seires de potencia centradas en $0$.
+
+\begin{lemma}[Abel]
+    Sea $(a_n)_{n \in \N}$ una sucesión en $\C$ y $z_0 \in \C \setminus \{0\}$ tal que $\sum a_n z_0^n$ converge. Entonces, $\sum a_n z^n$ converge uniforme y absolutamente en toda bola $\overline{B}(0, r)$, con $r < |z_0|$.
+\end{lemma}
+
+\begin{proof}
+    Sea $(a_n)_{n \in \N}$ una sucesión en $\C$ y $z_0 \in \C \setminus \{0\}$ tal que $\sum a_n z_0^n$ converge. Necesariamente, $a_n z_0^n \to 0$; por lo tanto, existe $C > 0$ tal que $|a_n z_0^n|$, para todo $n \in \N$. Sea $r < |z_0|$ y $z \in \overline{B}(0, r)$. Entonces,
+    \begin{equation*}
+        |a_n z^n| = |a_n| |z|^n \leq |a_n| |z_0|^n \left( \frac{|z|}{|z_0|} \right)^n \leq C \left( \frac{|z|}{|z_0|} \right)^n.
+    \end{equation*}
+    La serie geométrica
+    \begin{equation*}
+       \sum_{n=0}^{\infty} C \left( \frac{|z|}{|z_0|} \right)^n
+    \end{equation*}
+    es convergente. Por el criterio de Weierstrass, $\sum a_n z^n$ converge uniforme y absolutamente en $\overline{B}(0, r)$.
+\end{proof}
+
+\begin{definition}
+    Sea $(a_n)_{n \in \N}$ una sucesión en $\C$. El \emph{radio de convergencia} de la series $\sum a_n z^n$ es
+    \begin{equation*}
+        R = \frac{1}{\limsup_{n \to \infty} |a_n|^{\frac{1}{n}}}.
+    \end{equation*}
+\end{definition}
+
+Una de las propiedades más importantes del radio de convergencia es que, justamente, la serie converge para todo $z \in \C$ tal que $|z| < R$. (Si $R = \infty$, entonces converge en $\C$.)
+
+\begin{lemma}
+    \label{lem:desig-binom}
+    Sean $n \in \N$ y $z, h \in \C$. Entonces se cumple la desigualdad
+    \begin{equation*}
+        \left| \sum_{j=2}^{n} \binom{n}{j} z^{\,k-j} h^j \right|
+        \leq |h|^2 \, \frac{n(n-1)}{2} \, (|z|+|h|)^{n-2}.
+    \end{equation*}
+\end{lemma}
+
+\begin{proof}
+    Antes de continuar vamos a probar una desigualdad que nos va a ser de utilidad. 
+    Consideremos
+    \begin{align*}
+        \left| \sum_{j=2}^{n} \binom{n}{j} z^{\,k-j} h^j \right|
+        &= |h|^2 \, \left| \sum_{j=2}^{n} 
+            \frac{n(n-1)}{j(j-1)} \binom{n-2}{j-2} \, z^{\,n-j} h^{\,j-2} \right|.
+    \end{align*}
+    Como $j \geq 2$, se cumple que $\tfrac{1}{j(j-1)} \leq \tfrac{1}{2}$. Así, 
+    \begin{align*}
+        \left| \sum_{j=2}^{n} \binom{n}{j} z^{\,k-j} h^j \right|
+        &\leq |h|^2 \, \frac{n(n-1)}{2} 
+            \left| \sum_{j=2}^{n} \binom{n-2}{j-2} \, z^{\,n-j} h^{\,j-2} \right|.
+    \end{align*}
+    Haciendo el cambio de índice $k = j-2$, queda
+    \begin{align*}
+        \left| \sum_{j=2}^{n} \binom{n}{j} z^{\,k-j} h^j \right|
+        &\leq |h|^2 \, \frac{n(n-1)}{2} 
+            \sum_{k=0}^{n-2} \binom{n-2}{k} |z|^{\,n-k-2} |h|^k \\
+        &= |h|^2 \, \frac{n(n-1)}{2} (|z|+|h|)^{n-2}.
+    \end{align*}
+    Esto concluye la demostración.
+\end{proof}
+
+\begin{theorem}
+    Sea $(a_n)_{n \in \N}$ una sucesión en $\C$ y sea $S = \sum a_n z^n$ la serie de potencias asociada, con radio de convergencia $R$. Entonces, la derivada de $S$ es
+    \begin{equation*}
+        S' = \left(\sum a_n z^n\right)' = \sum n a_n z^{n-1}
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Primero, como
+    \begin{equation*}
+        \limsup_{n \to \infty} |n+1|^{\frac{1}{n}} |a_{n+1}|^{\frac{1}{n}} = \limsup_{n \to \infty} |a_{n+1}|^{\frac{1}{n+1}},
+    \end{equation*}
+    ambas $S'$ y $\sum n a_n z^{n-1}$ tienen el mismo radio de convergencia.
+
+    Sean $z, h \in \C$ tales que $|z| + |h| < R$. Sea $\varepsilon > 0$. Buscamos un $\delta > 0$ tal que
+    \begin{equation*}
+        \text{si }|h| < \delta, \text{ entonces } |S(z + h) - S(z) - S'(z)h| < \varepsilon |h|.
+    \end{equation*}
+
+    Consideremos 
+    \begin{align*}
+        S(z + h) &= \sum_{k=0}^\infty a_k (z+h)^k \\
+        &= \sum_{k=0}^\infty \sum_{j=0}^k \binom{k}{j} z^{k-j}h^j \\
+        &= \sum_{k=0}^\infty a_k \left( z^k + kz^{k-1} h + \sum_{j=2}^k \binom{k}{j} z^{k-j}h^j\right)
+    \end{align*}
+    y también
+    \begin{align*}
+        S(z+h) &= \sum_{k=0}^{\infty} a_k z^k 
+        + \sum_{k=0}^{\infty} a_{k+1}(k+1) z^k h
+        + \sum_{k=0}^{\infty} a_k \sum_{j=2}^{k} \binom{k}{j} z^{k-j} h^j \\
+        &= S(z) 
+        + S'(z)h
+        + \sum_{k=0}^{\infty} a_k \sum_{j=2}^{k} \binom{k}{j} z^{k-j} h^j.
+    \end{align*}
+    Por lo tanto,
+    \begin{align*}
+        S(z + h) - S(z) - S'(z)h &= \sum_{k=0}^{\infty} a_k \sum_{j=2}^{k} \binom{k}{j} z^{\,k-j} \\ 
+        &=
+    \end{align*}
+\end{proof}

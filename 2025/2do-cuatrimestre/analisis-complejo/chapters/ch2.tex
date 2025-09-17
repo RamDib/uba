@@ -128,3 +128,251 @@ Otra propiedad útil.
     Como $u$ y $v$ no son ambas nulas, se deduce que $u_x=v_x=u_y=v_y=0$. sPor lo tanto $u,v$ son constantes, y en consecuencia $f$ es constante.
 \end{proof}
 
+
+\section{Funciones armónicas}
+
+Más adelante veremos que una función sea holomorfa es condición suficiente para que sea infinitamente derivable. Por lo que, de ahora en adelatne, supondremos que las funciones $u: D \subseteq \R^2 \to \R$ y $v: D \subseteq \R^2 \to \R$ son infinitamente diferenciables.
+
+\begin{definition}
+    Sea $u: D \subseteq \R^2 \to \R$. Decimos que $u$ es \emph{armónica} si su laplaciano es nulo. Es decir,
+    \begin{equation*}
+        \Delta u = u_{xx} + u_{yy} = 0.
+    \end{equation*}
+\end{definition}
+
+Consideremos ahora $f: D \subseteq \R^2 \to \R^2$ tal que $f(x, y) = u(x, y)+ i v(x, y)$. Nos interesa ver si $f$ es holomorfa.
+
+\begin{definition}
+    Sean $u, v: D \subseteq \R^2 \to \R$. Decimos que $v$ es una \emph{armónica conjugada} de $u$ si la función $f(x, y) = u(x, y) + i v(x, y)$ es holomorfa en todo su dominio.
+\end{definition}
+
+Probemos que siempre existe para dominios simplemente conexos y que es (casi) única.
+
+\begin{proposition}
+    Sea $u: D \subseteq \R^2 \to \R$ armónica, con $D$ simplemente conexo. Existe una armónica conjugada $v: D \subseteq \R^2 \to \R$ y está determinada de manera única salvo por una constante aditiva.
+\end{proposition}
+
+\begin{proof}
+    Notemos primerarmente que la condición de Cauchy--Riemann es equivalente a pedir que 
+    \begin{equation*}
+        \nabla v = (-u_y, u_x).
+    \end{equation*}
+    Por lo tanto, basta con encontrar una función $v$ que cumpla. 
+
+    Dado que nuestro dominio es simplemente conexo, el campo vectorial $(-u_y, u_x)$ es el gradiente de una función $v$ si y sólo si el rotor del campo es nulo. Entonces,
+    \begin{equation*}
+        \nabla \times (-u_y, u_x) = u_{xx} - (-u_{yy}) = u_{xx} + u_{yy} = 0,
+    \end{equation*}
+    dado que $u$ es armónica.
+\end{proof}
+
+\begin{proposition}
+    Sea $f: D \subseteq \C \to \C$ holomorfa con $D$ dominio. Si $\Im f$ está contenida en una recta, entonces $f$ es constante.
+\end{proposition}
+
+\begin{proof}
+    Sea $f(x, y) = u(x, y) + i v(x, y)$ tal que cumple las hipótesis e $\Im f$ está contenida en una recta. Entonces, existen $a, b, c \in \R$, donde $a$ y $b$ no son ambos nulos, tales que todo $(x, y) \in \R^2$ cumple
+    \begin{equation*}
+        a u(x, y) + b u(x, y) = c.
+    \end{equation*}
+
+    Tomamos derivadas parciales respecto a $x$ e $y$:
+    \begin{equation*}
+        \begin{cases}
+            a u_x(x, y) + bv_x(x, y) = 0 \\
+            a u_y(x, y) + bv_y(x, y) = 0. \\
+        \end{cases}
+    \end{equation*}
+    Como $f$ es holomorfa, aplicamos Cauchy--Riemann, entonces
+    \begin{equation*}
+        \begin{cases}
+            a u_x(x, y) + bv_x(x, y) = 0 \\
+            -a v_x(x, y) + bu_x(x, y) = 0. \\
+        \end{cases}
+    \end{equation*}
+    Finalmente, escribimos al sistema en forma matricial:
+    \begin{equation*}
+        \begin{pmatrix}
+            a & b \\
+            b & -a 
+        \end{pmatrix}
+        \begin{pmatrix}
+            u_x \\
+            v_x
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            0 \\
+            0
+        \end{pmatrix}.
+    \end{equation*}
+    El determinante de la matriz es $-a^2 - b^2 \neq 0$. Por ende, $u_x = v_x = 0$ y, por Cauchy--Riemann, $u_y = v_y = 0$.
+\end{proof}
+
+
+\section{Transformaciones conformes}
+
+Las \textit{transformaciones conformes} en esencia son funciones que preservan ángulos. Veamos qué quiere decir esto.
+
+\begin{definition}
+    Decimos que $f: D \subseteq \R^2 \to \R^2$ es una \emph{transformación conforme} si dado un par de curvas $\gamma, \sigma : [a, b] \to R^2$ que intersecan en $z_0$ con un ángulo $\alpha$, la imagen por $f$ preserva el mismo ángulo.
+\end{definition}
+
+Para entender un poco mejor, veamos un ejemplo gráfico:
+
+\input{figures/transformacion-conforme.tex}
+
+Decimos que, en particular, esta transformación es conforme en $z_0$. Notemos que las tangentes a las curvas $\gamma$ y $\sigma$ forman un ángulo $\alpha$ y, luego de aplicar $f$, aún se preserva el ángulo.
+
+Las transformaciones conformes elementales en $\R^n$ son:
+\begin{enumerate}
+    \item \textbf{Homotecias:} $f(x) = \lambda x$, con $\lambda \in \R_{>0}$.
+    \item \textbf{Traslaciones:} $f(x) = x + a$, con $a \in \R^n$.
+    \item \textbf{Ortogonales:} $f(x) = A x$, donde $A \in O(n)$.
+    \item \textbf{Inversiones:} $f(x) = \dfrac{x}{\|x\|^2}$.
+\end{enumerate}
+
+
+Toda transformación conforme en $\R^n$ ($n \geq 3$) se obtiene como composición de estas transformaciones ---esto es el teorema de Liouville, pero por ahora no lo demostramos---.
+
+\bigskip
+
+Consideremos las trasformaciones $T: \R^2 \to \R^2$ lineales conformes. Es decir, las que cumplen
+\begin{equation*}
+    \frac{Tv \cdot Tw}{\Vert Tv \Vert \, \Vert Tw \Vert} = \frac{v \cdot w}{\Vert v \Vert \, \Vert w \Vert}.
+\end{equation*}
+En particular, las transformaciones ortogonales preservan el producto interno y, por lo tanto, los ángulos.
+
+\begin{proposition}
+    Sea $T: \R^2 \to \R^2$ una transformación. Entonces, $T$ es conforme si y sólo si $T = \lambda U$ con $U$ ortogonal.
+\end{proposition}
+
+\begin{proof}
+    ($\Rightarrow$) Sea $T$ conforme y sea $\{v, w\}$ una base ortonormal de $\R^2$. Por conformidad de $T$, $\{Tv, Tw\}$ es ortogonal. Calculamos
+    \begin{align*}
+        (v + w) \cdot (v - w) &= \Vert v \Vert^2 - \Vert w \Vert^2 \\
+        &= 1 - 1 \\
+        &= 0.
+    \end{align*}
+    Recordemos que el producto interno entre dos vectores es el producto entre las normas y coseno del ángulo; por lo tanto, por conformidad, 
+    \begin{align*}
+        0 = T(v + w) \cdot T(v - w) &= (Tv + Tw) \cdot (Tv - Tw) \\
+        &= \Vert Tv \Vert^2 - \Vert Tw \Vert^2.
+    \end{align*}
+    Entonces, $\Vert Tv \Vert = \Vert Tw \Vert$. Con definir $U = \Vert Tv \Vert^{-1} T$ obtenemos una transformación ortonormal.
+
+    Como $T = \lambda U$ con $\lambda = \Vert Tv \Vert$ y $U$ ortogonal, queda probada la implicación.
+
+    ($\Leftarrow$) Es inmediato.
+\end{proof}
+
+Una función $f: \R^2 \to \R^2$ es un \emph{difeomorfismo} si es diferenciable, biyectiva y su inversa es diferenciable.
+
+\begin{proposition}
+    Sea $f: D \subseteq \R^2 \to \R^2$ un difeomorfismo con $D$ dominio. Entonces, $f$ es conforme si y sólo si $f$ es holomorfa o $\overline{f}$ es holomorfa.
+\end{proposition}
+
+\begin{proof}
+    No lo probamos.
+\end{proof}
+
+\begin{theorem}
+    Sea $f: D \subseteq \R^2 \to \R^2$ conforme. Entonces, $f$ puede escribirse como composición de a lo sumo una traslación, una homotecia, una transformación ortogonal
+    y una inversión.
+\end{theorem}
+
+\begin{proof}
+    Ídem.
+\end{proof}
+
+\begin{proposition}
+    Sea $D \subseteq \C$, $f : D \to \C$ y $z_0 \in D^\circ$. 
+    Si $f$ es holomorfa en $z_0$ y $f'(z_0) \neq 0$, entonces $f$ es conforme en $z_0$.
+\end{proposition}
+
+\begin{proof}
+    Escribimos $f=u+iv$ con $u,v:D\to\R$ de clase $C^1$ cerca de $z_0$. 
+    Como $f$ es holomorfa en $z_0$, satisface las ecuaciones de Cauchy--Riemann en $z_0$:
+    \begin{equation*}
+        u_x(z_0)=v_y(z_0), \qquad u_y(z_0)=-\,v_x(z_0).
+    \end{equation*}
+    El jacobiano en $z_0$ es
+    \begin{equation*}
+        Df(z_0)=\begin{pmatrix} u_x & u_y \\ v_x & v_y \end{pmatrix}_{z_0}
+                =\begin{pmatrix} u_x & -v_x \\ v_x & u_x \end{pmatrix}_{z_0}.
+    \end{equation*}
+    Sea $f'(z_0)=a+ib$ (con $a=u_x(z_0)$ y $b=v_x(z_0)$). Entonces
+    \begin{equation*}
+        Df(z_0)=\begin{pmatrix} a & -b \\ b & a \end{pmatrix}.
+    \end{equation*}
+    Esta matriz es, en notación real, la multiplicación compleja por $a+ib$. Descompone como
+    \begin{equation*}
+        \begin{pmatrix} a & -b \\ b & a \end{pmatrix}
+        = \sqrt{a^2+b^2}\;
+        \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix},
+        \qquad \theta=\arg(a+ib).
+    \end{equation*}
+    Es decir, $Df(z_0)$ es una homotecia de razón $\lambda=\lvert f'(z_0)\rvert>0$ seguida de una rotación. 
+    Por lo tanto, $Df(z_0)$ preserva ángulos y orientaciones. En consecuencia, $f$ es conforme en $z_0$.
+\end{proof}
+
+
+
+\section{Funciones elementales}
+
+Nos hacemos la siguiente pregunta: dada una función en los reales, ¿existe una función compleja tal que la extiende?
+
+\begin{definition}
+    Sea $f : A \subseteq \R \to \R$. Decimos que $g: D \subseteq \C \to \C$ es una \emph{extensión al plano complejo} de $f$ si $g|_A = f$.
+\end{definition}
+
+Las extensiones de algunas funciones típicas a $\C$ son:
+\begin{enumerate}
+    \item Exponencial:
+    \begin{equation*}
+        e^z = e^x(\cos y + i \sin y), \quad z = x + i y.
+    \end{equation*}
+    \item Seno:
+    \begin{equation*}
+        \sin z = \frac{e^{iz} - e^{-iz}}{2i}.
+    \end{equation*}
+    \item Coseno:
+    \begin{equation*}
+        \cos z = \frac{e^{iz} + e^{-iz}}{2}.
+    \end{equation*}
+    \item Tangente:
+    \begin{equation*}
+        \tan z = \frac{\sin z}{\cos z}.
+    \end{equation*}
+\end{enumerate}
+
+Si intentamos extender $\log$ nos vamos a encontrar con un problema. Sea $w \in \C$. Buscamos $z \in \C$ tal que 
+\begin{equation}
+    \label{eq:expo-inv}
+    e^z = w.
+\end{equation}
+Primero, aplicamos módulo a la ecuación \ref{eq:expo-inv} y obtenemos
+\begin{equation*}
+    |w| = |e^z| = e^x.
+\end{equation*}
+Además, tomando argumento obtenemos
+\begin{equation*}
+    \arg w = \arg(e^z) = y + 2 \pi k, \quad k \in \Z.
+\end{equation*}
+Acá nos encontramos con el primer problema: hay múltiples elecciones para el arguento. Para resolver esto, se restringe el el argumento a $( -\pi, \pi]$. A la función
+\begin{equation*}
+    \Arg(z) = \begin{cases}
+        \arccos \left(\frac{x}{\sqrt{x^2 + y^2}}\right) & \text{si } y \geq 0, \\
+        -\arccos \left(\frac{x}{\sqrt{x^2 + y^2}}\right) & \text{si } y < 0,
+    \end{cases}
+\end{equation*}
+se le llama el \textit{argumento principal}. 
+
+De vuelta, nos encontramos con otro problema: el argumento principal no es continua en la semirrecta real negativa. Más adelante podemos probar que, no importa como definamos la extensión, es imposible extender de forma continua el logaritmo a todo $\C \setminus \{0\}$. No obstante, si consideramos el dominio $\C \setminus \{ x + 0 \cdot i  \mid x < 0\}$, la extensión es continua.
+
+\begin{definition}
+    Definimos el \emph{logaritmo principal} como
+    \begin{equation*}
+        \Log(z) = \ln|z| + i \Arg(z), \qquad z \in \C \setminus \{x \leq 0\}.
+    \end{equation*}
+\end{definition}

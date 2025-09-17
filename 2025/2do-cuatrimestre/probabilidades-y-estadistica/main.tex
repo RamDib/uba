@@ -25,6 +25,7 @@
 \usepackage{graphicx} % For including images
 \usepackage{xcolor} % For custom colors
 \usepackage{tikz}
+\usepackage{pgfplots}
 \usepackage{float}
 \usepackage{varwidth}
 
@@ -181,10 +182,30 @@
     before upper=\vspace{2pt},
     before skip=\topsep, after skip=\topsep,
   },
+  lighttheobox/.style={
+    enhanced, breakable,
+    parbox=false,
+    colback=white,
+    frame empty, boxrule=0pt,
+    borderline west={2pt}{0pt}{primarycolor!50!cyan},
+    left=15pt, right=15pt, top=10pt, bottom=10pt,
+    before upper=\vspace{2pt},
+    before skip=\topsep, after skip=\topsep,
+  },
   infobox/.style={
     enhanced, breakable,
     parbox=false,
     colback=boxbgcolor,
+    frame empty, boxrule=0pt,
+    borderline west={2pt}{0pt}{primarycolor},
+    left=15pt, right=15pt, top=10pt, bottom=10pt,
+    before upper=\vspace{2pt},
+    before skip=\topsep, after skip=\topsep,
+  },
+  lightinfobox/.style={
+    enhanced, breakable,
+    parbox=false,
+    colback=white,
     frame empty, boxrule=0pt,
     borderline west={2pt}{0pt}{primarycolor},
     left=15pt, right=15pt, top=10pt, bottom=10pt,
@@ -202,7 +223,7 @@
 \tcolorboxenvironment{claim}{theobox}
 
 \tcolorboxenvironment{definition}{infobox}
-\tcolorboxenvironment{example}{infobox}
+\tcolorboxenvironment{example}{lightinfobox}
 \tcolorboxenvironment{problem}{infobox}
 % If you want 'Observación' boxed as well, uncomment:
 % \tcolorboxenvironment{remark}{infobox}
@@ -282,5 +303,9 @@
 Estas son mis notas de Probabilidades y Estadística del segundo cuatrimentre de 2025. Las escribo más que nada para estudiar yo, pero las publico por si le llegan a ser útil a alguien.
 
 \input{chapters/ch1.tex}
+
+\input{chapters/ch2.tex}
+
+\input{chapters/ch3.tex}
 
 \end{document}

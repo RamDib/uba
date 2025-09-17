@@ -32,7 +32,7 @@
 
 % Tikz
 \usetikzlibrary{patterns}
-\usetikzlibrary{arrows.meta,calc,angles,quotes}
+\usetikzlibrary{arrows.meta,calc,angles,quotes,intersections,angles,quotes}
 \usepackage{dsfont}
 % based on 
 % https://tex.stackexchange.com/a/38995/121799 
@@ -96,7 +96,7 @@ protect/.code={
     right=3cm,
     top=2.5cm,
     bottom=2.5cm,
-    headheight=15pt
+    headheight=16pt
 ]{geometry}
 
 \usepackage{microtype}
@@ -255,6 +255,8 @@ protect/.code={
 \renewcommand{\Im}{\operatorname{Im}}
 \DeclareMathOperator{\area}{\acute{a}rea}
 \DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\Log}{Log}
+
 
 
 %-------------------------------------------------------------------
@@ -302,5 +304,7 @@ protect/.code={
 \input{chapters/ch1.tex}
 
 \input{chapters/ch2.tex}
+
+\input{chapters/ch3.tex}
 
 \end{document}
