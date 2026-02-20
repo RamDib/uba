@@ -1,0 +1,89 @@
+\documentclass[11pt, a4paper, twoside]{book}
+
+\input{../../../utilidades/latex/structure.tex} % Adjust path if needed
+
+\begin{document}
+
+% Title: Subject, Subtitle/Type, Author
+% For O'Reilly style, the first argument is "The Big Title", second is subtitle.
+\customtitle{ANÁLISIS MATEMÁTICO I}{Notas de Cursada y Libro de Texto}{Ramiro Dibur}
+
+\frontmatter % Roman numerals for numbering front pages
+\tableofcontents
+
+\mainmatter % Arabic numerals for main content
+\chapter{Límites y Continuidad}
+
+Esta es la introducción al primer capítulo. Aquí vemos el nuevo estilo de libro profesional. El formato ahora utiliza la clase \texttt{book}, permitiendo capítulos y márgenes amplios para notas.
+
+\marginnote{Esto es una \textbf{nota al margen}. En los libros de texto modernos de matemáticas, el amplio margen exterior se utiliza para aclaraciones, pequeñas figuras, y referencias.}
+
+\section{El Concepto de Límite}
+
+Podemos escribir ecuaciones matemáticas con estilo moderno, y luego hacer un comentario cerca en el margen.
+\begin{equation}
+    f(x) = \int_{0}^{x} e^{-t^2} \, dt
+\end{equation}
+
+\marginnote{Nota: la integral gaussiana es fundamental en probabilidad.}
+
+\section{Teoremas y Definiciones}
+
+Veamos cómo quedan los entornos con títulos ``run-in'' u ``off'' (en la misma línea que el texto).
+
+\begin{definicion}[Límite de una función]
+    \label{limite}
+    Sea $f$ una función definida en un intervalo abierto que contiene a $a$ (excepto posiblemente en $a$). Decimos que el límite de $f(x)$ cuando $x$ tiende a $a$ es $L$, y escribimos
+    \[ \lim_{x \to a} f(x) = L \]
+    si para todo $\epsilon > 0$ existe un $\delta > 0$ tal que $|x - a| < \delta$ implica $|f(x) - L| < \epsilon$.
+\end{definicion}
+
+\begin{teorema}[Valor Medio]
+    \label{tvm}
+    Si $f$ es continua en $[a,b]$ y derivable en $(a,b)$, entonces existe un punto $c \in (a,b)$ tal que:
+    \[ f'(c) = \frac{f(b) - f(a)}{b - a} \]
+    Esto geométricamente significa que hay una tangente paralela a la secante.
+\end{teorema}
+
+\begin{proof}
+    La demostración se realiza aplicando el Teorema de Rolle a la función auxiliar $g(x) = f(x) - \frac{f(b)-f(a)}{b-a}(x-a)$.
+\end{proof}
+
+\chapter{Derivadas y Aplicaciones}
+
+El diseño de capítulos presenta un número grande en gris, muy elegante, alineado a la derecha.
+
+\section{Otros Entornos}
+
+Aquí podemos ver los entornos que el usuario marcó como ``menos importantes'', los cuales ahora solo tienen el título en color y carecen de la barra lateral, ofreciendo un diseño más limpio y sobrio.
+
+\begin{lema}
+    \label{lema_transitivo}
+    Si $A \subseteq B$ y $B \subseteq C$, entonces $A \subseteq C$.
+\end{lema}
+
+\begin{corolario}
+    \label{corolario_1}
+    Toda función derivable es continua.
+\end{corolario}
+
+\begin{ejemplo}[Parábola]
+    \label{ejemplo_basico}
+    La función $f(x) = x^2$ es un ejemplo clásico de parábola con vértice en el origen.
+\end{ejemplo}
+
+\section{Código Fuente}
+Podemos incluir código y usar el margen simultáneamente.
+
+\marginnote{Este clásico algoritmo se enseña en \textit{Estructuras de Datos}.}
+\begin{lstlisting}[language=Python, caption=Algoritmo de Euclides]
+def gcd(a, b):
+    """
+    Computes the greatest common divisor of a and b.
+    """
+    while b:
+        a, b = b, a % b
+    return a
+\end{lstlisting}
+
+\end{document}

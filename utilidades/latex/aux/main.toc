@@ -1,0 +1,3 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Sección 1}{3}{section.1}%
+\contentsfinish 

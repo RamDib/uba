@@ -1,0 +1,272 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structure for UBA CS/Math Notes (Modern Textbook)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\usepackage[spanish]{babel} 
+\decimalpoint
+% \usepackage[utf8]{inputenc} % Handled by default in modern LaTeX engines
+\usepackage[T1]{fontenc}
+
+% Typography
+% Palatino for main text and math
+\usepackage{mathpazo} 
+% Fira Sans or Helvetica for sleek sans-serif headings
+\usepackage[scaled=0.92]{helvet} 
+\usepackage{courier}
+
+% Page Layout (Asymmetrical for margin notes)
+% We use geometry to set a wide right margin on odd pages and wide left on even (twoside).
+\usepackage[
+    a4paper,
+    inner=2.5cm,      % Inner margin
+    outer=7cm,        % Wide outer margin for notes/figures
+    top=3cm,
+    bottom=3cm,
+    marginparsep=0.5cm, % Space between text and margin
+    marginparwidth=5.5cm % Width of the margin notes
+]{geometry}
+
+\usepackage{sidenotes} % Sidenotes, margin figures, etc.
+\usepackage{marginnote} % For simple margin notes
+
+% Colors (Elegant Bordeaux Palette)
+\usepackage{xcolor}
+\definecolor{primaryColor}{RGB}{0, 0, 0} % Pure Black
+\definecolor{bordoDark}{RGB}{120, 24, 52}   % Deep Elegant Bordeaux
+\definecolor{bordoLight}{RGB}{170, 70, 95}   % Lighter Bordeaux for secondary
+\definecolor{headerColor}{RGB}{0, 0, 0}  % Black
+\definecolor{subtleGray}{RGB}{248, 250, 252} % Slate 50
+\definecolor{lineColor}{RGB}{200, 200, 200} % Slate 200
+\definecolor{accentColor}{named}{bordoDark} % Link color alias
+
+% Header and Footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+% Ensure headers reach across the margin
+\fancyheadoffset[RO,LE]{\dimexpr\marginparsep + \marginparwidth\relax}
+\fancyhead[LE,RO]{\sffamily\bfseries \thepage}
+\fancyhead[LO]{\sffamily \nouppercase{\leftmark}}
+\fancyhead[RE]{\sffamily \nouppercase{\rightmark}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{lineColor}\leaders\hrule height \headrulewidth\hfill}}
+\setlength{\headheight}{24pt} % Increased for fancyhdr
+\addtolength{\topmargin}{-9pt} % Compensate for headheight increase
+
+% Chapter and Section Formatting (Only if using a book-like class)
+\usepackage{titlesec}
+
+\makeatletter
+\@ifundefined{chapter}{}{
+% Chapter format: Large gray number, sleek text
+\titleformat{\chapter}[display]
+  {\normalfont\sffamily\Huge\bfseries\color{primaryColor}}
+  {\flushright\fontsize{80}{90}\selectfont\color{lineColor}\thechapter}
+  {-20pt}
+  {\flushright\Huge}
+\titlespacing*{\chapter}{0pt}{-50pt}{40pt}
+}
+\makeatother
+
+% Section format
+\titleformat{\section}
+  {\normalfont\sffamily\Large\bfseries\color{primaryColor}}
+  {\thesection}{1em}{}
+
+\titleformat{\subsection}
+  {\normalfont\sffamily\large\bfseries\color{headerColor}}
+  {\thesubsection}{1em}{}
+
+% Table of Contents
+\usepackage{titletoc}
+
+% Math Packages
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{mathtools}
+
+% Graphics
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tikz}
+
+% Hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accentColor,
+    filecolor=accentColor,
+    urlcolor=accentColor,
+    citecolor=accentColor,
+    hypertexnames=false,
+}
+
+% Code Listings
+\usepackage{listings}
+\definecolor{codegray}{RGB}{148, 163, 184}
+\definecolor{codepurple}{RGB}{139, 92, 246}
+\definecolor{backcolour}{RGB}{248, 250, 252} % Match subtleGray
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{headerColor}\itshape,
+    keywordstyle=\bfseries\color{accentColor},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{headerColor},
+    basicstyle=\ttfamily\footnotesize\color{primaryColor},
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    frame=single,
+    rulecolor=\color{lineColor}
+}
+\lstset{style=mystyle}
+
+%----------------------------------------------------------------------------------------
+%	CUSTOM ENVIRONMENTS (Theorems - Run-in Titles, Sleek Design)
+%----------------------------------------------------------------------------------------
+
+\usepackage[many]{tcolorbox}
+
+% Minimalist Theorem Style with Run-in Title
+\tcbset{
+    runin/.style={
+        enhanced,
+        breakable,
+        colback=white,
+        colframe=white,
+        frame hidden,
+        borderline west={3pt}{0pt}{#1}, % A bit thicker left bar
+        sharp corners,
+        boxsep=0pt,
+        top=0pt, bottom=0pt, % Ensure bar height matches text
+        left=10pt, right=10pt,
+        coltitle=#1, % Ensure title is visible
+        fonttitle=\bfseries\sffamily,
+        % Detach the title so we can place it inside the upper text
+        detach title,
+        before upper={\noindent\textbf{\color{#1}\sffamily\tcbtitle}\ }
+    },
+    runinSimple/.style={
+        enhanced,
+        breakable,
+        colback=white,
+        colframe=white,
+        frame hidden,
+        sharp corners,
+        boxsep=0pt,
+        top=0pt, bottom=0pt,
+        left=0pt, right=0pt,
+        coltitle=#1, % Color the title
+        fonttitle=\bfseries\sffamily,
+        detach title,
+        before upper={\noindent\textbf{\color{#1}\sffamily\tcbtitle}\ }
+    }
+}
+
+% General macro for theorems to handle optional titles cleanly
+\DeclareTColorBox[auto counter, number within=section]{definicion}{ o }{
+    runinSimple=bordoDark,
+    IfValueTF={#1}{title={Definición~\thetcbcounter\ (#1).}}{title={Definición~\thetcbcounter.}}
+}
+
+\DeclareTColorBox[auto counter, number within=section]{teorema}{ o }{
+    runin=bordoDark,
+    IfValueTF={#1}{title={Teorema~\thetcbcounter\ (#1).}}{title={Teorema~\thetcbcounter.}}
+}
+
+\DeclareTColorBox[auto counter, number within=section]{lema}{ o }{
+    runinSimple=bordoDark,
+    IfValueTF={#1}{title={Lema~\thetcbcounter\ (#1).}}{title={Lema~\thetcbcounter.}}
+}
+
+\DeclareTColorBox[auto counter, number within=section]{corolario}{ o }{
+    runinSimple=bordoDark,
+    IfValueTF={#1}{title={Corolario~\thetcbcounter\ (#1).}}{title={Corolario~\thetcbcounter.}}
+}
+
+\DeclareTColorBox[auto counter, number within=section]{proposicion}{ o }{
+    runin=bordoDark,
+    IfValueTF={#1}{title={Proposición~\thetcbcounter\ (#1).}}{title={Proposición~\thetcbcounter.}}
+}
+
+\DeclareTColorBox[auto counter, number within=section]{ejemplo}{ o }{
+    runinSimple=bordoLight,
+    IfValueTF={#1}{title={Ejemplo~\thetcbcounter\ (#1).}}{title={Ejemplo~\thetcbcounter.}}
+}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+% Proof environment fix to match style (already handled well by amsthm, just making it sans-serif bold title)
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \sffamily\itshape
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+%----------------------------------------------------------------------------------------
+%	COVER PAGE (O'Reilly Style Preserved)
+%----------------------------------------------------------------------------------------
+
+\newcommand{\customtitle}[3]{
+    \begin{titlepage}
+        \newgeometry{margin=0cm} % Full page for cover
+        
+        % Top O'Reilly bar
+        \begin{tikzpicture}[remember picture, overlay]
+            \fill[white] (current page.north west) rectangle ([yshift=-1cm]current page.north east);
+            \draw[accentColor, line width=2pt] ([yshift=-1cm]current page.north west) -- ([yshift=-1cm]current page.north east);
+            \node[accentColor, anchor=west, font=\sffamily\bfseries\Large] at ([xshift=1cm, yshift=-0.5cm]current page.north west) {O'REILLY\textregistered};
+        \end{tikzpicture}
+        
+        \vspace*{2cm}
+        
+        % Main Color Block for Title (Python style)
+        \begin{tikzpicture}[remember picture, overlay]
+            \fill[accentColor] ([yshift=-2cm]current page.north west) rectangle ([yshift=-10cm]current page.north east);
+            \node[white, anchor=west, text width=16cm, font=\sffamily\bfseries\fontsize{40}{48}\selectfont] at ([xshift=2cm, yshift=-5cm]current page.north west) {#1};
+            \node[white, anchor=west, text width=16cm, font=\sffamily\itshape\Large] at ([xshift=2cm, yshift=-8.5cm]current page.north west) {#2};
+        \end{tikzpicture}
+        
+        \vspace*{9cm}
+        
+        \centering
+        
+        % Animal Image
+        \includegraphics[width=0.7\textwidth, height=10cm, keepaspectratio]{/Users/ramirodibur/Projects/uba/utilidades/latex/images/animal.png} 
+        
+        \vfill
+        
+        % Author at the bottom right
+        \begin{flushright}
+            \begin{minipage}{0.5\textwidth}
+                \flushright
+                {\sffamily\fontsize{18}{22}\selectfont #3 \par}
+                \vspace{0.2cm}
+                {\sffamily\large \today}
+            \end{minipage}
+            \hspace{1cm}
+        \end{flushright}
+        \vspace{1cm}
+        
+        \restoregeometry
+    \end{titlepage}
+}
